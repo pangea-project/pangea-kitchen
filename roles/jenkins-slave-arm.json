@@ -3,14 +3,18 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
-
+    "docker" : {
+      "install_type": "source"
+    }
   },
   "override_attributes": {
 
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[docker]",
+    "role[server-common]",
+    /* not working because arm so use archive version via slaver*/
+    /*"recipe[docker]",*/
     "recipe[java]",
     "recipe[jenkins-slave]"
   ],

@@ -1,6 +1,8 @@
 site 'http://community.opscode.com/api/v1'
 
 cookbook 'docker'
+cookbook 'fail2ban'
+cookbook 'htop'
 cookbook 'java'
 cookbook 'openssh'
 cookbook 'user'

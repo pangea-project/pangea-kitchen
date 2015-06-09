@@ -1,0 +1,6 @@
+{
+  "name": "mobile-remaster",
+  "run_list": [
+    "role[base]"
+  ]
+}
