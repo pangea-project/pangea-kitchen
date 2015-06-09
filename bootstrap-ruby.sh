@@ -2,10 +2,13 @@
 
 set -ex
 
+apt-get update
 apt-get install -y git
-apt-get build-dep -y ruby2.0
+apt-get install -y ruby-dev build-essential wget ssl-cert rsync
+apt-get purge -y ruby-dev
 
 cd /tmp
+rm -rf ruby-build
 git clone https://github.com/sstephenson/ruby-build.git
 cd ruby-build/
 ./install.sh
