@@ -1,6 +1,13 @@
 {
   "name": "mobile-remaster",
+  "default_attributes": {
+    "platform_packages" : {
+      "pkgs": ["zsync"]
+    }
+  },
   "run_list": [
-    "role[base]"
+    "role[base]",
+    "recipe[apt::cacher-ng]",
+    "recipe[platform_packages]"
   ]
 }
