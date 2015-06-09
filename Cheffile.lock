@@ -50,6 +50,7 @@ SITE
     openssh (1.4.0)
       iptables (>= 0.0.0)
     packagecloud (0.0.18)
+    platform_packages (0.4.2)
     polipo (0.1.0)
     runit (1.6.0)
       packagecloud (>= 0.0.0)
@@ -71,5 +72,6 @@ DEPENDENCIES
   htop (>= 0)
   java (>= 0)
   openssh (>= 0)
+  platform_packages (>= 0)
   user (>= 0)
 
