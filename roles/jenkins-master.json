@@ -1,0 +1,25 @@
+{
+  "name": "jenkins-slave-arm",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "jenkins": {
+      "master": {
+        "install_method": "package"
+      }
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[server-common]",
+    "recipe[java]",
+    "recipe[jenkins::master]",
+    "recipe[git]"
+  ],
+  "env_run_lists": {
+
+  }
+}

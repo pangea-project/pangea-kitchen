@@ -9,7 +9,9 @@
           "checksum": "a8040027950ecff0a3f0ccb071d1e68c8e27f9db24baf00a955e1994d0398d1b",
           "version": "1.6.0",
           "url": "https://github.com/umiddelb/armhf/raw/master/bin/docker-1.6.0"
-      }
+      },
+      "user": "docker",
+      "group": "docker"
     }
   },
   "override_attributes": {
