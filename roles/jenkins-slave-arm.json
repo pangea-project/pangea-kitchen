@@ -21,7 +21,7 @@
   "run_list": [
     "role[server-common]",
     "recipe[docker]",
-    "recipe[java]",
+    "recipe[jenkins-java-trusty]",
     "recipe[jenkins-slave]"
   ],
   "env_run_lists": {
