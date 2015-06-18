@@ -8,3 +8,5 @@ cookbook 'java'
 cookbook 'jenkins'
 cookbook 'openssh'
 cookbook 'user'
+
+cookbook 'reprepro'
