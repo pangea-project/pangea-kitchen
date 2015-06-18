@@ -1,6 +1,6 @@
 {
   "run_list": [
-    "role[jenkins-slave-arm]"
+    "recipe[repo-mci]"
   ],
   "automatic": {
     "ipaddress": "vagrant"
