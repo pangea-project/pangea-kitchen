@@ -1,0 +1,11 @@
+{
+  "name": "sbuild",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+  "run_list": [
+    "recipe[docker]",
+    "recipe[jenkins-slave]",
+    "recipe[apt::cacher-ng]",
+    "recipe[sbuild]"
+  ]
+}
