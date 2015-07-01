@@ -15,3 +15,5 @@ cd ruby-build/
 
 cd /
 ruby-build 2.2.2 /usr/local/
+
+gem update --system
