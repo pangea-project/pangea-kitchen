@@ -19,7 +19,7 @@ user_account 'jenkins-slave' do
   home slave_home
   ssh_keygen false
   create_group false
-  uid 100000
+  uid 100_000
 end
 
 group 'jenkins-slave' do
