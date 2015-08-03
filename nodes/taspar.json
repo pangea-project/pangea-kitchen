@@ -2,7 +2,9 @@
   "run_list": [
     "role[jenkins-master]",
     "recipe[jenkins-master-arm]",
-    "recipe[docker]"
+    "recipe[docker]",
+    "recipe[s3fs]",
+    "recipe[repo-mci]"
   ],
   "automatic": {
     "ipaddress": "taspar"
