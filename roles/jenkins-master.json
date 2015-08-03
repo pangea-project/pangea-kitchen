@@ -1,5 +1,5 @@
 {
-  "name": "jenkins-slave-arm",
+  "name": "jenkins-master",
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
