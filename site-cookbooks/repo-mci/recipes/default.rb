@@ -40,3 +40,7 @@ Dir["#{node['reprepro']['repo_dir']}/**/**"].each do |path|
     group 'www-data'
   end if File.directory?(path)
 end
+
+
+# FIXME: gpg key import is not working... ...
+# FIXME: SignWith field in distributions config with space breaks
