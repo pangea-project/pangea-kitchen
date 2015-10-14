@@ -72,6 +72,8 @@ SITE
     rsyslog (2.0.0)
     runit (1.6.0)
       packagecloud (>= 0.0.0)
+    rvm (0.9.4)
+      chef_gem (>= 0.0.0)
     sysctl (0.6.2)
       ohai (>= 0.0.0)
     user (0.4.2)

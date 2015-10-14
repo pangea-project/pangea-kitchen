@@ -7,6 +7,6 @@ cookbook 'git'
 cookbook 'java'
 cookbook 'jenkins'
 cookbook 'openssh'
-cookbook 'user'
-
 cookbook 'reprepro'
+cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
+cookbook 'user'
