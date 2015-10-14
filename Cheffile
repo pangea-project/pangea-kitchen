@@ -1,6 +1,6 @@
 site 'http://community.opscode.com/api/v1'
 
-cookbook 'docker'
+cookbook 'docker', '~> 0.37.0' # 0.40+ has no node recipes anymore
 cookbook 'fail2ban'
 cookbook 'htop'
 cookbook 'git'
