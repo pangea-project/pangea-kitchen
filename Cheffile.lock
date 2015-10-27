@@ -86,7 +86,16 @@ SITE
       yum (~> 3.2)
       yum-epel (>= 0.0.0)
 
+GIT
+  remote: https://github.com/blue-systems/aptly.git
+  ref: develop
+  sha: 4f72a946e465bde5235541059406c5a0bcea4678
+  specs:
+    aptly (0.2.7)
+      apt (>= 0.0.0)
+
 DEPENDENCIES
+  aptly (>= 0)
   docker (~> 0.37.0)
   fail2ban (>= 0)
   git (>= 0)
