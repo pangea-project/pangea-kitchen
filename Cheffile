@@ -10,6 +10,4 @@ cookbook 'openssh'
 cookbook 'reprepro'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'user'
-cookbook 'aptly',
-  :git => "https://github.com/blue-systems/aptly.git",
-  :ref => "develop"
+cookbook 'aptly'

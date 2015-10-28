@@ -3,6 +3,8 @@ SITE
   specs:
     apache2 (3.1.0)
     apt (2.8.2)
+    aptly (0.2.6)
+      apt (>= 0.0.0)
     aufs (0.1.1)
       apt (>= 0.0.0)
       modules (>= 0.0.0)
@@ -85,14 +87,6 @@ SITE
     yum-repoforge (0.5.4)
       yum (~> 3.2)
       yum-epel (>= 0.0.0)
-
-GIT
-  remote: https://github.com/blue-systems/aptly.git
-  ref: develop
-  sha: 4f72a946e465bde5235541059406c5a0bcea4678
-  specs:
-    aptly (0.2.7)
-      apt (>= 0.0.0)
 
 DEPENDENCIES
   aptly (>= 0)
