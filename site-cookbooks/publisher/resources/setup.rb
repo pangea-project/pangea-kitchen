@@ -11,7 +11,7 @@ action :setup do
     ssh_keygen false
     ssh_keys sshkeys
     create_group true
-    home node.default['aptly']['rootdir']
+    home node['aptly']['rootdir']
   end
 
   ohai 'reload' do
@@ -22,12 +22,12 @@ action :setup do
   node.default['aptly']['group'] = uid
   node.default['aptly']['user'] = uid
 
-  template "#{node.default['aptly']['rootdir']}/.aptly.conf" do
+  template "#{node['aptly']['rootdir']}/.aptly.conf" do
     source 'aptly.conf.erb'
     owner uid
     group uid
     variables({
-      :rootdir => "#{node.default['aptly']['rootdir']}/aptly",
+      :rootdir => "#{node['aptly']['rootdir']}/aptly",
       :downloadconcurrency => node['aptly']['downloadconcurrency'],
       :architectures => node['aptly']['architectures'],
       :dependencyfollowsuggests => node['aptly']['dependencyfollowsuggests'],

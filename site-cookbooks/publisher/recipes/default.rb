@@ -1,4 +1,4 @@
-include_recipe "apt"
+  include_recipe "apt"
 
 apt_repository "aptly" do
   uri node['aptly']['uri']
@@ -14,7 +14,7 @@ package "graphviz"
 
 # Requires LWRP'ing so as to enable multiple publishing accounts
 
-repos_setup 'dci' do
+publisher_setup 'dci' do
   action :setup
   repositories %w(frameworks plasma)
   sshkeys [
@@ -22,7 +22,7 @@ repos_setup 'dci' do
   ]
 end
 
-repos_setup 'kci' do
+publisher_setup 'kci' do
   action :setup
   repositories %w(frameworks plasma)
   sshkeys [
