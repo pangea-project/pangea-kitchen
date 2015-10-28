@@ -8,3 +8,4 @@ version          '0.1.0'
 
 depends 'aptly'
 depends 'user'
+depends 'apt'
