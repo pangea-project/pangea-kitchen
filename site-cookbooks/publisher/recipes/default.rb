@@ -1,4 +1,4 @@
-  include_recipe "apt"
+include_recipe "apt"
 
 apt_repository "aptly" do
   uri node['aptly']['uri']
