@@ -1,6 +1,7 @@
 property :uid, String, name_property: true
 property :repositories, Array, default: []
 property :sshkeys, Array, default: []
+property :apiport, Integer, default: 8080
 
 action :setup do
   # FIXME: Because I couldn't figure out how to achieve this via
@@ -37,16 +38,29 @@ action :setup do
     })
   end
 
-  environment = {
-    'USER' => uid,
-    'HOME' => node.default['aptly']['rootdir']
-  }
-
   repositories.each do |repo|
     aptly_repo repo do
       action :create
       comment "Apt repository for #{repo}"
       component 'main'
     end
+  end
+
+  template "/etc/init/#{uid}_aptly.conf" do
+    action :create
+    source 'aptly_upstart.conf.erb'
+    owner "root"
+    group "root"
+    mode "0644"
+    variables({
+                user: uid,
+                group: uid,
+                dir: node['aptly']['rootdir'],
+                port: apiport
+      })
+  end
+
+  service "#{uid}_aptly" do
+    action :start
   end
 end
