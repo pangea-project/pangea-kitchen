@@ -14,11 +14,6 @@ action :setup do
     home node['aptly']['rootdir']
   end
 
-  ohai 'reload' do
-    action :reload
-    plugin 'etc'
-  end
-
   node.default['aptly']['group'] = uid
   node.default['aptly']['user'] = uid
 
