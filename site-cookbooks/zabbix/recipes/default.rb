@@ -28,6 +28,13 @@ file '/etc/zabbix/zabbix_agentd.d/ServerActive.conf' do
   group 'root'
 end
 
+file '/etc/zabbix/zabbix_agentd.d/Server.conf' do
+  content 'Server=46.101.162.153'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
 file '/etc/zabbix/zabbix_agentd.d/Hostname.conf' do
   content "Hostname=#{node.name}"
   mode '0644'
