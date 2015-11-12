@@ -11,7 +11,8 @@
   "chef_type": "role",
   "run_list": [
     "recipe[fail2ban]",
-    "recipe[htop]"
+    "recipe[htop]",
+    "recipe[chef-unattended-upgrades]"
   ],
   "env_run_lists": {
 
