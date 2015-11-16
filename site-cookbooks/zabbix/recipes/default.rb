@@ -21,6 +21,18 @@ package 'Install Zabbix Agent' do
   package_name %w(zabbix-agent)
 end
 
+# On ARM we use archive packages, which have a different path. Because why
+# wouldn't they...
+ruby_block 'armhfsymlink' do
+  block do
+    if Dir.exist?('/etc/zabbix/zabbix_agentd.conf.d') &&
+       !Dir.exist?('/etc/zabbix/zabbix_agentd.d')
+      File.symlink('/etc/zabbix/zabbix_agentd.conf.d',
+                   '/etc/zabbix/zabbix_agentd.d')
+    end
+  end
+end
+
 file '/etc/zabbix/zabbix_agentd.d/ServerActive.conf' do
   content 'ServerActive=46.101.162.153'
   mode '0644'
