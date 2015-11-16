@@ -34,14 +34,16 @@ ruby_block 'armhfsymlink' do
 end
 
 file '/etc/zabbix/zabbix_agentd.d/ServerActive.conf' do
-  content 'ServerActive=46.101.162.153'
+  only_if { node.name != node['zabbix']['server']['node'] }
+  content "ServerActive=#{node['zabbix']['server']['ipaddress']}"
   mode '0644'
   owner 'root'
   group 'root'
 end
 
 file '/etc/zabbix/zabbix_agentd.d/Server.conf' do
-  content 'Server=46.101.162.153'
+  only_if { node.name != node['zabbix']['server']['node'] }
+  content "Server=#{node['zabbix']['server']['ipaddress']}"
   mode '0644'
   owner 'root'
   group 'root'
