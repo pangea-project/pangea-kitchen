@@ -79,6 +79,9 @@ SITE
       packagecloud (>= 0.0.0)
     rvm (0.9.4)
       chef_gem (>= 0.0.0)
+    swap (0.3.8)
+    swap_tuning (0.2.0)
+      swap (~> 0.3)
     sysctl (0.6.2)
       ohai (>= 0.0.0)
     user (0.4.2)
@@ -119,5 +122,6 @@ DEPENDENCIES
   openssh (>= 0)
   reprepro (>= 0)
   rvm (~> 0.9.4)
+  swap_tuning (>= 0)
   user (>= 0)
 

@@ -12,7 +12,8 @@
   "run_list": [
     "recipe[fail2ban]",
     "recipe[htop]",
-    "recipe[chef-unattended-upgrades]"
+    "recipe[chef-unattended-upgrades]",
+    "recipe[swap_tuning]"
   ],
   "env_run_lists": {
 
