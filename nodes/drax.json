@@ -1,0 +1,10 @@
+{
+  "name": "drax",
+  "run_list": [
+    "role[server-common]"
+  ],
+  "automatic": {
+    "ipaddress": "46.101.206.233",
+    "hostname": "drax"
+  }
+}
