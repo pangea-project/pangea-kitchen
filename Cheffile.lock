@@ -79,7 +79,6 @@ SITE
       packagecloud (>= 0.0.0)
     rvm (0.9.4)
       chef_gem (>= 0.0.0)
-    swap (0.3.8)
     swap_tuning (0.2.0)
       swap (~> 0.3)
     sysctl (0.6.2)
@@ -103,6 +102,13 @@ GIT
       apt (>= 0.0.0)
 
 GIT
+  remote: git@github.com:sethvargo-cookbooks/swap.git
+  ref: master
+  sha: 0539a593d6fda0cab4267991ac6fcbc1510a1686
+  specs:
+    swap (0.3.8)
+
+GIT
   remote: https://github.com/markolson/chef-apt-cacher-ng.git
   ref: master
   sha: 13535e28187a229cc2a2a0ebca37023ee4775b0f
@@ -122,6 +128,7 @@ DEPENDENCIES
   openssh (>= 0)
   reprepro (>= 0)
   rvm (~> 0.9.4)
+  swap (>= 0)
   swap_tuning (>= 0)
   user (>= 0)
 
