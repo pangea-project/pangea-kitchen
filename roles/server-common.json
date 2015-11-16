@@ -10,6 +10,7 @@
   },
   "chef_type": "role",
   "run_list": [
+    "recipe[zabbix]",
     "recipe[fail2ban]",
     "recipe[htop]",
     "recipe[chef-unattended-upgrades]",
