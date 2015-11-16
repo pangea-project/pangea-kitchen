@@ -35,7 +35,8 @@ group 'docker' do
   members %w(jenkins-slave)
 end
 
-%w(/var/lib/jenkins /var/cache/jenkins).each do |dir|
+%w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
+  next unless File.exist?(dir)
   next if File.stat(dir).uid == 100_000 && File.stat(dir).gid == 120
   paths = Dir["#{dir}/**/**"] + [dir]
   paths.each do |path|
