@@ -35,8 +35,20 @@ group 'docker' do
   members %w(jenkins-slave)
 end
 
-execute "chown-yolokitten" do
-  command "chown -R 100000:120 #{slave_home}"
-  user "root"
-  action :run
+%w(/var/lib/jenkins /var/cache/jenkins).each do |dir|
+  next if File.stat(dir).uid == 100_000 && File.stat(dir).gid == 120
+  paths = Dir["#{dir}/**/**"] + [dir]
+  paths.each do |path|
+    # Do not mangle workspace permissions as they can be different due to
+    # lack of subuid in docker.
+    next if path.include?('workspace')
+    file path do
+      owner 'jenkins'
+      group 'jenkins'
+    end if File.file?(path)
+    directory path do
+      owner 'jenkins'
+      group 'jenkins'
+    end if File.directory?(path)
+  end
 end
