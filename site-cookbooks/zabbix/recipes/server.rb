@@ -13,6 +13,12 @@ package 'Install Zabbix Server' do
   package_name %w(zabbix-server-mysql zabbix-frontend-php)
 end
 
+%w(apache2 mysql zabbix-server).each do |service_name|
+  service service_name do
+    action :nothing
+  end
+end
+
 # mysql2_chef_gem 'default' do
 #   action :install
 # end
@@ -32,10 +38,7 @@ ruby_block 'Twiddle timezone' do
                                   '    php_value date.timezone UTC')
     file.write_file
   end
-end
-
-service 'apache2' do
-  action :restart
+  notifies :restart, 'service[apache2]', :delayed
 end
 
 template '/etc/zabbix/web/zabbix.conf.php' do
@@ -43,9 +46,5 @@ template '/etc/zabbix/web/zabbix.conf.php' do
   owner 'www-data'
   group 'www-data'
   mode '0644'
-end
-
-# Restart agent so it can poke the server
-service 'zabbix-agent' do
-  action :restart
+  notifies :restart, 'service[zabbix-agent]', :delayed
 end
