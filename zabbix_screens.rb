@@ -23,15 +23,14 @@ class OptionParser
     switches = super_make_switch(opts, block)
 
     if opts.delete('EXPECTED')
-      switches.each do |switch|
-        short = switch.short
-        long = switch.long
-        short_present = short.any? { |s| default_argv.include?(s) }
-        long_present = long.any? { |l| default_argv.include?(l) }
-        unless short_present || long_present
-          missing_expected
-          @missing_expected << long ? long : short
-        end
+      switch = switches[0] # >0 are actually parsed versions
+      short = switch.short
+      long = switch.long
+      short_present = short.any? { |s| default_argv.include?(s) }
+      long_present = long.any? { |l| default_argv.include?(l) }
+      unless short_present || long_present
+        missing_expected
+        @missing_expected << long[0] ? long[0] : short[0]
       end
     end
 
