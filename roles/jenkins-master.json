@@ -17,6 +17,7 @@
     "role[server-common]",
     "recipe[jenkins-java-trusty]",
     "recipe[jenkins::master]",
+    "recipe[jenkins-master]",
     "recipe[git]"
   ],
   "env_run_lists": {
