@@ -66,7 +66,13 @@ unless parser.missing_expected.empty?
   abort parser.help
 end
 
-NAME_FILTERS = [' on veth', 'devicemapper/mnt', 'usage /var/lib/schroot/']
+NAME_FILTERS = [
+  'traffic on docker',
+  'traffic on veth',
+  'devicemapper/mnt',
+  'usage /var/lib/schroot/',
+  'usage /var/lib/docker/devicemapper'
+]
 
 zbx = ZabbixApi.connect(
   url: "#{options.zabbix}/api_jsonrpc.php",
