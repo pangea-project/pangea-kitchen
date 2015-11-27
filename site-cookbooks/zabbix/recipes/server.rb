@@ -61,10 +61,31 @@ file "#{config_d}/StartPollers.conf" do
   notifies :restart, 'service[zabbix-server]', :delayed
 end
 
+# Increase the cache size to prevent mysqld from reserving too much early on
+# and generally allowing better performance with the amount of nodes we have.
+file "#{config_d}/CacheSize.conf" do
+  content 'CacheSize=16M'
+  mode '0600'
+  owner 'root'
+  group 'root'
+  notifies :restart, 'service[zabbix-server]', :delayed
+end
+
 # Increase connection limit. Servers are meant to exclusively run zabbix, so
 # we can give it a reasonable amount of connections.
-file '/etc/mysql/conf.d/max_connections' do
-  content 'max_connections = 512'
+file '/etc/mysql/conf.d/max_connections.cnf' do
+  content "[mysqld]\nmax_connections = 128"
+  mode '0644'
+  owner 'root'
+  group 'root'
+  notifies :restart, 'service[mysql]', :delayed
+end
+
+# Reduce the buffer pool size. The default mysql is pretty greedy. Our server
+# has minimal specs though, so mysql easily causes OOM if we don't reign in its
+# pool size.
+file '/etc/mysql/conf.d/innodb_buffer_pool_size.cnf' do
+  content "[mysqld]\innodb_buffer_pool_size = 32M"
   mode '0644'
   owner 'root'
   group 'root'
