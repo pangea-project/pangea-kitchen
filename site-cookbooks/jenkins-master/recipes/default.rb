@@ -70,5 +70,6 @@ package 'Install test runtime dependencies' do
   package_name %w(
     devscripts
     debhelper
+    pkg-kde-tools
   )
 end
