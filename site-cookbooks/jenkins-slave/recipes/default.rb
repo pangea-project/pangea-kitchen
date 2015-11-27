@@ -37,7 +37,8 @@ end
 
 %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
   next unless File.exist?(dir)
-  next if File.stat(dir).uid == 100_000 && File.stat(dir).gid == 120
+  stamp = "#{dir}/chef_jenkins-master-chown.stamp"
+  next if File.exist?(stamp)
   paths = Dir["#{dir}/**/**"] + [dir]
   paths.each do |path|
     # Do not mangle workspace permissions as they can be different due to
@@ -51,5 +52,10 @@ end
       owner 'jenkins'
       group 'jenkins'
     end if File.directory?(path)
+  end
+  file stamp do
+    content ''
+    mode '0644'
+    owner 'jenkins'
   end
 end
