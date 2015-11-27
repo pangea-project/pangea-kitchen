@@ -1,0 +1,9 @@
+{
+  "run_list": [
+    "role[server-common]",
+    "recipe[zabbix]"
+  ],
+  "automatic": {
+    "ipaddress": "river"
+  }
+}
