@@ -67,9 +67,11 @@ package 'Install native gem dependencies' do
 end
 
 package 'Install test runtime dependencies' do
+  # Cloc is used for line counting!
   package_name %w(
     devscripts
     debhelper
     pkg-kde-tools
+    cloc
   )
 end
