@@ -61,10 +61,10 @@ file "#{config_d}/StartPollers.conf" do
   notifies :restart, 'service[zabbix-server]', :delayed
 end
 
-# Increase the cache size to prevent mysqld from reserving too much early on
+# Increase the cache size to fit all hosts in the cache
 # and generally allowing better performance with the amount of nodes we have.
 file "#{config_d}/CacheSize.conf" do
-  content 'CacheSize=16M'
+  content 'CacheSize=32M'
   mode '0600'
   owner 'root'
   group 'root'
