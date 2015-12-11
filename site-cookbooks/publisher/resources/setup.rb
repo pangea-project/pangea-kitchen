@@ -22,20 +22,20 @@ action :setup do
     source 'aptly.conf.erb'
     owner uid
     group uid
-    variables({
-      :rootdir => "#{node['aptly']['rootdir']}/aptly",
-      :downloadconcurrency => node['aptly']['downloadconcurrency'],
-      :architectures => node['aptly']['architectures'],
-      :dependencyfollowsuggests => node['aptly']['dependencyfollowsuggests'],
-      :dependencyfollowrecommends => node['aptly']['dependencyfollowrecommends'],
-      :dependencyfollowallvariants => node['aptly']['dependencyfollowallvariants'],
-      :dependencyfollowsource => node['aptly']['dependencyfollowsource'],
-      :gpgdisablesign => node['aptly']['gpgdisablesign'],
-      :gpgdisableverify => node['aptly']['gpgdisableverify'],
-      :downloadsourcepackages => node['aptly']['downloadsourcepackages'],
-      :ppadistributorid => node['aptly']['ppadistributorid'],
-      :ppacodename => node['aptly']['ppacodename']
-    })
+    variables(
+      rootdir: "#{node['aptly']['rootdir']}/aptly",
+      downloadconcurrency: node['aptly']['downloadconcurrency'],
+      architectures: node['aptly']['architectures'],
+      dependencyfollowsuggests: node['aptly']['dependencyfollowsuggests'],
+      dependencyfollowrecommends: node['aptly']['dependencyfollowrecommends'],
+      dependencyfollowallvariants: node['aptly']['dependencyfollowallvariants'],
+      dependencyfollowsource: node['aptly']['dependencyfollowsource'],
+      gpgdisablesign: node['aptly']['gpgdisablesign'],
+      gpgdisableverify: node['aptly']['gpgdisableverify'],
+      downloadsourcepackages: node['aptly']['downloadsourcepackages'],
+      ppadistributorid: node['aptly']['ppadistributorid'],
+      ppacodename: node['aptly']['ppacodename']
+    )
   end
 
   repositories.each do |repo|
@@ -49,15 +49,15 @@ action :setup do
   template "/etc/init/#{uid}_aptly.conf" do
     action :create
     source 'aptly_upstart.conf.erb'
-    owner "root"
-    group "root"
-    mode "0644"
-    variables({
-                user: uid,
-                group: uid,
-                dir: node['aptly']['rootdir'],
-                port: apiport
-      })
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables(
+      user: uid,
+      group: uid,
+      dir: node['aptly']['rootdir'],
+      port: apiport
+    )
   end
 
   service "#{uid}_aptly" do

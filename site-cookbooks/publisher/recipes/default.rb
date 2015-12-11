@@ -1,6 +1,6 @@
-include_recipe "apt"
+include_recipe 'apt'
 
-apt_repository "aptly" do
+apt_repository 'aptly' do
   uri node['aptly']['uri']
   distribution node['aptly']['dist']
   components node['aptly']['components']
@@ -9,8 +9,8 @@ apt_repository "aptly" do
   action :add
 end
 
-package "aptly"
-package "graphviz"
+package 'aptly'
+package 'graphviz'
 
 # Requires LWRP'ing so as to enable multiple publishing accounts
 
