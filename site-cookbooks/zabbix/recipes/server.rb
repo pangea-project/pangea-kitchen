@@ -61,10 +61,18 @@ file "#{config_d}/StartPollers.conf" do
   notifies :restart, 'service[zabbix-server]', :delayed
 end
 
+# In order to let the cache size go beyond 32M we need to elevate the kernel
+# lock.
+include_recipe 'sysctl::apply'
+sysctl_param 'kernel.shmmax' do
+  value 134_217_729
+  action :apply
+end
+
 # Increase the cache size to fit all hosts in the cache
 # and generally allowing better performance with the amount of nodes we have.
 file "#{config_d}/CacheSize.conf" do
-  content 'CacheSize=32M'
+  content 'CacheSize=48M'
   mode '0600'
   owner 'root'
   group 'root'
