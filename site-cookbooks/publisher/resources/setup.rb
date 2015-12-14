@@ -61,6 +61,6 @@ action :setup do
   end
 
   service "#{uid}_aptly" do
-    action :start
+    action :restart
   end
 end
