@@ -20,6 +20,7 @@ action :setup do
 
   template "#{node['aptly']['rootdir']}/.aptly.conf" do
     source 'aptly.conf.erb'
+    cookbook 'publisher'
     owner uid
     group uid
     variables(
@@ -49,6 +50,7 @@ action :setup do
   template "/etc/init/#{uid}_aptly.conf" do
     action :create
     source 'aptly_upstart.conf.erb'
+    cookbook 'publisher'
     owner 'root'
     group 'root'
     mode '0644'
