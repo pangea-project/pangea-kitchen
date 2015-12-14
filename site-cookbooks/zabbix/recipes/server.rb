@@ -81,14 +81,14 @@ end
 # lock.
 include_recipe 'sysctl::apply'
 sysctl_param 'kernel.shmmax' do
-  value 134_217_729
+  value 134_217_728
   action :apply
 end
 
 # Increase the cache size to fit all hosts in the cache
 # and generally allowing better performance with the amount of nodes we have.
 file "#{config_d}/CacheSize.conf" do
-  content 'CacheSize=48M'
+  content 'CacheSize=64M'
   mode '0600'
   owner 'root'
   group 'root'
