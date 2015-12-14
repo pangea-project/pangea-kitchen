@@ -13,6 +13,22 @@ package 'Install Zabbix Server' do
   package_name %w(zabbix-server-mysql zabbix-frontend-php)
 end
 
+ruby_block 'Stop server init.d' do
+  block do
+    system('/etc/init.d/zabbix-server stop')
+  end
+end
+
+# Install our own upstart config to override the init.d one.
+# upstart allows us to use respawn to be more graceful when the server goes
+# down, which it likes to do way too often.
+template '/etc/init/zabbix-server.conf' do
+  source 'zabbix-server.conf.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
 %w(apache2 mysql zabbix-server).each do |service_name|
   service service_name do
     action :nothing
