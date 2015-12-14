@@ -85,7 +85,7 @@ end
 # has minimal specs though, so mysql easily causes OOM if we don't reign in its
 # pool size.
 file '/etc/mysql/conf.d/innodb_buffer_pool_size.cnf' do
-  content "[mysqld]\innodb_buffer_pool_size = 32M"
+  content "[mysqld]\ninnodb_buffer_pool_size = 32M"
   mode '0644'
   owner 'root'
   group 'root'
