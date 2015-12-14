@@ -23,3 +23,6 @@ cookbook 'user'
 cookbook 'aptly'
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
+
+## For site cookbooks
+cookbook 'sysctl', '~> 0.7.0'
