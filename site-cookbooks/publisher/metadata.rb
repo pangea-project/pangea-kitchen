@@ -8,4 +8,5 @@ version          '0.1.0'
 
 depends 'apt'
 depends 'aptly'
+depends 'compat_resource'
 depends 'user'
