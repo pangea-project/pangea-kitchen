@@ -10,6 +10,8 @@ cookbook 'chef-unattended-upgrades',
 cookbook 'swap', git: 'git@github.com:sethvargo-cookbooks/swap.git'
 
 # From supermarket
+cookbook 'apache2', '~> 3.1.0'
+cookbook 'bsw_gpg', '~> 0.2.3'
 cookbook 'docker', '~> 0.37.0' # 0.40+ has no node recipes anymore
 cookbook 'fail2ban'
 cookbook 'htop'
