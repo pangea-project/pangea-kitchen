@@ -49,5 +49,7 @@ web_app 'nci_web_repo' do
   server_aliases 'localhost'
   server_port 9091
   docroot '/home/nci/aptly/public'
+  directory_options %w(Indexes FollowSymLinks)
+  allow_override 'All'
   cookbook 'apache2'
 end
