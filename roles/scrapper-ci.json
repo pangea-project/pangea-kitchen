@@ -26,7 +26,8 @@
   "run_list": [
     "role[jenkins-master]",
     "recipe[docker]",
-    "recipe[rvm::user]"
+    "recipe[rvm::user]",
+    "recipe[publisher-nci]"
   ],
   "env_run_lists": {
 
