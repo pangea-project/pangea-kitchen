@@ -123,6 +123,7 @@ GIT
     apt-cacher-ng (0.1.0)
 
 DEPENDENCIES
+  apache2 (~> 3.1.0)
   apt-cacher-ng (>= 0)
   aptly (>= 0)
   bsw_gpg (~> 0.2.3)
