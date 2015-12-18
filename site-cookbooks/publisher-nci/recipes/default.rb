@@ -35,17 +35,19 @@ end
 # GPG
 include_recipe 'bsw_gpg::default'
 bsw_gpg_load_key_from_string 'a string key' do
-  key_contents KeyBag.load("#{uid}.private.key")
-  for_user uid
+  key_contents KeyBag.load('nci.private.key')
+  for_user 'nci'
 end
 
 # Apache
+node.default['apache']['listen_ports'] = node['apache']['listen_ports'] +
+                                         ['9091']
 web_app 'nci_web_repo' do
   # server_name node['hostname']
   # server_aliases [node['fqdn'], 'neon.pangea.pub']
   server_name 'localhost'
   server_aliases 'localhost'
-  server_port 9054
+  server_port 9091
   docroot '/home/nci/aptly/public'
   cookbook 'apache2'
 end
