@@ -10,7 +10,7 @@
 # Extracted information from
 # http://repo.zabbix.com/zabbix/2.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_2.2-1+trusty_all.deb
 apt_repository 'zabbix' do
-  uri 'http://repo.zabbix.com/zabbix/2.2/ubuntu'
+  uri 'http://repo.zabbix.com/zabbix/2.4/ubuntu'
   distribution node['lsb']['codename']
   components ['main']
   keyserver 'keyserver.ubuntu.com'
