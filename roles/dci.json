@@ -1,0 +1,34 @@
+{
+  "name": "scrapper-ci",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "docker" : {
+      "install_type": "package",
+      "user": "docker",
+      "group": "docker",
+      "group_members": "jenkins"
+    },
+    "rvm": {
+      "user_installs": [
+        {
+          "user": "jenkins",
+          "default_ruby": "ruby-2.2.3",
+          "rubies": ["2.2.3"],
+          "home": "/var/lib/jenkins"
+        }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[jenkins-master]",
+    "recipe[docker]",
+    "recipe[rvm::user]"
+  ],
+  "env_run_lists": {
+
+  }
+}

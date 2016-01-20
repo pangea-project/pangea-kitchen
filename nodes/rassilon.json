@@ -1,11 +1,10 @@
 {
   "name": "rassilon",
   "run_list": [
-    "role[server-common]"
+    "role[dci]"
   ],
   "automatic": {
     "ipaddress": "54.252.111.33",
     "hostname": "rassilon"
   }
 }
-
