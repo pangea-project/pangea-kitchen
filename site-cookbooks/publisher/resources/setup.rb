@@ -2,6 +2,7 @@ property :uid, String, name_property: true
 property :repositories, Array, default: []
 property :sshkeys, Array, default: []
 property :apiport, Integer, default: 8080
+property :webport, Integer, default: 8081
 
 action :setup do
   # FIXME: Because I couldn't figure out how to achieve this via
@@ -61,6 +62,22 @@ action :setup do
       port: apiport
     )
   end
+
+  template "/etc/init/#{uid}_aptly_serve.conf" do
+    action :create
+    source 'aptly_upstart_serve.conf.erb'
+    cookbook 'publisher'
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables(
+      user: uid,
+      group: uid,
+      dir: node['aptly']['rootdir'],
+      port: webport
+    )
+  end
+
 
   service "#{uid}_aptly" do
     action :restart
