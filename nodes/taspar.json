@@ -5,6 +5,7 @@
     "recipe[docker]",
     "recipe[s3fs]",
     "recipe[repo-mci]",
+    "recipe[publisher-mci]",
     "recipe[zabbix]"
   ],
   "automatic": {
