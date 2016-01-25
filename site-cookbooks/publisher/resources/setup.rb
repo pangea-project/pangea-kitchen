@@ -1,8 +1,8 @@
 property :uid, String, name_property: true
 property :repositories, Array, default: []
 property :sshkeys, Array, default: []
-property :apiport, Integer, default: 8080
-property :webport, Integer, default: 8081
+property :apiport, Integer, default: 8081
+property :webport, Integer, default: 8080
 
 action :setup do
   # FIXME: Because I couldn't figure out how to achieve this via
