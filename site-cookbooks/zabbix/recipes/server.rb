@@ -70,7 +70,7 @@ end
 # equal to the amount of hosts we montior. Once we run out of RAM, push
 # notification needs to be investigated.
 file "#{config_d}/StartPollers.conf" do
-  content 'StartPollers=24'
+  content 'StartPollers=12'
   mode '0600'
   owner 'root'
   group 'root'
