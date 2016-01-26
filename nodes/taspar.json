@@ -1,12 +1,17 @@
 {
   "run_list": [
     "role[jenkins-master]",
-    "recipe[jenkins-master-arm]",
+    "recipe[jenkins-master-apache]",
     "recipe[docker]",
     "recipe[s3fs]",
     "recipe[publisher-mci]",
     "recipe[zabbix]"
   ],
+  "jenkins-master-apache" : {
+    "server_port": "8080",
+    "server_name": "mobile.neon.pangea.pub",
+    "server_aliases": ["mobile.neon.pangea.pub", "mobile.kci.pangea.pub"]
+  },
   "automatic": {
     "ipaddress": "taspar"
   }

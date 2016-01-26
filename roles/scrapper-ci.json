@@ -9,6 +9,11 @@
       "group": "docker",
       "group_members": "jenkins"
     },
+    "jenkins-master-apache" : {
+      "server_port": "8080",
+      "server_name": "build.neon.kde.org.uk",
+      "server_aliases": ["build.neon.kde.org.uk", "neon.pangea.pub"]
+    },
     "rvm": {
       "user_installs": [
         {
@@ -25,6 +30,7 @@
   "chef_type": "role",
   "run_list": [
     "role[jenkins-master]",
+    "recipe[jenkins-master-apache]",
     "recipe[docker]",
     "recipe[rvm::user]",
     "recipe[publisher-nci]"
