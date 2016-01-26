@@ -78,7 +78,6 @@ action :setup do
     )
   end
 
-
   service "#{uid}_aptly" do
     action :restart
   end
