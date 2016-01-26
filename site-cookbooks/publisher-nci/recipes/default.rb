@@ -41,11 +41,11 @@ end
 
 # Apache
 node.default['apache']['listen_ports'] = node['apache']['listen_ports'] +
-                                         ['9091']
+                                         ['80']
 web_app 'nci_web_repo' do
   server_name 'archive.neon.kde.org.uk'
   server_aliases ['archive.neon.kde.org.uk']
-  server_port 9091
+  server_port 80
   docroot '/home/nci/aptly/public'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
