@@ -1,7 +1,6 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    apache2 (3.1.0)
     apt (2.9.2)
     aptly (0.2.6)
       apt (>= 0.0.0)
@@ -14,8 +13,7 @@ SITE
     build-essential (2.2.4)
     chef_gem (0.1.0)
     chef_handler (1.2.0)
-    compat_resource (12.5.26)
-    cron (1.7.2)
+    cron (1.7.3)
     device-mapper (0.1.0)
       apt (>= 0.0.0)
       modules (>= 0.0.0)
@@ -36,21 +34,20 @@ SITE
     dpkg_autostart (0.2.0)
     fail2ban (2.3.0)
       yum-epel (>= 0.0.0)
-    git (4.3.5)
+    git (4.3.6)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
       windows (>= 0.0.0)
       yum-epel (>= 0.0.0)
     golang (1.7.0)
-    homebrew (2.0.3)
+    homebrew (2.0.5)
       build-essential (>= 2.1.2)
     hostsfile (2.4.5)
     htop (2.0.0)
       yum-repoforge (>= 0.0.0)
-    iptables (2.0.1)
-      compat_resource (>= 0.0.0)
+    iptables (1.1.0)
     iptables-ng (2.2.8)
-    java (1.36.0)
+    java (1.39.0)
       apt (>= 0.0.0)
     jenkins (2.4.1)
       apt (~> 2.0)
@@ -69,8 +66,8 @@ SITE
       runit (~> 1.2)
       yum-epel (~> 0.3)
     ohai (2.0.4)
-    openssh (1.5.2)
-      iptables (>= 0.0.0)
+    openssh (1.6.1)
+      iptables (~> 1.0)
     packagecloud (0.1.1)
     polipo (0.1.0)
     reprepro (0.4.2)
@@ -91,9 +88,9 @@ SITE
       cron (>= 0.0.0)
       hostsfile (>= 0.0.0)
     user (0.4.2)
-    windows (1.38.4)
+    windows (1.39.1)
       chef_handler (>= 0.0.0)
-    yum (3.8.2)
+    yum (3.9.0)
     yum-epel (0.6.5)
       yum (~> 3.2)
     yum-repoforge (0.5.7)
@@ -116,6 +113,13 @@ GIT
     swap (0.3.8)
 
 GIT
+  remote: git@github.com:svanzoest-cookbooks/apache2.git
+  ref: master
+  sha: 138fbae287eb55b68d3f80457477270b7ccb365f
+  specs:
+    apache2 (3.1.0)
+
+GIT
   remote: https://github.com/markolson/chef-apt-cacher-ng.git
   ref: master
   sha: 13535e28187a229cc2a2a0ebca37023ee4775b0f
@@ -123,7 +127,7 @@ GIT
     apt-cacher-ng (0.1.0)
 
 DEPENDENCIES
-  apache2 (~> 3.1.0)
+  apache2 (>= 0)
   apt-cacher-ng (>= 0)
   aptly (>= 0)
   bsw_gpg (~> 0.2.3)
