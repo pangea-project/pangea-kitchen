@@ -4,9 +4,11 @@
     "role[server-common]",
     "recipe[publisher]"
   ],
+  "aptly": {
+    "serve_security_hole": true
+  },
   "automatic": {
     "ipaddress": "54.93.165.122",
     "hostname": "vael"
   }
 }
-
