@@ -16,6 +16,14 @@ action :setup do
     home node['aptly']['rootdir']
   end
 
+  directory "#{node['aptly']['rootdir']}/aptly/public" do
+    owner uid
+    group uid
+    mode '0755'
+    action :create
+    recursive true
+  end
+
   node.default['aptly']['group'] = uid
   node.default['aptly']['user'] = uid
 
