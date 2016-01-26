@@ -43,10 +43,8 @@ end
 node.default['apache']['listen_ports'] = node['apache']['listen_ports'] +
                                          ['9091']
 web_app 'nci_web_repo' do
-  # server_name node['hostname']
-  # server_aliases [node['fqdn'], 'neon.pangea.pub']
-  server_name 'localhost'
-  server_aliases 'localhost'
+  server_name 'archive.neon.kde.org.uk'
+  server_aliases ['archive.neon.kde.org.uk']
   server_port 9091
   docroot '/home/nci/aptly/public'
   directory_options %w(Indexes FollowSymLinks)
