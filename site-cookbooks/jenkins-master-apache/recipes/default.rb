@@ -23,9 +23,7 @@ params = {
 application_name = params[:name]
 
 include_recipe 'apache2::default'
-include_recipe 'apache2::mod_rewrite'
-include_recipe 'apache2::mod_deflate'
-include_recipe 'apache2::mod_headers'
+include_recipe 'apache2::mod_proxy'
 
 template "#{node['apache']['dir']}/sites-available/#{application_name}.conf" do
   source params[:template]
