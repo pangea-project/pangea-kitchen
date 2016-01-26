@@ -45,8 +45,8 @@ node.default['apache']['listen_ports'] = node['apache']['listen_ports'] +
 web_app 'mci_web_repo' do
   # server_name node['hostname']
   # server_aliases [node['fqdn'], 'neon.pangea.pub']
-  server_name 'localhost'
-  server_aliases 'localhost'
+  server_name 'mobile.neon.pangea.pub'
+  server_aliases ['mobile.kci.pangea.pub', 'mobile.neon.pangea.pub']
   server_port 9091
   docroot '/home/mci/aptly/public'
   directory_options %w(Indexes FollowSymLinks)
