@@ -40,8 +40,6 @@ bsw_gpg_load_key_from_string 'a string key' do
 end
 
 # Apache
-node.default['apache']['listen_ports'] = node['apache']['listen_ports'] +
-                                         ['80']
 web_app 'mci_web_repo' do
   # server_name node['hostname']
   # server_aliases [node['fqdn'], 'neon.pangea.pub']
