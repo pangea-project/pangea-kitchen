@@ -46,7 +46,7 @@ web_app 'mci_web_repo' do
   server_name 'mobile.neon.pangea.pub'
   server_aliases ['mobile.kci.pangea.pub', 'mobile.neon.pangea.pub']
   server_port 80
-  docroot '/home/mci/aptly/public'
+  docroot '/home/mci/aptly/public/mci'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
   cookbook 'apache2'
