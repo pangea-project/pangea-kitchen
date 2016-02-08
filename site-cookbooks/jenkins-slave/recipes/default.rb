@@ -36,27 +36,17 @@ group 'docker' do
   members %w(jenkins-slave)
 end
 
-%w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
-  next unless File.exist?(dir)
-  stamp = "#{dir}/chef_jenkins-master-chown.stamp"
-  next if File.exist?(stamp)
-  paths = Dir["#{dir}/**/**"] + [dir]
-  paths.each do |path|
-    # Do not mangle workspace permissions as they can be different due to
-    # lack of subuid in docker.
-    next if path.include?('workspace')
-    file path do
-      owner 'jenkins'
-      group 'jenkins'
-    end if File.file?(path)
-    directory path do
-      owner 'jenkins'
-      group 'jenkins'
-    end if File.directory?(path)
-  end
-  file stamp do
-    content ''
-    mode '0644'
-    owner 'jenkins'
+ruby_block 'chown jenkins dirs' do
+  block do
+    %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
+      stamp = "#{dir}/chef_jenkins-master-chown.stamp"
+      next unless File.exist?(dir)
+      next if File.exist?(stamp)
+      paths = Dir["#{dir}/**/**"] + [dir]
+      paths.select! { |pt| !pt.include?('workspace') || pt.include?('cache') }
+      FileUtils.chown('jenkins-slave', 'jenkins-slave', paths)
+      FileUtils.touch(stamp)
+      FileUtils.chown(100_000, 120, stamp)
+    end
   end
 end
