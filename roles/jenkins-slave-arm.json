@@ -6,9 +6,9 @@
     "docker" : {
       "install_type": "binary",
       "binary": {
-          "checksum": "a8040027950ecff0a3f0ccb071d1e68c8e27f9db24baf00a955e1994d0398d1b",
-          "version": "1.6.0",
-          "url": "https://github.com/umiddelb/armhf/raw/master/bin/docker-1.6.0"
+          "checksum": "cc0714eafb945b0b32a467d8d026a47219b8e4046bcdb00b0b60c7aede9877bc",
+          "version": "1.9.1",
+          "url": "https://github.com/umiddelb/armhf/raw/master/bin/docker-1.9.1"
       },
       "user": "docker",
       "group": "docker"
