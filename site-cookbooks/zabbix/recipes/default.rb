@@ -15,6 +15,15 @@ apt_repository 'zabbix' do
   components ['main']
   keyserver 'keyserver.ubuntu.com'
   key '7E1DEF85'
+  # Do not add this repo if the host is ARM. The repo has no ARM builds
+  # so this would only lead to apt update erroring out.
+  not_if { node['kernel']['machine'].start_with?('arm') }
+end
+
+# Cleanup from previously broken behavior. See above.
+apt_repository 'zabbix' do
+  action :remove
+  only_if { node['kernel']['machine'].start_with?('arm') }
 end
 
 package 'Install Zabbix Agent' do
