@@ -1,3 +1,49 @@
 #!/usr/bin/python
 
-print "script prune-images"
+from datetime import date
+import os
+from glob import glob
+
+def debug(string):
+    print "prune-images: " + str(string)
+
+debug("script prune-images")
+
+baseDirectory = "/var/www/images"
+
+today = date.today().strftime('%Y%M%d')
+yesterday = date.fromordinal(date.today().toordinal()-1).strftime('%Y%M%d')
+
+os.chdir(baseDirectory)
+
+topContents = os.listdir(".")
+
+debug(topContents)
+
+imageDirectories = []
+for directory in topContents:
+    if os.path.exists(directory + "/current"):
+        imageDirectories.append(directory)
+
+debug("image directories: " + str(imageDirectories))
+
+for directory in imageDirectories:
+    os.chdir(directory)
+    imageDirs = glob("20*") # fix in year 2099
+    imageDirs.sort()
+    debug("imageDirs" + str(imageDirs))
+    removeImageDirs = imageDirs[:-5] # don't remove the most recent 5 images
+    for dirname in removeImageDirs:
+        if dirname.startswith(today) or dirname.startswith(yesterday):
+            removeImageDirs.remove(dirname)
+    debug("removeImageDirs" + str(removeImageDirs))
+    os.chdir("..")
+
+"""
+for each image dirs
+
+remove all images which are not the most recent 5 images or from today or yesterday
+"""
+
+# then write some tests?
+
