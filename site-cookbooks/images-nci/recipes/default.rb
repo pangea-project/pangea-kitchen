@@ -29,3 +29,16 @@ web_app 'images.neon' do
   allow_override 'All'
   cookbook 'apache2'
 end
+
+cookbook_file 'prune-images' do
+  path '/usr/bin/prune-images'
+  action :create
+  mode 0777
+end
+
+cron 'noop' do
+  hour '5'
+  minute '0'
+  command '/usr/bin/prune-images'
+  mailto 'jr@jriddell.org'
+end
