@@ -1,4 +1,4 @@
-name             'images-nci2'
+name             'images-nci'
 maintainer       'Jonathan Riddell'
 maintainer_email 'jr@jriddell.org'
 license          'GNU Public License 2.0'
