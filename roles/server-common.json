@@ -10,6 +10,7 @@
   },
   "chef_type": "role",
   "run_list": [
+    "recipe[server-common]",
     "recipe[system::timezone]",
     "recipe[zabbix]",
     "recipe[fail2ban]",
