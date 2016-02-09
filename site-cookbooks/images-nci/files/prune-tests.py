@@ -1,15 +1,20 @@
 #!/usr/bin/python
 
+# Copyright Jonathan Riddell 2016
+# May be copied under the GNU GPL 2 or later
+#
+# tests for prune-images script
+
 import unittest
 import tempfile
 import os
 import prune
 import shutil
-import subprocess
 
 class TestStringMethods(unittest.TestCase):
 
     imageTypes = ["unstable-proposed", "unstable", "user"]
+    # 4 images from today and 2 from yesterday, so 6 should get saved and the rest removed
     images = ["20160111-1706", "20160112-1325", "20160124-0301", "20160131-0123", "20160131-0234", "20160201-0123", "20160201-0234", "20160201-0345", "20160201-0456"]
 
     def setUp(self):

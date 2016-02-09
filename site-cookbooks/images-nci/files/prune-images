@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+# Copyright Jonathan Riddell 2016
+# May be copied under the GNU GPL 2 or later
+#
+# A script to remove old images built for Neon
+# for each image type it saves images from today and yesterday and at least the
+# most recent 5 and removes the rest
+# This gets provisioned by images-nci cookbook to be run by cron as root on drax, the Neon jenkins/images server
+
 from datetime import date
 import os
 from glob import glob
