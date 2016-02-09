@@ -4,21 +4,6 @@
   ServerAlias <%= @params[:server_aliases].join(" ") %>
   <% end -%>
 
-  # Pass /static/ through apache itself into the relevant dirs.
-  ProxyPassMatch ^/static/[0-9a-fA-F]{8}\/(.*)$ !
-  AliasMatch ^/static/[0-9a-fA-F]{8}\/plugin\/(.*)$ /var/lib/jenkins/plugins/$1
-  <Directory "<%= @params[:jenkinshome] %>/plugins">
-      Options FollowSymLinks
-      AllowOverride None
-      Require all granted
-  </Directory>
-  AliasMatch ^/static/[0-9a-fA-F]{8}\/(.*)$ /var/cache/jenkins/war/$1
-  <Directory "<%= @params[:jenkinsroot] %>/war">
-      Options FollowSymLinks
-      AllowOverride None
-      Require all granted
-  </Directory>
-
   ProxyPass         /  http://localhost:8080/ nocanon
   ProxyPassReverse  /  http://localhost:8080/
   #ProxyRequests     Off
