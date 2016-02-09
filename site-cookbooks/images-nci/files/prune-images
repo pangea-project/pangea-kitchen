@@ -3,47 +3,50 @@
 from datetime import date
 import os
 from glob import glob
+import shutil
 
 def debug(string):
     print "prune-images: " + str(string)
 
-debug("script prune-images")
+class Pruner:
+    baseDirectory = ""
+    today = date.today().strftime('%Y%M%d')
+    yesterday = date.fromordinal(date.today().toordinal()-1).strftime('%Y%M%d')
 
-baseDirectory = "/var/www/images"
+    def __init__(self, baseDirectory):
+        debug("script prune-images")
+        self.baseDirectory = baseDirectory
+        os.chdir(self.baseDirectory)
 
-today = date.today().strftime('%Y%M%d')
-yesterday = date.fromordinal(date.today().toordinal()-1).strftime('%Y%M%d')
+    def getImageDirectories(self):
+        self.topContents = os.listdir(".")
 
-os.chdir(baseDirectory)
+        debug(self.topContents)
 
-topContents = os.listdir(".")
+        self.imageDirectories = []
+        for directory in self.topContents:
+            if os.path.exists(directory + "/current"):
+                self.imageDirectories.append(directory)
 
-debug(topContents)
+        debug("image directories: " + str(self.imageDirectories))
 
-imageDirectories = []
-for directory in topContents:
-    if os.path.exists(directory + "/current"):
-        imageDirectories.append(directory)
+    def removeDirectories(self):
+        for directory in self.imageDirectories:
+            os.chdir(directory)
+            imageDirs = glob("20*") # fix in year 2099
+            imageDirs.sort()
+            debug("imageDirs" + str(imageDirs))
+            self.removeImageDirs = imageDirs[:-5] # don't remove the most recent 5 images
+            for dirname in self.removeImageDirs:
+                if dirname.startswith(self.today) or dirname.startswith(self.yesterday):
+                    self.removeImageDirs.remove(dirname)
+            debug("removeImageDirs" + str(self.removeImageDirs))
+            for directory in self.removeImageDirs:
+                debug("removing " + directory)
+                shutil.rmtree(directory)
+            os.chdir("..")
 
-debug("image directories: " + str(imageDirectories))
-
-for directory in imageDirectories:
-    os.chdir(directory)
-    imageDirs = glob("20*") # fix in year 2099
-    imageDirs.sort()
-    debug("imageDirs" + str(imageDirs))
-    removeImageDirs = imageDirs[:-5] # don't remove the most recent 5 images
-    for dirname in removeImageDirs:
-        if dirname.startswith(today) or dirname.startswith(yesterday):
-            removeImageDirs.remove(dirname)
-    debug("removeImageDirs" + str(removeImageDirs))
-    os.chdir("..")
-
-"""
-for each image dirs
-
-remove all images which are not the most recent 5 images or from today or yesterday
-"""
-
-# then write some tests?
-
+if __name__ == '__main__':
+    prune = Pruner("/var/www/images")
+    prune.getImageDirectories()
+    prune.removeDirectories()
