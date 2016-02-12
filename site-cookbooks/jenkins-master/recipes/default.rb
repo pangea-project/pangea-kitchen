@@ -8,27 +8,21 @@
 #
 
 service 'jenkins' do
-  action :stop
+  action :nothing
 end
 
 # Adjust the UID and GID to match what the containers use.
 group 'jenkins' do
   action :modify
   gid 120
-end
-
-ruby_block 'armhfsymlink' do
-  block do
-    puts File.read('/etc/passwd')
-    puts File.read('/etc/group')
-    puts `ls -lah /var/lib/`
-  end
+  notifies :restart, 'service[jenkins]', :delayed
 end
 
 user 'jenkins' do
   action :modify
   uid 100_000
   gid 120
+  notifies :restart, 'service[jenkins]', :delayed
 end
 
 ruby_block 'chown jenkins dirs' do
@@ -44,10 +38,7 @@ ruby_block 'chown jenkins dirs' do
       FileUtils.chown(100_000, 120, stamp)
     end
   end
-end
-
-service 'jenkins' do
-  action :restart
+  notifies :restart, 'service[jenkins]', :delayed
 end
 
 package 'Install native gem dependencies' do
