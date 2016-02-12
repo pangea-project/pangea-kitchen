@@ -51,9 +51,10 @@ service 'jenkins' do
 end
 
 package 'Install native gem dependencies' do
-  package_name %w(
-    libgmp-dev
-  )
+  package_name [
+    'libgmp-dev', # various
+    'cmake' # rugged
+  ]
 end
 
 package 'Install test runtime dependencies' do
