@@ -43,8 +43,11 @@ end
 
 package 'Install native gem dependencies' do
   package_name [
-    'libgmp-dev', # various
-    'cmake' # rugged
+    # various
+    'libgmp-dev',
+    # gem 'rugged'
+    'cmake',
+    'pkg-config'
   ]
 end
 
