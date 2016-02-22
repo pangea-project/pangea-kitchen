@@ -41,7 +41,7 @@ ruby_block 'chown jenkins dirs' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
-package 'Install native gem dependencies' do
+package 'install-native-gem-dependencies' do
   package_name [
     # various
     'libgmp-dev',
@@ -51,12 +51,21 @@ package 'Install native gem dependencies' do
   ]
 end
 
-package 'Install test runtime dependencies' do
+package 'install-test-runtime-dependencies' do
   # Cloc is used for line counting!
   package_name %w(
     devscripts
     debhelper
     pkg-kde-tools
     cloc
+  )
+end
+
+package 'install-tooling-runtime-dependencies' do
+  package_name %w(
+    bzr
+    debhelper
+    devscripts
+    git
   )
 end
