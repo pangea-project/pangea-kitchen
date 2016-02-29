@@ -5,7 +5,8 @@
   "default_attributes": {
     "jenkins": {
       "master": {
-        "install_method": "package"
+        "install_method": "package",
+        "jvm_options": "${JAVA_ARGS} -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=60"
       }
     }
   },
