@@ -39,7 +39,7 @@ end
 
 # Apache
 web_app 'nci_web_repo' do
-  server_name 'archive.neon.kde.org.uk'
+  server_name 'archive.neon.kde.org'
   server_aliases ['archive.neon.kde.org.uk']
   server_port 80
   docroot '/home/nci/aptly/public'

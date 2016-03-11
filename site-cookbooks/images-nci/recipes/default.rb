@@ -21,7 +21,7 @@
 
 # Apache
 web_app 'images.neon' do
-  server_name 'images.neon.kde.org.uk'
+  server_name 'images.neon.kde.org'
   server_aliases ['images.neon.kde.org.uk']
   server_port 80
   docroot '/var/www/images'
