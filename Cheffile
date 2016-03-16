@@ -13,8 +13,10 @@ cookbook 'swap', git: 'git@github.com:sethvargo-cookbooks/swap.git'
 cookbook 'apache2', git: 'git@github.com:svanzoest-cookbooks/apache2.git'
 
 # From supermarket
+cookbook 'aptly'
 #cookbook 'apache2', '~> 3.1.0'
 cookbook 'bsw_gpg', '~> 0.2.3'
+cookbook 'compat_resource'
 cookbook 'docker', '~> 0.37.0' # 0.40+ has no node recipes anymore
 cookbook 'fail2ban'
 cookbook 'htop'
@@ -24,11 +26,9 @@ cookbook 'jenkins'
 cookbook 'openssh'
 cookbook 'reprepro'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
-cookbook 'user'
-cookbook 'aptly'
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
-cookbook 'compat_resource'
+cookbook 'user'
 
 ## For site cookbooks
 cookbook 'sysctl', '~> 0.7.0'
