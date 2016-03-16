@@ -1,7 +1,8 @@
 {
   "run_list": [
     "role[server-common]",
-    "recipe[zabbix::server]"
+    "recipe[zabbix::server]",
+    "recipe[zabbix-irc-pusher]"
   ],
   "automatic": {
     "ipaddress": "omega"
