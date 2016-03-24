@@ -36,6 +36,10 @@ cookbook_file 'prune-images' do
   mode 0777
 end
 
+remote_directory '/var/www/images' do
+  source 'images'
+end
+
 cron 'noop' do
   hour '5'
   minute '0'

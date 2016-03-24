@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
     chef.cookbooks_path = %w(cookbooks site-cookbooks)
     chef.roles_path = 'roles'
     chef.data_bags_path = 'data_bags'
-    chef.add_recipe 'zabbix-irc-pusher'
+    chef.add_recipe 'images-nci'
     # chef.add_role 'jenkins-master'
     chef.log_level = 'info'
   end

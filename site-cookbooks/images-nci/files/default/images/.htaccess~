@@ -1,0 +1,14 @@
+IndexOptions NameWidth=* DescriptionWidth=* SuppressHTMLPreamble IconHeight=22 IconWidth=22 FancyIndexing
+IndexIgnore website HEADER.html
+HeaderName /HEADER.html
+AddIcon /website/folder.png ^^DIRECTORY^^
+AddIcon /website/parent.png ..
+AddIcon /website/iso.png .iso
+AddIcon /website/zsync.png .zsync
+AddIcon /website/text.png .manifest
+AddIcon /website/text.png .sha256sum
+AddIcon /website/tar.png .xz
+
+AddDescription "Untested images with KDE packages built from Git stable branches" neon-devedition-gitstable
+AddDescription "Untested images with KDE packages built from Git unstable branches" neon-devedition-gitunstable
+AddDescription "Untested images with KDE packages built from Git unstable branches and Wayland default session" plasma-wayland_wily_devedition-gitunstable
