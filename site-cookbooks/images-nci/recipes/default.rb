@@ -34,7 +34,6 @@ redirect 'images.neon.kde.org.uk' do
   new_server_name 'images.neon.kde.org'
   server_port 80
   docroot '/var/www/images'
-  cookbook 'apache2'
 end
 
 cookbook_file 'prune-images' do
