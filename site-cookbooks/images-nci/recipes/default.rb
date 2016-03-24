@@ -22,11 +22,18 @@
 # Apache
 web_app 'images.neon' do
   server_name 'images.neon.kde.org'
-  server_aliases ['images.neon.kde.org.uk']
   server_port 80
   docroot '/var/www/images'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
+  cookbook 'apache2'
+end
+
+redirect 'images.neon.kde.org.uk' do
+  server_name 'images.neon.kde.org.uk'
+  new_server_name 'images.neon.kde.org'
+  server_port 80
+  docroot '/var/www/images'
   cookbook 'apache2'
 end
 
