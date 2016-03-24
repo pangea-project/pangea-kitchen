@@ -40,10 +40,16 @@ end
 # Apache
 web_app 'nci_web_repo' do
   server_name 'archive.neon.kde.org'
-  server_aliases ['archive.neon.kde.org.uk']
   server_port 80
   docroot '/home/nci/aptly/public'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
   cookbook 'apache2'
+end
+
+redirect 'archive.neon.kde.org.uk' do
+  server_name 'archive.neon.kde.org.uk'
+  new_server_name 'archive.neon.kde.org'
+  server_port 80
+  docroot '/home/nci/aptly/public'
 end
