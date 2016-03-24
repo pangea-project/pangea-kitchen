@@ -49,7 +49,7 @@ end
 redirect 'build.neon.kde.org.uk' do
   server_name 'build.neon.kde.org.uk'
   server_alias 'neon.pangea.pub'
-  new_server_name 'build.neon.kde.org.uk'
+  new_server_name 'build.neon.kde.org'
   server_port 80
   docroot '/var/www/images'
 end

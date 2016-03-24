@@ -11,8 +11,7 @@
     },
     "jenkins-master-apache" : {
       "server_port": "80",
-      "server_name": "build.neon.kde.org",
-      "server_aliases": ["build.neon.kde.org.uk", "neon.pangea.pub"]
+      "server_name": "build.neon.kde.org"
     },
     "rvm": {
       "user_installs": [
