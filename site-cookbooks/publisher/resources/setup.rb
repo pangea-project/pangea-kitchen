@@ -71,6 +71,21 @@ action :setup do
     )
   end
 
+  template "/etc/init/#{uid}_aptly_cleanup.conf" do
+    action :create
+    source 'aptly_cleanup_upstart.conf.erb'
+    cookbook 'publisher'
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables(
+      user: uid,
+      group: uid,
+      dir: node['aptly']['rootdir'],
+      port: apiport
+    )
+  end
+
   if node['aptly']['serve_security_hole']
     template "/etc/init/#{uid}_aptly_serve.conf" do
       action :create
