@@ -10,4 +10,7 @@ setuid "<%= @user %>"
 setgid "<%= @group %>"
 chdir "<%= @dir %>"
 
-exec aptly db cleanup
+script
+  aptly db cleanup
+  rm -rv aptly/upload/*
+end script
