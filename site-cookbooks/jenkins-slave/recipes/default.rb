@@ -8,6 +8,8 @@
 
 slave_home = '/var/lib/jenkins-slave'
 
+include_recipe 'jenkins-slave::ruby'
+
 include_recipe 'user'
 include_recipe 'openssh'
 
