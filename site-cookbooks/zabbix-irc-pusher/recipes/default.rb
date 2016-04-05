@@ -20,6 +20,8 @@ end
 
 ruby_build_ruby '2.3.0' do
   prefix_path	'/usr'
+  # Skip documentation, we don't need it.
+  environment('CONFIGURE_OPTS' => '--disable-install-doc')
 end
 
 gem_package 'bundler'
