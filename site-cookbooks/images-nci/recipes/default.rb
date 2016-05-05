@@ -19,14 +19,11 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
 
-# Apache
-web_app 'images.neon' do
+redirect 'images.neon.kde.org' do
   server_name 'images.neon.kde.org'
+  new_server_name 'files.kde.org/neon/images'
   server_port 80
   docroot '/var/www/images'
-  directory_options %w(Indexes FollowSymLinks)
-  allow_override 'All'
-  cookbook 'apache2'
 end
 
 redirect 'images.neon.kde.org.uk' do
