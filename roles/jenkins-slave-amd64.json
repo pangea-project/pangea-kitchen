@@ -6,7 +6,8 @@
     "docker" : {
       "install_type": "package",
       "user": "docker",
-      "group": "docker"
+      "group": "docker",
+      "storage_opts":  ["dm.basesize=20G"]
     }
   },
   "override_attributes": {

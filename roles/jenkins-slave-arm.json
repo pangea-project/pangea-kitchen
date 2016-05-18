@@ -11,7 +11,8 @@
           "url": "https://github.com/umiddelb/armhf/raw/master/bin/docker-1.9.1"
       },
       "user": "docker",
-      "group": "docker"
+      "group": "docker",
+      "storage_opts":  ["dm.basesize=20G"]
     }
   },
   "override_attributes": {
