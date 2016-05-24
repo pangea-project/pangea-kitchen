@@ -58,6 +58,8 @@ package 'install-test-runtime-dependencies' do
     debhelper
     pkg-kde-tools
     cloc
+    quilt
+    patchutils
   )
 end
 
