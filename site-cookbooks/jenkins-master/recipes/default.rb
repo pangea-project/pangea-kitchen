@@ -60,6 +60,7 @@ package 'install-test-runtime-dependencies' do
     cloc
     quilt
     patchutils
+    cdbs
   )
 end
 
