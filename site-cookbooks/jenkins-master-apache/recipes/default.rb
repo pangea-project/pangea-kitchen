@@ -24,6 +24,7 @@ params[:name] = params[:server_name]
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_proxy'
+include_recipe 'apache2::mod_proxy_http'
 
 template "#{node['apache']['dir']}/sites-available/#{application_name}.conf" do
   source params[:template]
