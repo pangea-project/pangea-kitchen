@@ -8,7 +8,6 @@
 #
 
 params = {
-  name: 'jenkins',
   template: 'jenkins.conf.erb',
   local: false,
   enable: true,
@@ -20,7 +19,7 @@ params = {
   jenkinshome: '/var/lib/jenkins'
 }
 
-application_name = params[:name]
+application_name = params[:server_name]
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_proxy'
