@@ -8,7 +8,7 @@
 #
 
 service 'jenkins' do
-  action :nothing
+  action :stop
 end
 
 # Adjust the UID and GID to match what the containers use.
