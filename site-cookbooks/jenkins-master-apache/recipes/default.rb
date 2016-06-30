@@ -46,7 +46,7 @@ apache_site params[:name] do
 end
 
 # Say thanks to Riddell for this.
-if server_name == 'build.neon.kde.org'
+if params[:server_name] == 'build.neon.kde.org'
   redirect 'build.neon.kde.org.uk' do
     server_name 'build.neon.kde.org.uk'
     server_alias 'neon.pangea.pub'
