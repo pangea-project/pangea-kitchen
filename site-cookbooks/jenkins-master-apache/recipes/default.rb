@@ -20,6 +20,7 @@ params = {
 }
 
 application_name = params[:server_name]
+params[:name] = params[:server_name]
 
 include_recipe 'apache2::default'
 include_recipe 'apache2::mod_proxy'
