@@ -2,15 +2,17 @@
   "name": "logistomancer",
   "run_list": [
     "role[jenkins-master]",
-    "role[jenkins-slave-amd64]"
+    "recipe[jenkins-master-apache]"
   ],
   "docker": {
-    "docker": {
-      "init_type":"systemd"
-    }
+    "init_type":"systemd"   
   },
   "automatic": {
     "ipaddress": "139.59.153.2",
     "hostname": "logistomancer"
-  }  
+  }, 
+  "aci.pangea.pub": {
+    "server_port":"80",
+    "server_name":"aci.pangea.pub"
+  }
 }

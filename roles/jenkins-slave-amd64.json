@@ -15,8 +15,7 @@
   },
   "chef_type": "role",
   "run_list": [
-    "role[server-common]",
-    "recipe[docker]",
+    "role[server-common]",    
     "recipe[jenkins-java-trusty]",
     "recipe[jenkins-slave]"
   ],
