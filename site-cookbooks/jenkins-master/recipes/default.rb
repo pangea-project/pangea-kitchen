@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Make sure jenkins::master is run from global cookbook, so we have a
+# fully provisioned jenkins.
+include_recipe 'jenkins::master'
+
 service 'jenkins' do
   action :stop
 end
