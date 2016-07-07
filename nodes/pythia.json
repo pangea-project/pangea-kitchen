@@ -1,0 +1,14 @@
+{
+  "name": "pythia",
+  "run_list": [
+    "recipe[docker]",
+    "role[jenkins-slave-amd64]"    
+  ],
+  "docker": {
+    "init_type":"systemd"
+  },
+  "automatic": {
+    "ipaddress": "46.101.121.88",
+    "hostname": "pythia"
+  }
+}
