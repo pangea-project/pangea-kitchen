@@ -17,7 +17,7 @@ cookbook 'aptly'
 #cookbook 'apache2', '~> 3.1.0'
 cookbook 'bsw_gpg', '~> 0.2.3'
 cookbook 'compat_resource'
-cookbook 'docker', '~> 0.37.0' # 0.40+ has no node recipes anymore
+cookbook 'docker'
 cookbook 'fail2ban'
 cookbook 'htop'
 cookbook 'git'

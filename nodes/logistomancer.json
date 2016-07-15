@@ -4,9 +4,6 @@
     "role[jenkins-master]",
     "recipe[jenkins-master-apache]"
   ],
-  "docker": {
-    "init_type":"systemd"
-  },
   "automatic": {
     "ipaddress": "139.59.153.2",
     "hostname": "logistomancer"

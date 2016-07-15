@@ -76,3 +76,12 @@ package 'install-tooling-runtime-dependencies' do
     git
   )
 end
+
+docker_installation_script 'default' do
+  repo 'main'
+  action :create
+end
+
+docker_service 'default' do
+  action :start
+end
