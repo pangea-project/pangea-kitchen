@@ -9,7 +9,8 @@
 include_recipe 'ruby_build::default'
 
 # additional build depends
-package %w(libssl-dev libreadline-dev zlib1g-dev build-essential)
+package %w(libssl-dev libreadline-dev zlib1g-dev build-essential
+           libgirepository1.0-dev libglib2.0-dev)
 
 # remove any system rubies (bound to 14.04)
 apt_package 'ruby' do
