@@ -1,8 +1,5 @@
 {
   "run_list": [
-
-  ],
-  "automatic": {
-    "ipaddress": "dci.ds9.pub"
-  }
+    "publisher::default"
+  ]
 }
