@@ -4,12 +4,6 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "docker" : {
-      "install_type": "binary",
-      "binary": {
-          "checksum": "cc0714eafb945b0b32a467d8d026a47219b8e4046bcdb00b0b60c7aede9877bc",
-          "version": "1.9.1",
-          "url": "https://github.com/umiddelb/armhf/raw/master/bin/docker-1.9.1"
-      },
       "user": "docker",
       "group": "docker",
       "storage_opt":  ["dm.basesize=20G"]
@@ -21,7 +15,6 @@
   "chef_type": "role",
   "run_list": [
     "role[server-common]",
-    "recipe[docker]",
     "recipe[jenkins-java-trusty]",
     "recipe[jenkins-slave]"
   ],

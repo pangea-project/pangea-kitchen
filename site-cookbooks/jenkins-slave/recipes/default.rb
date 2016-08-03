@@ -8,7 +8,8 @@
 
 slave_home = '/var/lib/jenkins-slave'
 
-include_recipe 'jenkins-slave::ruby'
+include_recipe 'jenkins-slave::ruby' if
+  Chef::VersionConstraint.new('< 16.04').include?(node['platform_version'])
 
 include_recipe 'user'
 include_recipe 'openssh'
@@ -30,6 +31,16 @@ group 'jenkins-slave' do
   append true
   members %w(jenkins-slave)
   gid 120
+end
+
+docker_installation_package 'default' do
+  action :create
+  package_name 'docker.io'
+  package_version '1.10.3-0ubuntu6'
+end
+
+docker_service 'default' do
+  action :start
 end
 
 group 'docker' do
