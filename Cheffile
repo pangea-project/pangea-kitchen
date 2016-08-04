@@ -30,6 +30,7 @@ cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
 cookbook 'user'
+cookbook 'kernel_module'
 
 ## For site cookbooks
 cookbook 'sysctl', '~> 0.7.0'

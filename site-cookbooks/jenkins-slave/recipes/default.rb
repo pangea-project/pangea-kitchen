@@ -33,6 +33,8 @@ group 'jenkins-slave' do
   gid 120
 end
 
+kernel_module 'loop'
+
 docker_installation_package 'default' do
   action :create
   package_name 'docker.io'
