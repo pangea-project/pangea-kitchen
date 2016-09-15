@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 
 to_purge = %w(openjdk-6-jre-headless openjdk-6-jre-lib)
-to_install = %w(default-jre-headless openjdk-8-jre-headless)
+to_install = %w(default-jre-headless openjdk-7-jre-headless)
 
 if Chef::VersionConstraint.new('= 16.04').include?(node['platform_version'])
   to_purge = []
