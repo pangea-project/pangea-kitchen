@@ -33,17 +33,14 @@ group 'jenkins-slave' do
   gid 120
 end
 
+subid_set 'jenkins-subids' do
+  username 'jenkins-slave'
+  uid 100_000
+  groupname 'jenkins-slave'
+  gid 120
+end
+
 kernel_module 'loop'
-
-docker_installation_package 'default' do
-  action :create
-  package_name 'docker.io'
-  package_version '1.10.3-0ubuntu6'
-end
-
-docker_service 'default' do
-  action :start
-end
 
 group 'docker' do
   action :modify
@@ -64,4 +61,14 @@ ruby_block 'chown jenkins dirs' do
       FileUtils.chown(100_000, 120, stamp)
     end
   end
+end
+
+docker_installation_script 'default' do
+  repo 'main'
+  action :create
+end
+
+docker_service 'default' do
+  action :restart
+  userns_remap '100000:120'
 end
