@@ -137,7 +137,7 @@ GEM
     thor (0.19.1)
     uuidtools (2.1.5)
     wmi-lite (1.0.0)
-    zabbixapi (2.2.4)
+    zabbixapi (2.4.8)
       json (~> 1.6, >= 1.6.0)
 
 PLATFORMS
@@ -146,7 +146,7 @@ PLATFORMS
 DEPENDENCIES
   knife-solo
   librarian-chef
-  zabbixapi (~> 2.2.0)
+  zabbixapi (~> 2.4.0)
 
 BUNDLED WITH
    1.11.2
