@@ -72,6 +72,20 @@ file '/etc/zabbix/zabbix_agentd.d/HostMetadataItem.conf' do
   group 'root'
 end
 
+file '/etc/zabbix/zabbix_agentd.d/UserParameter_updates.conf' do
+  content 'UserParameter=ubuntu.updates,/usr/lib/update-notifier/apt-check 2>&1 | cut -f1 -d\;'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
+file '/etc/zabbix/zabbix_agentd.d/UserParameter_security-updates.conf' do
+  content 'UserParameter=ubuntu.security-updates,/usr/lib/update-notifier/apt-check 2>&1 | cut -f2 -d\;'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
 service 'zabbix-agent' do
   action :restart
 end
