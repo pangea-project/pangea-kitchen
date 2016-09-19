@@ -86,6 +86,15 @@ file '/etc/zabbix/zabbix_agentd.d/UserParameter_security-updates.conf' do
   group 'root'
 end
 
+# Bump the overall time, apt can be fairly slow so things can time out easily
+# within the default 3 seconds.
+file '/etc/zabbix/zabbix_agentd.d/Timeout.conf' do
+  content 'Timeout=16'
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
 service 'zabbix-agent' do
   action :restart
 end
