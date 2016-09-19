@@ -63,6 +63,12 @@ ruby_block 'chown jenkins dirs' do
   end
 end
 
+execute 'lxc-docker purge' do
+  command "apt purge -y --force-yes -o Dpkg::Options::='--force-confold'" \
+          " -o Dpkg::Options::='--force-all'" \
+          ' lxc-docker lxc-docker-*'
+end
+
 docker_installation_script 'default' do
   repo 'main'
   action :create
