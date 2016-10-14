@@ -63,6 +63,18 @@ ruby_block 'chown jenkins dirs' do
   end
 end
 
+package 'install-native-gem-dependencies' do
+  package_name [
+    # various
+    'libgmp-dev',
+    # gem 'rugged'
+    'cmake',
+    'pkg-config',
+    ## ssh support weeh weeh
+    'libssh-dev'
+  ]
+end
+
 execute 'lxc-docker purge' do
   command "apt purge -y --force-yes -o Dpkg::Options::='--force-confold'" \
           " -o Dpkg::Options::='--force-all'" \

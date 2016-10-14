@@ -58,7 +58,9 @@ package 'install-native-gem-dependencies' do
     'libgmp-dev',
     # gem 'rugged'
     'cmake',
-    'pkg-config'
+    'pkg-config',
+    ## ssh support weeh weeh
+    'libssh-dev'
   ]
 end
 
