@@ -60,7 +60,7 @@ package 'install-native-gem-dependencies' do
     'cmake',
     'pkg-config',
     ## ssh support weeh weeh
-    'libssh-dev'
+    'libssh2-1-dev'
   ]
 end
 
