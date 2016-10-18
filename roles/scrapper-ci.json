@@ -32,7 +32,6 @@
     "recipe[jenkins-master-apache]",
     "recipe[docker]",
     "recipe[rvm::user]",
-    "recipe[publisher-nci]",
     "recipe[images-nci]"
   ],
   "env_run_lists": {
