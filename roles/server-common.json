@@ -3,7 +3,9 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
-
+    "user": {
+      "home_dir_mode": "0755"
+    }
   },
   "override_attributes": {
 
