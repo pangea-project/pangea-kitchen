@@ -14,6 +14,15 @@ include_recipe 'jenkins-slave::ruby' if
 include_recipe 'user'
 include_recipe 'openssh'
 
+apt_repository 'ubuntu-updates' do
+  uri 'http://ports.ubuntu.com/ubuntu-ports'
+  distribution "#{node['lsb']['codename']}-updates"
+  components ['main', 'universe']
+  # Don't enable this for AMD64, required only for docker on ARM
+  only_if { node['kernel']['machine'].start_with?('arm') }
+end
+
+
 user_account 'jenkins-slave' do
   ssh_keys [
     'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgWtfEVwpqGHHO0JJ3d45wVnobPgexqmRslxbwYj6AuheLxwVdWtZapz+en4+Op9ZS6D70VXW0OmJG7xHaMAq87ZjMcozpp/ez2tUyIpQ3G5Ge7gq/hbhCz+K98pun56ECdhYrQEE/o5jVmG1mfrPDvTGm85PYNrdUVL97PmnOT7aiE58Ljv1EbbSaf/BxjPXrNACZcwmE2WeUJ2jo0wR4KpNIidTfJ/TSy571aX3YO30q8WzuFsTUUt8XQQvKt6r3wGiK9OEGuKjn3OaN6RDxqd/9JvJs700biYx9zmoE8Qmx2cjO5hXREIhEKf1yxtNppXj8A+RAL4+qC7PLzjMV jenkins@rassilon',
@@ -42,12 +51,6 @@ end
 
 kernel_module 'loop'
 
-group 'docker' do
-  action :modify
-  append true
-  members %w(jenkins-slave)
-end
-
 ruby_block 'chown jenkins dirs' do
   block do
     %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
@@ -75,18 +78,32 @@ package 'install-native-gem-dependencies' do
   ]
 end
 
-execute 'lxc-docker purge' do
-  command "apt purge -y --force-yes -o Dpkg::Options::='--force-confold'" \
-          " -o Dpkg::Options::='--force-all'" \
-          ' lxc-docker lxc-docker-*'
+package 'lxc-docker purge' do
+  package_name %w(lxc-docker lxc-docker-*)
+  action :purge
+  options "--force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all'"
 end
 
 docker_installation_script 'default' do
   repo 'main'
   action :create
+  only_if { node['kernel']['machine'].start_with?('x86_64') }
+end
+
+docker_installation_package 'default' do
+  action :create
+  package_name 'docker.io'
+  package_version '1.12.1-0ubuntu13~16.04.1'
+  only_if { node['kernel']['machine'].start_with?('arm') }
 end
 
 docker_service 'default' do
   action :restart
   userns_remap '100000:120'
+end
+
+group 'docker' do
+  action :modify
+  append true
+  members %w(jenkins-slave)
 end
