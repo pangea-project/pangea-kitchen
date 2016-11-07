@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "role[jenkins-slave-arm]"
+  ],
+  "automatic": {
+    "ipaddress": "b3-arm-16.04"
+  }
+}

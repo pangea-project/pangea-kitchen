@@ -7,6 +7,9 @@
       "user": "docker",
       "group": "docker",
       "storage_opt":  ["dm.basesize=20G"]
+    },
+    "swap_tuning" : {
+      "minimum_size" : 7168
     }
   },
   "override_attributes": {
