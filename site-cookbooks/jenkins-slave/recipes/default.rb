@@ -99,7 +99,9 @@ end
 
 docker_service 'default' do
   action :restart
-  userns_remap '100000:120'
+  # Disable userns for ARMM for now, devicemapper driver broken in 1.12
+  # Ref: https://github.com/docker/docker/issues/27619
+  userns_remap '100000:120' if node['kernel']['machine'].start_with?('x86_64')
 end
 
 group 'docker' do
