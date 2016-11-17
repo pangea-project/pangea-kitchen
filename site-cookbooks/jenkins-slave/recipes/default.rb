@@ -81,7 +81,7 @@ end
 package 'lxc-docker purge' do
   package_name %w(lxc-docker lxc-docker-*)
   action :purge
-  options "--force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all'"
+  options "--force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all' --ignore-missing"
 end
 
 docker_installation_script 'default' do
