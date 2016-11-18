@@ -11,3 +11,5 @@ setgid zabbix
 script
   exec /usr/sbin/zabbix_server -f
 end script
+
+post-stop exec sleep 10
