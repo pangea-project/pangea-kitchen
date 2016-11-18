@@ -5,6 +5,8 @@ start on (filesystem and net-device-up IFACE!=lo)
 stop on runlevel [!2345]
 
 respawn
+setuid zabbix
+setgid zabbix
 
 script
   exec /usr/sbin/zabbix_server
