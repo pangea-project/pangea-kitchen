@@ -24,8 +24,8 @@ end
 # down, which it likes to do way too often.
 template '/etc/init/zabbix-server.conf' do
   source 'zabbix-server.conf.erb'
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   mode '0644'
 end
 
@@ -41,7 +41,7 @@ end
 #
 # mysql_database_user 'zabbix' do
 #   connection host: '127.0.0.1',
-#              username: 'root',
+#              username: 'zabbix',
 #              password: ''
 #   password 'zabbix'
 #   action :create
@@ -50,8 +50,8 @@ end
 config_d = '/etc/zabbix/zabbix_server.conf.d/'
 
 directory config_d do
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   mode '0700'
   action :create
 end
@@ -72,8 +72,8 @@ end
 file "#{config_d}/StartPollers.conf" do
   content 'StartPollers=12'
   mode '0600'
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   notifies :restart, 'service[zabbix-server]', :delayed
 end
 
@@ -90,8 +90,8 @@ end
 file "#{config_d}/CacheSize.conf" do
   content 'CacheSize=64M'
   mode '0600'
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   notifies :restart, 'service[zabbix-server]', :delayed
 end
 
@@ -100,8 +100,8 @@ end
 file '/etc/mysql/conf.d/max_connections.cnf' do
   content "[mysqld]\nmax_connections = 128"
   mode '0644'
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   notifies :restart, 'service[mysql]', :delayed
 end
 
@@ -111,8 +111,8 @@ end
 file '/etc/mysql/conf.d/innodb_buffer_pool_size.cnf' do
   content "[mysqld]\ninnodb_buffer_pool_size = 16M"
   mode '0644'
-  owner 'root'
-  group 'root'
+  owner 'zabbix'
+  group 'zabbix'
   notifies :restart, 'service[mysql]', :delayed
 end
 
