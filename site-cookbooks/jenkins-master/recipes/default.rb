@@ -52,6 +52,22 @@ ruby_block 'chown jenkins dirs' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
+directory '/var/lib/jenkins/init.groovy.d' do
+  owner 'jenkins'
+  group 'jenkins'
+  mode '0755'
+  action :create
+end
+
+cookbook_file '/var/lib/jenkins/init.groovy.d/cli-shutdown.groovy' do
+  source 'cli-shutdown.groovy'
+  owner 'jenkins'
+  group 'jenkins'
+  mode '0644'
+  action :create
+  notifies :restart, 'service[jenkins]', :delayed
+end
+
 package 'install-native-gem-dependencies' do
   package_name [
     # various
