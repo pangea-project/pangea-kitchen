@@ -74,7 +74,9 @@ package 'install-native-gem-dependencies' do
     'cmake',
     'pkg-config',
     ## ssh support weeh weeh
-    'libssh2-1-dev'
+    'libssh2-1-dev',
+    # required for nokogiri
+    'zlib1g-dev'
   ]
 end
 
