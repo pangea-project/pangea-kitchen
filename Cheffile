@@ -7,14 +7,13 @@ cookbook 'chef-unattended-upgrades',
          git: 'https://github.com/firstbanco/chef-unattended-upgrades'
 ## Broken released version with recent Chefs
 ##  https://github.com/sethvargo-cookbooks/swap/issues/22
-##  https://github.com/svanzoest-cookbooks/apache2/commit/c8c2410084bcb12dbffe5f0aa8a0ebd2668ae4e1
-##  we need 3.1 compat
-cookbook 'apache2', git: 'git@github.com:svanzoest-cookbooks/apache2.git'
 cookbook 'swap', git: 'https://github.com/sethvargo-cookbooks/swap.git'
 
 # From supermarket
 cookbook 'aptly'
-#cookbook 'apache2', '~> 3.1.0'
+## https://github.com/svanzoest-cookbooks/apache2/commit/c8c2410084bcb12dbffe5f0aa8a0ebd2668ae4e1
+## we need 3.1 compat
+cookbook 'apache2', '~> 3.1'
 cookbook 'bsw_gpg', '~> 0.2.3'
 cookbook 'compat_resource'
 cookbook 'docker'
