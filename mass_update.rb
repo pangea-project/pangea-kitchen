@@ -23,4 +23,5 @@
   puts "---- #{host} -----"
   system('ssh', "root@#{host}", 'apt', 'update')
   system('ssh', "root@#{host}", 'apt', 'dist-upgrade')
+  system('ssh', "root@#{host}", 'reboot')
 end
