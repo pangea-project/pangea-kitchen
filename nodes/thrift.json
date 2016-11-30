@@ -1,7 +1,6 @@
 {
   "run_list": [
     "role[server-common]",
-    "recipe[docker]"
   ],
   "automatic": {
     "ipaddress": "thrift"
