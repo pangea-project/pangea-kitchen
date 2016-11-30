@@ -1,5 +1,5 @@
 {
-  "name": "scrapper-ci",
+  "name": "dci",
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
@@ -25,7 +25,6 @@
   "chef_type": "role",
   "run_list": [
     "role[jenkins-master]",
-    "recipe[docker]",
     "recipe[rvm::user]"
   ],
   "env_run_lists": {
