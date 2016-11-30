@@ -3,12 +3,6 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "docker" : {
-      "install_type": "package",
-      "user": "docker",
-      "group": "docker",
-      "group_members": "jenkins"
-    },
     "jenkins-master-apache" : {
       "server_port": "80",
       "server_name": "build.neon.kde.org"
@@ -30,7 +24,6 @@
   "run_list": [
     "role[jenkins-master]",
     "recipe[jenkins-master-apache]",
-    "recipe[docker]",
     "recipe[rvm::user]",
     "recipe[images-nci]"
   ],

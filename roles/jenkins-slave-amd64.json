@@ -3,12 +3,6 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "docker" : {
-      "install_type": "package",
-      "user": "docker",
-      "group": "docker",
-      "storage_opt":  ["dm.basesize=20G"]
-    }
   },
   "override_attributes": {
 
