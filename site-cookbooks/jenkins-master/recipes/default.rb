@@ -109,5 +109,6 @@ end
 
 docker_service 'default' do
   action :restart
-  userns_remap '100000:120'
+  # Masters are at present not subuid as we need full access
+  # userns_remap '100000:120'
 end
