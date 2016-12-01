@@ -1,2 +1,9 @@
+/.vagrant/
 /cookbooks/
 /tmp/librarian/
+# gpg keys
+/data_bags/*/gpg
+# ssh keys
+/data_bags/*/keys/*
+/data_bags/*.key
+/data_bags/*/keys.json
