@@ -1,8 +1,0 @@
-{
-  "run_list": [
-    "role[server-common]"
-  ],
-  "automatic": {
-    "ipaddress": "thrift"
-  }
-}
