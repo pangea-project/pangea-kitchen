@@ -1,6 +1,7 @@
 {
   "run_list": [
     "role[jenkins-master]",
+    "recipe[mci-redirect]",
     "recipe[zabbix]"
   ],
   "automatic": {
