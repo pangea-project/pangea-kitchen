@@ -1,11 +1,10 @@
 {
   "run_list": [
-    "role[jenkins-master]",,
-    "recipe[s3fs]",
-    "recipe[publisher-mci]",
+    "role[jenkins-master]",
+    "recipe[mci-redirect]",
     "recipe[zabbix]"
   ],
   "automatic": {
-    "ipaddress": "taspar"
+    "ipaddress": "207.154.207.181"
   }
 }
