@@ -76,7 +76,9 @@ package 'install-native-gem-dependencies' do
     ## ssh support weeh weeh
     'libssh2-1-dev',
     # required for nokogiri
-    'zlib1g-dev'
+    'zlib1g-dev',
+    # required for ffi
+    'libffi-dev'
   ]
 end
 
