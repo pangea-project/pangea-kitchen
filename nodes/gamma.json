@@ -1,8 +1,0 @@
-{
-  "run_list": [
-    "role[jenkins-slave-arm]"
-  ],
-  "automatic": {
-    "ipaddress": "gamma"
-  }
-}
