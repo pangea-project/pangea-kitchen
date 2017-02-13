@@ -14,7 +14,10 @@ apt_repository 'zabbix' do
   distribution node['lsb']['codename']
   components ['main']
   keyserver 'keyserver.ubuntu.com'
-  key '7E1DEF85'
+  # Old key was 'FBAB D5FB 2025 5ECA B22E  E194 D13D 58E4 79EA 5ED4'.
+  # New key. There is no announcement but they are cross-signed so I am infering
+  # no one gained access to the archive.
+  key 'A184 8F53 52D0 22B9 471D  83D0 082A B56B A14F E591'.delete(' ')
   # Do not add this repo if the host is ARM. The repo has no ARM builds
   # so this would only lead to apt update erroring out.
   not_if { node['kernel']['machine'].start_with?('arm') }
