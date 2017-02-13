@@ -1,0 +1,10 @@
+{
+  "run_list": [
+    "role[server-common]",
+    "recipe[apt::cacher-ng]"
+  ],
+  "automatic": {
+    "ipaddress": "46.101.188.72",
+    "hostname": "do-apt-cacher"
+  }
+}
