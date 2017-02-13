@@ -99,5 +99,7 @@ file '/etc/zabbix/zabbix_agentd.d/Timeout.conf' do
 end
 
 service 'zabbix-agent' do
-  action :restart
+  # Make sure the unit is enabled regardless of what the stupid packaging does
+  # (or in this case doesn't) do.
+  action [:enable, :restart]
 end
