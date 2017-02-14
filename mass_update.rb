@@ -18,8 +18,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-%w(alpha beta gamma delta epsilon zeta).each do |host|
-  host = "#{host}-amd64"
+(1..6).each do |i|
+  host = format('do-builder-%03d', i)
   puts "---- #{host} -----"
   system('ssh', "root@#{host}", 'apt', 'update')
   system('ssh', "root@#{host}", 'apt', 'dist-upgrade', '-y')
