@@ -1,0 +1,8 @@
+{
+  "run_list": [
+    "role[jenkins-slave-amd64]"
+  ],
+  "automatic": {
+    "ipaddress": "207.154.222.10"
+  }
+}
