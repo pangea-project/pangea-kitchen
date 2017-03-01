@@ -23,12 +23,6 @@ apt_repository 'zabbix' do
   not_if { node['kernel']['machine'].start_with?('arm') }
 end
 
-# Cleanup from previously broken behavior. See above.
-apt_repository 'zabbix' do
-  action :remove
-  only_if { node['kernel']['machine'].start_with?('arm') }
-end
-
 package 'Install Zabbix Agent' do
   package_name %w(zabbix-agent)
 end
