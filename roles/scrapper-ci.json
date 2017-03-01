@@ -24,8 +24,7 @@
   "run_list": [
     "role[jenkins-master]",
     "recipe[jenkins-master-apache]",
-    "recipe[rvm::user]",
-    "recipe[images-nci]"
+    "recipe[rvm::user]"
   ],
   "env_run_lists": {
 
