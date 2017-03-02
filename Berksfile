@@ -5,9 +5,6 @@ cookbook 'apt-cacher-ng',
          git: 'https://github.com/markolson/chef-apt-cacher-ng.git'
 cookbook 'chef-unattended-upgrades',
          git: 'https://github.com/firstbanco/chef-unattended-upgrades'
-## Broken released version with recent Chefs
-##  https://github.com/sethvargo-cookbooks/swap/issues/22
-cookbook 'swap', git: 'https://github.com/sethvargo-cookbooks/swap.git'
 
 # From supermarket
 cookbook 'aptly'
@@ -28,6 +25,7 @@ cookbook 'ruby_build', '~> 0.8'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
+cookbook 'swap', '~> 2.0'
 cookbook 'user'
 
 ## For site cookbooks

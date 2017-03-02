@@ -19,9 +19,7 @@ DEPENDENCIES
   openssh
   ruby_build (~> 0.8)
   rvm (~> 0.9.4)
-  swap
-    git: https://github.com/sethvargo-cookbooks/swap.git
-    revision: 60cc9419ee6d050996e52833aabfd37244ddbdcc
+  swap (~> 2.0)
   swap_tuning
   sysctl (~> 0.7.0)
   system (~> 0.10.1)
@@ -79,7 +77,6 @@ GRAPH
   seven_zip (2.0.2)
     windows (>= 1.2.2)
   swap (2.0.0)
-    sysctl (>= 0.0.0)
   swap_tuning (0.1.1)
     swap (>= 0.0.0)
   sysctl (0.7.5)
