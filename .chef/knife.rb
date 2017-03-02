@@ -18,6 +18,6 @@ def submod
   system('git submodule update --remote --recursive') || raise
   cupboard_dir = "#{__dir__}/../data_bags/cupboard"
   puts 'Calling git secret reveal!'
-  system('./bin/git-secret reveal', chdir: cupboard_dir) || raise
+  system('./bin/git-secret reveal -f', chdir: cupboard_dir) || raise
 end
 submod
