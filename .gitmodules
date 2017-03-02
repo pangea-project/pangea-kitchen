@@ -1,0 +1,5 @@
+[submodule "data_bags/cupboard"]
+	path = data_bags/cupboard
+	url = git@github.com:blue-systems/pangea-kitchen-cupboard.git
+	branch = master
+	ignore = all

@@ -1,0 +1,5 @@
+[fetch]
+        recurseSubmodules = yes
+[status]
+        submoduleSummary = no
+
