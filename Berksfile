@@ -25,6 +25,7 @@ cookbook 'ruby_build', '~> 0.8'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
+cookbook 'systemd', '~> 2.1'
 cookbook 'swap', '~> 2.0'
 cookbook 'user'
 
