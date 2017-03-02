@@ -112,3 +112,8 @@ docker_service 'default' do
   # Masters are at present not subuid as we need full access
   # userns_remap '100000:120'
 end
+
+mount '/mnt/volume-neon-jenkins' do
+  device '/dev/sda1'
+  fstype 'ext4'
+end
