@@ -1,0 +1,97 @@
+DEPENDENCIES
+  apache2 (~> 3.1)
+  apt-cacher-ng
+    git: https://github.com/markolson/chef-apt-cacher-ng.git
+    revision: 13535e28187a229cc2a2a0ebca37023ee4775b0f
+  aptly
+  bsw_gpg (~> 0.2.3)
+  chef-unattended-upgrades
+    git: https://github.com/firstbanco/chef-unattended-upgrades
+    revision: 13b0b86386d87ee4d19ae62451ca7f37b9c87d02
+  compat_resource
+  docker
+  fail2ban
+  git
+  htop
+  java
+  jenkins
+  kernel_module
+  openssh
+  ruby_build (~> 0.8)
+  rvm (~> 0.9.4)
+  swap
+    git: https://github.com/sethvargo-cookbooks/swap.git
+    revision: 60cc9419ee6d050996e52833aabfd37244ddbdcc
+  swap_tuning
+  sysctl (~> 0.7.0)
+  system (~> 0.10.1)
+  user
+
+GRAPH
+  apache2 (3.2.2)
+  apt (6.0.1)
+  apt-cacher-ng (0.1.0)
+  aptly (0.2.8)
+    apt (>= 0.0.0)
+  bsw_gpg (0.2.3)
+  build-essential (8.0.0)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  chef-unattended-upgrades (1.0.1)
+    apt (>= 0.0.0)
+  chef_gem (0.1.0)
+  compat_resource (12.16.3)
+  cron (3.0.0)
+  dmg (3.1.0)
+  docker (2.15.2)
+  fail2ban (3.1.0)
+    yum-epel (>= 0.0.0)
+  git (6.0.0)
+    build-essential (>= 0.0.0)
+    dmg (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  homebrew (3.0.0)
+  hostsfile (2.4.5)
+  htop (2.0.0)
+    yum-repoforge (>= 0.0.0)
+  iptables (4.0.0)
+  java (1.47.0)
+    apt (>= 0.0.0)
+    homebrew (>= 0.0.0)
+    windows (>= 0.0.0)
+  jenkins (4.2.1)
+    compat_resource (>= 12.16.3)
+    runit (>= 1.7)
+  kernel_module (1.0.1)
+  mingw (2.0.0)
+    seven_zip (>= 0.0.0)
+  ohai (3.0.1)
+  openssh (2.1.1)
+    iptables (>= 1.0)
+  packagecloud (0.2.5)
+  ruby_build (0.8.0)
+  runit (3.0.5)
+    packagecloud (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  rvm (0.9.4)
+    chef_gem (>= 0.0.0)
+    java (>= 0.0.0)
+  seven_zip (2.0.2)
+    windows (>= 1.2.2)
+  swap (2.0.0)
+    sysctl (>= 0.0.0)
+  swap_tuning (0.1.1)
+    swap (>= 0.0.0)
+  sysctl (0.7.5)
+    ohai (~> 3.0)
+  system (0.10.1)
+    apt (>= 0.0.0)
+    cron (>= 0.0.0)
+    hostsfile (>= 0.0.0)
+  user (0.7.0)
+  windows (2.0.2)
+  yum-epel (2.1.1)
+    compat_resource (>= 12.16.3)
+  yum-repoforge (2.0.1)
+    compat_resource (>= 12.16.3)
+    yum-epel (>= 0.0.0)

@@ -8,28 +8,29 @@
 
 ```
 bundle install
-librarian-chef install
+berks install # lock cookbook dependencies
+berks vendor  # install cookbook dependencies in berks-cookbooks
 ```
 
 # How to Cook
 
 ```
 # With hostname set up
-knife solo cook root@drax
+knife solo cook --clean-up croot@drax
 ```
 
 ```
 # Without hostname set up (manual file definition)
-knife solo cook root@192.168.0.9 nodes/drax.json
+knife solo cook --clean-up root@192.168.0.9 nodes/drax.json
 ```
 
 ```
 # With verbosity
-knife solo cook -V root@drax
+knife solo cook -V --clean-up root@drax
 ```
 
-```
-# Without librarian cache check
-knife solo cook -V root@drax --no-librarian
-```
+# Secrets storage - aka Cupboard
 
+Knife commands automatically will setup the `data_bags/cupboard/`` submodule,
+it includes encrypted secret blobs such as SSH keys. For more information see
+the cupboard README.

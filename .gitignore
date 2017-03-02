@@ -1,5 +1,6 @@
 /.vagrant/
 /cookbooks/
+/berks-cookbooks/
 /tmp/librarian/
 # gpg keys
 /data_bags/*/gpg

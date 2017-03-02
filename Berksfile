@@ -1,4 +1,4 @@
-site "https://supermarket.getchef.com/api/v1"
+site :opscode
 
 # From git exclusively
 cookbook 'apt-cacher-ng',
@@ -22,13 +22,13 @@ cookbook 'htop'
 cookbook 'git'
 cookbook 'java'
 cookbook 'jenkins'
+cookbook 'kernel_module'
 cookbook 'openssh'
-cookbook 'ruby_build', '~> 0.8.0'
+cookbook 'ruby_build', '~> 0.8'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
 cookbook 'user'
-cookbook 'kernel_module'
 
 ## For site cookbooks
 cookbook 'sysctl', '~> 0.7.0'
