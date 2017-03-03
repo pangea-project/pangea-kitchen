@@ -118,6 +118,12 @@ mount '/mnt/volume-neon-jenkins' do
   fstype 'ext4'
 end
 
+mount '/mnt/volume-neon-jenkins' do
+  device '/dev/sda1'
+  fstype 'ext4'
+  :enable
+end
+
 directory '/mnt/volume-neon-jenkins/jobs/' do
   owner 'jenkins'
   group 'jenkins'
