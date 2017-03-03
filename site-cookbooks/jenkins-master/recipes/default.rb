@@ -99,6 +99,7 @@ package 'install-tooling-runtime-dependencies' do
     debhelper
     devscripts
     git
+    subversion
   )
 end
 
