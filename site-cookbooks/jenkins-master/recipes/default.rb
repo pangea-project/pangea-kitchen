@@ -121,7 +121,7 @@ end
 mount '/mnt/volume-neon-jenkins' do
   device '/dev/sda1'
   fstype 'ext4'
-  :enable
+  action :enable
 end
 
 directory '/mnt/volume-neon-jenkins/jobs/' do
