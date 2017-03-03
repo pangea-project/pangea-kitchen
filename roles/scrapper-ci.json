@@ -24,6 +24,7 @@
   "run_list": [
     "role[jenkins-master]",
     "recipe[jenkins-master-apache]",
+    "recipe[nci-disk]",
     "recipe[rvm::user]"
   ],
   "env_run_lists": {
