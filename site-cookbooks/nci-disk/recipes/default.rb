@@ -15,16 +15,3 @@ mount '/var/lib/jenkins/workspace' do
   options 'bind'
   action :enable
 end
-
-directory '/mnt/volume-neon-jenkins/jobs/' do
-  owner 'jenkins'
-  group 'jenkins'
-  mode '0755'
-  action :create
-end
-
-link '/var/lib/jenkins/jobs' do
-  owner 'jenkins'
-  group 'jenkins'
-  to '/mnt/volume-neon-jenkins/jobs/'
-end
