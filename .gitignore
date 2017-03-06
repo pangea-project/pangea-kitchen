@@ -8,3 +8,4 @@
 /data_bags/*/keys/*
 /data_bags/*.key
 /data_bags/*/keys.json
+/vagrant-nodes/

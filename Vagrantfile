@@ -77,6 +77,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision 'chef_zero' do |chef|
     chef.cookbooks_path = %w(cookbooks site-cookbooks)
     chef.roles_path = 'roles'
+    chef.nodes_path = 'vagrant-nodes'
     chef.data_bags_path = 'data_bags'
     chef.add_recipe 'images-nci'
     # chef.add_role 'jenkins-master'
