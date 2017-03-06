@@ -9,6 +9,13 @@ mount '/mnt/volume-neon-jenkins' do
   action :enable
 end
 
+mount '/var/lib/jenkins/workspace' do
+  device '/mnt/volume-neon-jenkins/workspace'
+  fstype 'none'
+  options 'bind'
+  action :enable
+end
+
 directory '/mnt/volume-neon-jenkins/jobs/' do
   owner 'jenkins'
   group 'jenkins'
