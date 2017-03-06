@@ -74,7 +74,7 @@ Vagrant.configure(2) do |config|
                  '--medium', volume]
   end
 
-  config.vm.provision 'chef_solo' do |chef|
+  config.vm.provision 'chef_zero' do |chef|
     chef.cookbooks_path = %w(cookbooks site-cookbooks)
     chef.roles_path = 'roles'
     chef.data_bags_path = 'data_bags'
