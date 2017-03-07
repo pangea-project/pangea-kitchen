@@ -1,4 +1,5 @@
 /.vagrant/
+/.vagrant-volumes/
 /cookbooks/
 /berks-cookbooks/
 /tmp/librarian/
