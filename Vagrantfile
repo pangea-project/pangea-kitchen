@@ -31,7 +31,7 @@ module VBox
 
   def medium_by_id(medium)
     data = `vboxmanage showmediuminfo #{medium}`
-    raise "failed to run showmediuminfo; output: #{data}" unless $?.success?
+    return '' unless $?.success?
 
     # VBox sets the device ID internally and we can't control this, the format
     # is ata-VBOX_HARDDISK_VB$UUID where $UUID is built thusly:
