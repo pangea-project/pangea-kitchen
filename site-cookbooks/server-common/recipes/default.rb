@@ -22,6 +22,6 @@ systemd_journald 'enable-peristence' do
   storage 'persistent'
   notifies :restart, 'service[systemd-journald-enable-peristence]', :delayed
   only_if do
-    [node.fetch('platform'), node.fetch('platform_version')] == %w(ubuntu 16.04)
+    [node.fetch('platform'), node.fetch('platform_version')] != %w(ubuntu 14.04)
   end
 end
