@@ -1,12 +1,21 @@
-mount '/mnt/volume-neon-jenkins' do
-  device '/dev/sda1'
-  fstype 'ext4'
+directory '/mnt/volume-neon-jenkins' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
 end
 
 mount '/mnt/volume-neon-jenkins' do
-  device '/dev/sda1'
+  device '/dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkin'
   fstype 'ext4'
-  action :enable
+  action [:enable, :mount]
+end
+
+directory '/mnt/volume-neon-jenkins/workspace' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
 end
 
 mount '/var/lib/jenkins/workspace' do
