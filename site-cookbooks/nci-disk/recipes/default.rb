@@ -13,7 +13,15 @@ link volume_dev_by_id do
     # To avoid this lazy eval our by-id to the actual device file.
     File.realpath("/dev/disk/by-id/#{File.read(vagrant_disk_id_path).strip}")
   }
-  only_if { File.exist?(vagrant_disk_id_path) }
+  only_if do
+    exist = File.exist?(vagrant_disk_id_path)
+    if exist && File.read(vagrant_disk_id_path).strip.empty?
+      raise 'There is a vagrant disk-id file but it is empty.' \
+            ' Chances are the disk-id detection is broken.' \
+            ' To fix this try running `vbox_volumes.rb` in the kitchen.'
+    end
+    exist
+  end
 end
 
 directory '/mnt/volume-neon-jenkins' do
