@@ -5,10 +5,10 @@ directory '/mnt/volume-neon-jenkins' do
   action :create
 end
 
-filesystem "volume-neon-jenkins" do
-  fstype "ext4"
-  device "/dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkin"
-  mount "/mnt/volume-neon-jenkins"
+filesystem 'volume-neon-jenkins' do
+  fstype 'ext4'
+  device '/dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkins'
+  mount '/mnt/volume-neon-jenkins'
   action [:create, :enable, :mount]
 end
 

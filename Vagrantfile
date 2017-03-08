@@ -79,7 +79,7 @@ Vagrant.configure(2) do |config|
     chef.roles_path = 'roles'
     chef.nodes_path = 'vagrant-nodes'
     chef.data_bags_path = 'data_bags'
-    chef.add_recipe 'images-nci'
+    chef.add_recipe 'nci-disk'
     # chef.add_role 'jenkins-master'
     chef.log_level = 'info'
   end
