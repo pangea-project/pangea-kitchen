@@ -19,7 +19,10 @@ end
 
 filesystem 'volume-neon-jenkins' do
   fstype 'ext4'
-  device '/dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkins'
+  # Chef will only try to mount if not already mounted, it does not
+  # fully resolve the device though, so it will try to mount by-id even though
+  # /dev/sdb is already mounted.
+  device lazy { File.realpath(volume_dev_by_id) }
   mount '/mnt/volume-neon-jenkins'
   action [:create, :enable, :mount]
 end
