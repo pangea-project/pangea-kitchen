@@ -13,8 +13,8 @@ filesystem 'volume-neon-jenkins' do
 end
 
 directory '/mnt/volume-neon-jenkins/workspace' do
-  owner 'root'
-  group 'root'
+  owner 'jenkins'
+  group 'jenkins'
   mode '0755'
   action :create
 end
