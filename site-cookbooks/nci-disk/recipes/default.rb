@@ -6,7 +6,13 @@ volume_dev_by_id = '/dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkins'
 vagrant_disk_id_path =
   '/vagrant/.vagrant-volumes/do-volume-neon-jenkins.vdi.disk-id'
 link volume_dev_by_id do
-  to "/dev/disk/by-id/#{File.read(vagrant_disk_id_path).strip}"
+  to lazy {
+    # Chef only supports single level symlinks in a device, since we only know
+    # the by-id of the device inside vbox we'd have two levels and make chef
+    # fall apart when trying to decide whether the device needs mounting.
+    # To avoid this lazy eval our by-id to the actual device file.
+    File.realpath("/dev/disk/by-id/#{File.read(vagrant_disk_id_path).strip}")
+  }
   only_if { File.exist?(vagrant_disk_id_path) }
 end
 
@@ -21,20 +27,7 @@ filesystem 'volume-neon-jenkins' do
   fstype 'ext4'
   device volume_dev_by_id
   mount '/mnt/volume-neon-jenkins'
-  action [:create, :enable]
-  # Mount in a separate step, see comment in mount block.
-end
-
-filesystem 'volume-neon-jenkins-mount' do
-  fstype 'ext4'
-  # Chef will only try to mount if not already mounted, it does not
-  # fully resolve the device though, so it will try to mount by-id even though
-  # /dev/sdb is already mounted.
-  # To avoid this lazy eval the by-id path to the physical device that will be
-  # mounted.
-  device lazy { File.realpath(volume_dev_by_id) }
-  mount '/mnt/volume-neon-jenkins'
-  action [:mount]
+  action [:create, :enable, :mount]
 end
 
 directory '/mnt/volume-neon-jenkins/workspace' do
