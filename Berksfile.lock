@@ -11,6 +11,7 @@ DEPENDENCIES
   compat_resource
   docker
   fail2ban
+  filesystem (~> 0.10.6)
   git
   htop
   java
@@ -45,6 +46,8 @@ GRAPH
   docker (2.15.2)
   fail2ban (3.1.0)
     yum-epel (>= 0.0.0)
+  filesystem (0.10.6)
+    lvm (~> 1.1)
   git (6.0.0)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)
@@ -62,6 +65,7 @@ GRAPH
     compat_resource (>= 12.16.3)
     runit (>= 1.7)
   kernel_module (1.0.1)
+  lvm (1.6.1)
   mingw (2.0.0)
     seven_zip (>= 0.0.0)
   ohai (3.0.1)
