@@ -19,12 +19,22 @@ end
 
 filesystem 'volume-neon-jenkins' do
   fstype 'ext4'
+  device volume_dev_by_id
+  mount '/mnt/volume-neon-jenkins'
+  action [:create, :enable]
+  # Mount in a separate step, see comment in mount block.
+end
+
+filesystem 'volume-neon-jenkins-mount' do
+  fstype 'ext4'
   # Chef will only try to mount if not already mounted, it does not
   # fully resolve the device though, so it will try to mount by-id even though
   # /dev/sdb is already mounted.
+  # To avoid this lazy eval the by-id path to the physical device that will be
+  # mounted.
   device lazy { File.realpath(volume_dev_by_id) }
   mount '/mnt/volume-neon-jenkins'
-  action [:create, :enable, :mount]
+  action [:mount]
 end
 
 directory '/mnt/volume-neon-jenkins/workspace' do
