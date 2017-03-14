@@ -100,6 +100,7 @@ package 'install-tooling-runtime-dependencies' do
     devscripts
     git
     subversion
+    gnupg2
   )
 end
 
