@@ -36,7 +36,7 @@ filesystem 'volume-neon-jenkins' do
   device volume_dev_by_id
   mount '/mnt/volume-neon-jenkins'
   action [:create, :enable, :mount]
-  options ["discard", "defaults"]
+  options 'discard,defaults'
 end
 
 directory '/mnt/volume-neon-jenkins/workspace' do
