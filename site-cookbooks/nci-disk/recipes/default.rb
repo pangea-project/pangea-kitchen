@@ -37,6 +37,7 @@ filesystem 'volume-neon-jenkins' do
   mount '/mnt/volume-neon-jenkins'
   action [:create, :enable, :mount]
   options 'discard,defaults'
+  force true # try to get round /dev/disk/by-id/scsi-0DO_Volume_volume-neon-jenkins is not a block special device
 end
 
 directory '/mnt/volume-neon-jenkins/workspace' do
