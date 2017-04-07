@@ -5,6 +5,7 @@ environment_path "environments"
 data_bag_path    "data_bags"
 #encrypted_data_bag_secret "data_bag_key"
 
+cookbook_license 'gplv3'
 knife[:berkshelf_path] = "cookbooks"
 
 def submod
