@@ -1,0 +1,11 @@
+[Unit]
+Description=Gem in a box
+
+[Service]
+ExecStart=<%= @clonedir %>/start.sh
+WorkingDirectory=<%= @clonedir %>
+KillSignal=SIGQUIT
+Sockets=geminabox.socket
+
+[Install]
+WantedBy=default.target

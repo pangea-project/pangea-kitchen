@@ -1,7 +1,9 @@
 {
   "run_list": [
     "role[server-common]",
-    "recipe[apt::cacher-ng]"
+    "recipe[apt::cacher-ng]",
+    "recipe[pangea-ruby::install]",
+    "recipe[geminabox]"
   ],
   "automatic": {
     "ipaddress": "46.101.188.72",
