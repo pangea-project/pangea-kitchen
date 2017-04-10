@@ -3,7 +3,7 @@ Description=Gem in a box sockets
 
 [Socket]
 ListenStream=<%= @userhome %>/unicorn.sock
-ListenStream=0.0.0.0:9191
+SocketGroup=www-data
 Service=geminabox.service
 
 [Install]

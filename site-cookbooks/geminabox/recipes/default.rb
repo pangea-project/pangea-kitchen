@@ -63,6 +63,24 @@ git clonedir do
   notifies :restart, 'systemd_unit[geminabox.service]'
 end
 
+include_recipe 'apache2::default'
+include_recipe 'apache2::mod_proxy'
+include_recipe 'apache2::mod_proxy_http'
+include_recipe 'apache2::mod_ssl'
+
+document_root = '/var/www/gem.cache.pangea.pub'
+directory document_root do
+  owner 'www-data'
+  group 'www-data'
+end
+
+group 'www-data' do
+  append true
+  members [username]
+  action :modify
+  notifies :restart, 'systemd_unit[geminabox.socket]'
+end
+
 # Systemd setup
 package %w(libpam-systemd dbus-user-session) # for session management via logind
 
@@ -128,11 +146,24 @@ template "#{systemd_dir}/geminabox.service" do
   notifies :enable, 'systemd_unit[geminabox.socket]'
   notifies :restart, 'systemd_unit[geminabox.socket]'
 end
-#
-# ruby_block 'stopi' do
-#   block do
-#     puts "stopi"
-#   end
-#     notifies :stop, 'systemd_unit[geminabox.socket]'
-#     notifies :stop, 'systemd_unit[geminabox.service]'
-# end
+
+template "#{node['apache']['dir']}/sites-available/gem.cache.pangea.pub.conf" do
+  source 'gem.cache.pangea.pub.conf.erb'
+  owner 'root'
+  group node['apache']['root_group']
+  mode 0o644
+  variables server_name: 'gem.cache.pangea.pub', userhome: userhome,
+            document_root: document_root
+  # Reload apache immediately so the vhost is up and running by the time
+  # certbot does its thing.
+  notifies :reload, 'service[apache2]', :immediately
+end
+
+apache_site 'gem.cache.pangea.pub' do
+  enable true
+end
+
+certbot_apache 'geminabox' do
+  domains %w[gem.cache.pangea.pub]
+  email 'sitter@kde.org'
+end
