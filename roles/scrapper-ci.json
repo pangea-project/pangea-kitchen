@@ -23,6 +23,7 @@
   "chef_type": "role",
   "run_list": [
     "role[jenkins-master]",
+    "role[private-nameserver-client]",
     "recipe[jenkins-master-apache]",
     "recipe[nci-disk]",
     "recipe[rvm::user]"
