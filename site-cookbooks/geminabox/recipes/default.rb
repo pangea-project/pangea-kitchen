@@ -125,6 +125,7 @@ template "#{systemd_dir}/geminabox.service" do
   # change to the service should always restart the service and a change to the
   # socket will always restart both.
   notifies :run, 'execute[daemon-reload-user]', :immediately
+  notifies :enable, 'systemd_unit[geminabox.socket]'
   notifies :restart, 'systemd_unit[geminabox.socket]'
 end
 #
