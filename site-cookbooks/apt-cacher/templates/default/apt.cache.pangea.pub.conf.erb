@@ -1,0 +1,34 @@
+<VirtualHost *:80>
+    # Certbot will set up a 80->443 redirect, however for certbot to bootstrap
+    # we'll first need a regular :80 access route. And we cannot setup :443 at
+    # this point since we have no SSL cert. So, since certbot will simply
+    # recycle this config for the 443 vhost we can confidently converge a
+    # http vhost and let certbot fix it up to ssl vhost.
+
+    # WARNING: as a result of leaning on certbot updates to the template here
+    # are not reflected in the SSL clone of it!
+    # Needs updating in both places manually unfortunately.
+
+    ServerAdmin  sitter@kde.org
+    ServerName   <%= @server_name %>
+    DocumentRoot <%= @document_root %>
+
+    ErrorLog ${APACHE_LOG_DIR}/<%= @server_name %>-error.log
+    CustomLog ${APACHE_LOG_DIR}/<%= @server_name %>.log combined
+
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
+
+    AllowEncodedSlashes NoDecode
+    ProxyRequests Off
+    ProxyPass /.well-known/acme-challenge/ !
+    ProxyPass / http://localhost:3142/ nocanon retry=0
+    ProxyPassReverse / http://localhost:3142/
+
+    <Proxy http://localhost:3142/*>
+      Require all granted
+    </Proxy>
+    <Proxy http://localhost:3142/*>
+      Require all granted
+    </Proxy>
+</VirtualHost>
