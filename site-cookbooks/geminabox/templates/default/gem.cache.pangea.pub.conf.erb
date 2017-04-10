@@ -5,12 +5,19 @@
     # recycle this config for the 443 vhost we can confidently converge a
     # http vhost and let certbot fix it up to ssl vhost.
 
+    # WARNING: as a result of leaning on certbot updates to the template here
+    # are not reflected in the SSL clone of it!
+    # Needs updating in both places manually unfortunately.
+
     ServerAdmin  sitter@kde.org
     ServerName   <%= @server_name %>
     DocumentRoot <%= @document_root %>
 
     ErrorLog ${APACHE_LOG_DIR}/<%= @server_name %>-error.log
     CustomLog ${APACHE_LOG_DIR}/<%= @server_name %>.log combined
+
+    RequestHeader set X-Forwarded-Proto "https"
+    RequestHeader set X-Forwarded-Port "443"
 
     AllowEncodedSlashes NoDecode
     ProxyRequests Off

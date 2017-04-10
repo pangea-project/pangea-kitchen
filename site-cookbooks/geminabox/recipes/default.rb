@@ -67,6 +67,7 @@ include_recipe 'apache2::default'
 include_recipe 'apache2::mod_proxy'
 include_recipe 'apache2::mod_proxy_http'
 include_recipe 'apache2::mod_ssl'
+include_recipe 'apache2::mod_headers'
 
 document_root = '/var/www/gem.cache.pangea.pub'
 directory document_root do
