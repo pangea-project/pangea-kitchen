@@ -1,4 +1,4 @@
-site :opscode
+source 'https://supermarket.chef.io'
 
 # From git exclusively
 cookbook 'apt-cacher-ng',
