@@ -1,6 +1,18 @@
 acl "trusted" {
-	10.135.3.146;  # ns1
-	10.135.45.128; # drax
+	// These are our trusted clients. We allow trusted clients to use this server
+	// as recursive DNS (i.e. our nameserver will talk to the forwarders to
+	// resolve the requested name). Not being a trusted client doesn't mean much
+	// of anything as this nameserver will come back empty to public name requests
+	// and the client will have to shoot another request to fallback servers.
+	// i.e. servers not listed are slower to resolve names.
+	10.135.3.146;	# ns1
+	10.135.45.128;	# drax
+	10.135.17.249;	# builder001
+	10.135.18.82;	# builder002
+	10.135.18.186;	# builder003
+	10.135.18.190;	# builder004
+	10.135.19.91;	# builder005
+	10.135.21.173;	# builder006
 };
 
 options {
