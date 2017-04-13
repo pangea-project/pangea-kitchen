@@ -29,6 +29,7 @@ end
     source file
     owner 'root'
     group 'bind' # NB: bind9 is run as user bind, we'll want it to read
+    variables serial: Time.now.utc.to_i
     mode 0o640
     notifies :restart, 'service[bind9]'
   end
