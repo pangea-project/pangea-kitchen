@@ -15,5 +15,13 @@ ns1	IN	A	10.135.3.146
 gem.cache	IN	A	10.135.3.146
 apt.cache	IN	A	10.135.3.146
 
-drax	IN	A	10.135.45.128
+drax		IN	A	10.135.45.128
+
+builder001.do	IN	A	10.135.17.249
+builder002.do	IN	A	10.135.18.82
+builder003.do	IN	A	10.135.18.186
+builder004.do	IN	A	10.135.18.190
+builder005.do	IN	A	10.135.19.91
+builder006.do	IN	A	10.135.21.173
+
 neon	IN	CNAME drax

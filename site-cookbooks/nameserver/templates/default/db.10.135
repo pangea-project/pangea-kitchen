@@ -12,4 +12,14 @@ $TTL	604800
 @	IN	NS	ns1.pangea.pub.
 3.146	IN	PTR	ns1
 
+3.146	IN	PTR	gem.cache
+3.146	IN	PTR	apt.cache
+
 45.128	IN	PTR	drax
+
+17.249	IN	PTR	builder001.do
+18.82	IN	PTR	builder002.do
+18.186	IN	PTR	builder003.do
+18.190	IN	PTR	builder004.do
+19.91	IN	PTR	builder005.do
+21.173	IN	PTR	builder006.do
