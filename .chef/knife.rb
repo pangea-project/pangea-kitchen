@@ -6,6 +6,9 @@ data_bag_path    "data_bags"
 #encrypted_data_bag_secret "data_bag_key"
 
 cookbook_license 'gplv3'
+cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
+cookbook_email ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
+
 knife[:berkshelf_path] = "cookbooks"
 
 def submod
