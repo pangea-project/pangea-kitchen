@@ -34,4 +34,4 @@ cookbook 'user'
 ## For site cookbooks
 ## TODO: we could programtically let berks handle site-cookboks like supermarket
 ## ones https://coderwall.com/p/j72egw/organise-your-site-cookbooks-with-berkshelf-and-this-trick
-cookbook 'sysctl', '~> 0.7.0'
+cookbook 'sysctl', '~> 0.8.0'
