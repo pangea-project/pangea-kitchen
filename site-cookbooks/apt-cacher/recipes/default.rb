@@ -18,6 +18,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+# Calculate a suitable default size for the maximum cache use.
+# The package stupidly hardcodes 40G as cache size. Apparently math is rocket
+# science and determining what the maximum size of /var is cannot be done.
+# Or can it...
+_root_dev, root_values = node['filesystem'].find { |_dev, f| f['mount'] == '/' }
+root_size_mb = root_values['kb_size'].to_i / 1024.0 # Squid uses MiB
+# We will use 75% of root for the cache, this should give us a good amount of
+# space whilest not having much of a chance to impair other functions of
+# the server.
+max_cache_size = (root_size_mb * 0.75).to_i
+
 package 'squid-deb-proxy'
 
 apt_package %w[apt-cacher-ng avahi-daemon] do
@@ -40,10 +51,14 @@ end
 ruby_block 'twiddle squid-deb-proxy.conf' do
   block do
     file = Chef::Util::FileEdit.new('/etc/squid-deb-proxy/squid-deb-proxy.conf')
+    # Switch some weird crap around.
+    # The config uses a double invert which has weird side effects WRT access
+    # control to manage URI etc., change it to an allow (the config denies all,
+    # so explicit allow combined with that should give the same result)
     file.search_file_replace_line(/http_access deny !to_archive_mirrors/,
                                   'http_access allow to_archive_mirrors')
-    file.search_file_replace_line(/## http_access deny !to_archive_mirrors/,
-                                  'http_access allow to_archive_mirrors')
+    file.search_file_replace_line(%r{cache_dir aufs /var/cache/squid-deb-proxy},
+                                  "cache_dir aufs /var/cache/squid-deb-proxy #{max_cache_size} 16 256")
     file.write_file
   end
 end
