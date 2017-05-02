@@ -42,10 +42,8 @@ ruby_block 'twiddle squid-deb-proxy.conf' do
     file = Chef::Util::FileEdit.new('/etc/squid-deb-proxy/squid-deb-proxy.conf')
     file.search_file_replace_line(/http_access deny !to_archive_mirrors/,
                                   'http_access allow to_archive_mirrors')
-    file.insert_line_if_no_match(/http_access allow localhost manager/)
     file.search_file_replace_line(/## http_access deny !to_archive_mirrors/,
                                   'http_access allow to_archive_mirrors')
-                                  http_access allow to_archive_mirrors
     file.write_file
   end
 end
