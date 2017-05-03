@@ -19,7 +19,7 @@ DEPENDENCIES
   kernel_module
   openssh
   resolvconf (~> 0.4.0)
-  ruby_build (~> 0.8)
+  ruby_build (~> 1.1.0)
   rvm (~> 0.9.4)
   swap (~> 2.0)
   swap_tuning
@@ -77,7 +77,9 @@ GRAPH
     iptables (>= 1.0)
   packagecloud (0.3.0)
   resolvconf (0.4.0)
-  ruby_build (0.8.0)
+  ruby_build (1.1.0)
+    git (>= 0.0.0)
+    yum-epel (>= 0.0.0)
   runit (3.0.5)
     packagecloud (>= 0.0.0)
     yum-epel (>= 0.0.0)

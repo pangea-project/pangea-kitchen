@@ -23,7 +23,7 @@ cookbook 'jenkins'
 cookbook 'kernel_module'
 cookbook 'openssh'
 cookbook 'resolvconf', '~> 0.4.0'
-cookbook 'ruby_build', '~> 0.8'
+cookbook 'ruby_build', '~> 1.1.0'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
 cookbook 'system', '~> 0.10.1'
