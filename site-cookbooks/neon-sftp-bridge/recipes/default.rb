@@ -82,9 +82,9 @@ end
 
 #   The dbus-user-session installs a bus socket activation, but we need to make
 #   sure the user service is being started so systemd controls the socket.
-systemd_unit 'user@.service' do
-  name lazy { "user@#{node.fetch('etc').fetch('passwd').fetch(username).fetch('uid')}.service" }
-  action [:restart, :start]
+service 'neon-sftp-bridge@dbus' do
+  service_name lazy { "user@#{node.fetch('etc').fetch('passwd').fetch(username).fetch('uid')}.service" }
+  action %i[restart start]
   not_if { File.exist?("/run/user/#{node.fetch('etc').fetch('passwd').fetch(username).fetch('uid')}/bus") }
 end
 
