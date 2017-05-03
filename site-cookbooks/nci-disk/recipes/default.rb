@@ -13,6 +13,7 @@ link volume_dev_by_id do
     # To avoid this lazy eval our by-id to the actual device file.
     device = File.read(vagrant_disk_id_path)
     prefix = device.start_with?('/dev') ? '' : '/dev/disk/by-id/'
+    FileUtils.mkpath(File.dirname(volume_dev_by_id), verbose: true)
     File.realpath("#{prefix}#{device}")
   }
   only_if do
