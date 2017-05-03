@@ -40,8 +40,9 @@ directory "#{userhome}/.ssh" do
 end
 
 data_bag_path = Chef::Config[:data_bag_path]
-keys_dir = File.join(data_bag_path, 'cupboard', 'ssh-keys', node.name,
-                     'neon-sftp-bridge')
+# This falls back to drax because it is our default host and otherwise we
+# couldn't provision vagrant because obviously the node name
+keys_dir = "#{data_bag_path}/cupboard/ssh-keys/{#{node.name},drax}/neon-sftp-bridge"
 keys = Dir.glob("#{keys_dir}/*").select { |x| !x.end_with?('.secret') }
 raise "Couldn't find any ssh keys in #{keys_dir}" if keys.empty?
 keys.each do |key_file|
