@@ -1,5 +1,21 @@
 #!/usr/bin/env ruby
 
+module DiskIDWriter
+  def attach_storage(*)
+    File.write("#{VBox.volume}.disk-id", VBox.medium_by_id(VBox.volume))
+    super
+  end
+
+  def detach_storage(env)
+    if ARGV.include?('destroy')
+      warn '...noop'
+    else
+      super
+    end
+    # Disable detaching so the image gets deleted on destroy
+  end
+end
+
 # VBox compatible uuid string parser. Eats uuid string and splits into 32bit
 # integer array.
 class RTUUID
@@ -32,17 +48,11 @@ module VBox
     "#{__dir__}/.vagrant-volumes/do-volume-neon-jenkins.vdi"
   end
 
-  def medium_by_id(medium)
-    data = `vboxmanage showmediuminfo #{medium}`
-    return '' unless $?.success?
-
-    # VBox sets the device ID internally and we can't control this, the format
-    # is ata-VBOX_HARDDISK_VB$UUID where $UUID is built thusly:
-    #   RTStrPrintf(szSerial, sizeof(szSerial), "VB%08x-%08x", Uuid.au32[0],
-    #               Uuid.au32[3]);
-    # au32 in this case refers to a uint32[4] of the 128bit UUID.
-    uuid = RTUUID.new(data.match(/^UUID\:\s*([a-z0-9\-]+)/).captures[0])
-    "ata-VBOX_HARDDISK_VB#{uuid.au32_s[0]}-#{uuid.au32_s[3]}"
+  def medium_by_id(_medium)
+    # sda is vbox core
+    # sdb is vbox fuu
+    # sdb
+    '/dev/sdc'
   end
 end
 

@@ -1,9 +1,19 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+unless Vagrant.has_plugin?('vagrant-persistent-storage')
+  system('vagrant plugin install vagrant-persistent-storage') || raise
+  warn 'Restarting...'
+  exec($0, *ARGV)
+end
+
 require_relative 'vbox_volumes'
 
-volume = VBox.volume
+module VagrantPlugins::ProviderVirtualBox::Driver
+  class Base
+    prepend DiskIDWriter
+  end
+end
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -16,22 +26,18 @@ Vagrant.configure(2) do |config|
   config.vm.network 'forwarded_port', guest: 80, host: 8181
   config.vm.network 'private_network', ip: '192.168.33.10'
 
+  config.persistent_storage.enabled = true
+  config.persistent_storage.location = VBox.volume
+  config.persistent_storage.size = 32 # Megabytes
+  config.persistent_storage.use_lvm = false
+  config.persistent_storage.format = false
+  config.persistent_storage.mount = false
+  # This doesn't actually do shit.
+  config.persistent_storage.diskdevice = VBox.medium_by_id(VBox.volume)
+
   config.vm.provider 'virtualbox' do |v|
     v.memory = 2048
     v.cpus = 4
-
-    unless File.exist?(volume)
-      dir = File.dirname(volume)
-      Dir.mkdir(dir) unless File.exist?(dir)
-      size = 32 # Megabytes
-      v.customize ['createmedium', '--filename', volume, '--size', size]
-      File.write("#{volume}.disk-id", VBox.medium_by_id(volume))
-    end
-    v.customize ['storageattach', :id,
-                 '--storagectl', 'SATAController',
-                 '--port', 1, '--device', 0, '--type', 'hdd',
-                 '--setuuid', '',
-                 '--medium', volume]
   end
 
   config.vm.provision 'chef_zero' do |chef|
