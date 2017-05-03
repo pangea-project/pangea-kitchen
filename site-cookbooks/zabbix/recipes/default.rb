@@ -45,6 +45,7 @@ file '/etc/zabbix/zabbix_agentd.d/ServerActive.conf' do
   mode '0644'
   owner 'root'
   group 'root'
+  not_if { node.name.include?('vagrant') }
 end
 
 file '/etc/zabbix/zabbix_agentd.d/Server.conf' do
