@@ -9,7 +9,10 @@ cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
 cookbook_email ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
 
-knife[:berkshelf_path] = "cookbooks"
+# This is our default chef version. This only gets incerased after testing!
+knife[:bootstrap_version] = '13'
+# Librarian compatibility.
+knife[:berkshelf_path] = 'cookbooks'
 
 def submod
   `git config --local --get include.path`

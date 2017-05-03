@@ -35,6 +35,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision 'chef_zero' do |chef|
+    chef.version = '13'
     chef.cookbooks_path = %w(cookbooks site-cookbooks)
     chef.roles_path = 'roles'
     chef.nodes_path = 'vagrant-nodes'
