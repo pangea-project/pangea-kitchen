@@ -25,6 +25,11 @@ ruby_build_ruby '2.4.0' do
   environment('CONFIGURE_OPTS' => '--disable-install-doc')
 end
 
+file '/usr/local/etc/gemrc' do
+  content 'gem: --no-document'
+  action :create_if_missing
+end
+
 # With ruby 2.4 string freezing is more strict. Update rubygems to prevent
 # issues inside gem itself.
 execute 'gem update --system'
