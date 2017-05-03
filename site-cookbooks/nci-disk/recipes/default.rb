@@ -11,7 +11,9 @@ link volume_dev_by_id do
     # the by-id of the device inside vbox we'd have two levels and make chef
     # fall apart when trying to decide whether the device needs mounting.
     # To avoid this lazy eval our by-id to the actual device file.
-    File.realpath("/dev/disk/by-id/#{File.read(vagrant_disk_id_path).strip}")
+    device = File.read(vagrant_disk_id_path)
+    prefix = device.start_with?('/dev') ? '' : '/dev/disk/by-id/'
+    File.realpath("#{prefix}#{device}")
   }
   only_if do
     exist = File.exist?(vagrant_disk_id_path)
