@@ -97,5 +97,5 @@ end
 service 'zabbix-agent' do
   # Make sure the unit is enabled regardless of what the stupid packaging does
   # (or in this case doesn't) do.
-  action [:enable, :restart]
+  action %i[enable restart]
 end
