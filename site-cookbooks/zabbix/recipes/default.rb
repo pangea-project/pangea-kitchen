@@ -24,7 +24,7 @@ apt_repository 'zabbix' do
 end
 
 package 'Install Zabbix Agent' do
-  package_name %w(zabbix-agent)
+  package_name %w[zabbix-agent]
 end
 
 # On ARM we use archive packages, which have a different path. Because why
