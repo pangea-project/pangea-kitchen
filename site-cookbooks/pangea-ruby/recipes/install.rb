@@ -32,4 +32,4 @@ end
 
 # With ruby 2.4 string freezing is more strict. Update rubygems to prevent
 # issues inside gem itself.
-execute 'gem update --system'
+execute '/usr/local/bin/gem update --system'
