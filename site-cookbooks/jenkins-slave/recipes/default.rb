@@ -112,5 +112,5 @@ end
 group 'docker' do
   action :modify
   append true
-  members %w(jenkins-slave)
+  members %w[jenkins-slave]
 end

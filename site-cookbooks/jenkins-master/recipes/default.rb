@@ -117,4 +117,9 @@ docker_installation_script 'default' do
   action :create
 end
 
+group 'docker' do
+  action :modify
+  append true
+  members %w[jenkins-slave]
+  notifies :restart, 'service[jenkins]', :delayed
 end
