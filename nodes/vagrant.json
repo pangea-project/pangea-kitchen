@@ -1,8 +1,0 @@
-{
-  "run_list": [
-    "recipe[repo-mci]"
-  ],
-  "automatic": {
-    "ipaddress": "vagrant"
-  }
-}
