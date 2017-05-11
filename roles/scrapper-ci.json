@@ -1,34 +1,18 @@
 {
   "name": "scrapper-ci",
-  "description": "",
-  "json_class": "Chef::Role",
   "default_attributes": {
     "jenkins-master-apache" : {
       "server_port": "80",
       "server_name": "build.neon.kde.org"
-    },
-    "rvm": {
-      "user_installs": [
-        {
-          "user": "jenkins",
-          "default_ruby": "ruby-2.2.3",
-          "rubies": ["2.2.3"],
-          "home": "/var/lib/jenkins"
-        }
-      ]
     }
   },
-  "override_attributes": {
-  },
-  "chef_type": "role",
   "run_list": [
     "role[jenkins-master]",
     "role[private-nameserver-client]",
     "recipe[jenkins-master-apache]",
     "recipe[nci-disk]",
-    "recipe[rvm::user]"
-  ],
-  "env_run_lists": {
-
-  }
+    "recipe[neon-sftp-bridge]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
+  ]
 }
