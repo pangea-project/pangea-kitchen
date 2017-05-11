@@ -15,7 +15,7 @@ if chefdk.generator # Chef 13 fully ditches knife for chef-dk.
   chefdk.generator.email = ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
 end
 
-# This is our default chef version. This only gets incerased after testing!
+# This is our default chef version. This only gets increased after testing!
 knife[:bootstrap_version] = '13'
 # Librarian compatibility.
 knife[:berkshelf_path] = 'cookbooks'
