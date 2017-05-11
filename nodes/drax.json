@@ -4,7 +4,7 @@
     "role[scrapper-ci]"
   ],
   "automatic": {
-    "ipaddress": "46.101.206.233",
+    "ipaddress": "46.101.127.255",
     "hostname": "drax"
   }
 }
