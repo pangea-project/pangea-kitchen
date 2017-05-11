@@ -9,6 +9,12 @@ cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
 cookbook_email ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
 
+if chefdk.generator # Chef 13 fully ditches knife for chef-dk.
+  chefdk.generator.license = 'gplv3'
+  chefdk.generator.copyright_holder = ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
+  chefdk.generator.email = ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
+end
+
 # This is our default chef version. This only gets incerased after testing!
 knife[:bootstrap_version] = '13'
 # Librarian compatibility.
