@@ -8,9 +8,9 @@
 #
 
 # FIXME: on slaves it isn't!
-user_name = 'jenkins'
-user_group = 'jenkins'
-user_home = '/var/lib/jenkins'
+user_name = node['pangea_ruby']['home_user']
+user_group = user_name
+user_home = node['pangea_ruby']['home_user_home']
 
 profilerc = "#{user_home}/.profile"
 file profilerc do

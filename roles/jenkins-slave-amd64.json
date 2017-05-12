@@ -3,6 +3,10 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "pangea_ruby": {
+      "home_user": "jenkins-slave",
+      "home_user_home": "/var/lib/jenkins-slave"
+    }
   },
   "override_attributes": {
 
