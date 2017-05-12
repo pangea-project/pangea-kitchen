@@ -33,4 +33,4 @@ def submod
   puts 'Calling git secret reveal!'
   system('./bin/git-secret reveal -f', chdir: cupboard_dir) || raise
 end
-submod
+submod unless ENV.include?('NO_CUPBOARD')
