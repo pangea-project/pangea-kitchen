@@ -1,9 +1,9 @@
-cookbook_path    ["cookbooks", "site-cookbooks"]
-node_path        "nodes"
-role_path        "roles"
-environment_path "environments"
-data_bag_path    "data_bags"
-#encrypted_data_bag_secret "data_bag_key"
+cookbook_path    ["#{__dir__}/../cookbooks", "#{__dir__}/../site-cookbooks"]
+node_path        "#{__dir__}/../nodes"
+role_path        "#{__dir__}/../roles"
+environment_path "#{__dir__}/../environments"
+data_bag_path    "#{__dir__}/../data_bags"
+#encrypted_data_bag_secret "#{__dir__}/../data_bag_key"
 
 cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
