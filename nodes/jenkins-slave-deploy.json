@@ -1,0 +1,7 @@
+{
+  "run_list": [
+    "role[jenkins-slave-amd64]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
+  ]
+}
