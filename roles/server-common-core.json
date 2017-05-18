@@ -1,0 +1,13 @@
+{
+  "default_attributes": {
+    "user": {
+      "home_dir_mode": "0755"
+    }
+  },
+  "run_list": [
+    "recipe[server-common]",
+    "recipe[system::timezone]",
+    "recipe[fail2ban]",
+    "recipe[htop]",
+  ]
+}

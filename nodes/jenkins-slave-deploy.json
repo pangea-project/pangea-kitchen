@@ -1,7 +1,12 @@
 {
+  "pangea_ruby": {
+    "home_user": "jenkins-slave",
+    "home_user_home": "/var/lib/jenkins-slave"
+  },
   "run_list": [
-    "role[jenkins-slave-amd64]",
-    "recipe[pangea-ruby::install]",
-    "recipe[pangea-ruby::user_home_gems]"
+    "role[server-common-core]",
+    "role[private-nameserver-client]",
+    "recipe[jenkins-java-trusty]",
+    "recipe[jenkins-slave]"
   ]
 }

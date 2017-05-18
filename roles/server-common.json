@@ -12,11 +12,8 @@
   },
   "chef_type": "role",
   "run_list": [
-    "recipe[server-common]",
-    "recipe[system::timezone]",
+    "role[server-common-core]",
     "recipe[zabbix]",
-    "recipe[fail2ban]",
-    "recipe[htop]",
     "recipe[chef-unattended-upgrades]",
     "recipe[swap_tuning]"
   ],
