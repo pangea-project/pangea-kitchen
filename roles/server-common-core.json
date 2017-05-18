@@ -8,6 +8,6 @@
     "recipe[server-common]",
     "recipe[system::timezone]",
     "recipe[fail2ban]",
-    "recipe[htop]",
+    "recipe[htop]"
   ]
 }
