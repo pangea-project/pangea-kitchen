@@ -19,17 +19,14 @@ file profilerc do
   action :create_if_missing
 end
 
-# TODO: maybe do it like rvm. it writes crap into:
-# .profile, .bashrc, .zshrc, .zlogin
-bashrc = "#{user_home}/.bashrc"
-file bashrc do
-  content File.read('/etc/skel/.bashrc')
+bash_profilerc = "#{user_home}/.bash_profile"
+file bash_profilerc do
   owner user_name
   group user_group
   action :create_if_missing
 end
 
-[profilerc, bashrc].each do |file|
+[profilerc, bash_profilerc].each do |file|
   ruby_block 'gem_user_confinement' do
     block do
       file = Chef::Util::FileEdit.new(file)
