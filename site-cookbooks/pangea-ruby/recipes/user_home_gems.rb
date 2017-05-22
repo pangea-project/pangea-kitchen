@@ -12,21 +12,21 @@ user_name = node['pangea_ruby']['home_user']
 user_group = user_name
 user_home = node['pangea_ruby']['home_user_home']
 
-profilerc = "#{user_home}/.profile"
-file profilerc do
+profile = "#{user_home}/.profile"
+file profile do
   owner user_name
   group user_group
   action :create_if_missing
 end
 
-bash_profilerc = "#{user_home}/.bash_profile"
-file bash_profilerc do
+bash_profile = "#{user_home}/.bash_profile"
+file bash_profile do
   owner user_name
   group user_group
   action :create_if_missing
 end
 
-[profilerc, bash_profilerc].each do |file|
+[profile, bash_profile].each do |file|
   ruby_block 'gem_user_confinement' do
     block do
       file = Chef::Util::FileEdit.new(file)
