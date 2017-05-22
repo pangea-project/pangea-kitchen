@@ -8,6 +8,7 @@
     "role[private-nameserver-client]",
     "recipe[jenkins-java-trusty]",
     "recipe[jenkins-slave]",
-    "recipe[pangea-ruby]"
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
   ]
 }
