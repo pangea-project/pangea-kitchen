@@ -1,7 +1,9 @@
 {
-  "pangea_ruby": {
-    "home_user": "jenkins-slave",
-    "home_user_home": "/var/lib/jenkins-slave"
+  "default" : {
+    "pangea_ruby": {
+      "home_user": "jenkins-slave",
+      "home_user_home": "/var/lib/jenkins-slave"
+    }
   },
   "run_list": [
     "role[server-common-core]",
