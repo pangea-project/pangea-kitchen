@@ -26,4 +26,4 @@ apt_repository 'certbot' do
   key '7BF576066ADA65728FC7E70A8C47BE8E75BCA694'
 end
 
-package 'python-certbot-apache'
+package %w[python-certbot-apache certbot]
