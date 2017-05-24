@@ -84,7 +84,7 @@ ExecReload=/usr/sbin/squid -k reconfigure -f /etc/squid-deb-proxy/squid-deb-prox
 [Install]
 WantedBy=multi-user.target
   EOF
-  action %i[create enable start]
+  action %i[create enable restart]
 end
 
 systemd_unit 'squid.service' do
