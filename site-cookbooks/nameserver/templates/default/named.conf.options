@@ -5,8 +5,8 @@ acl "trusted" {
 	// of anything as this nameserver will come back empty to public name requests
 	// and the client will have to shoot another request to fallback servers.
 	// i.e. servers not listed are slower to resolve names.
-	10.135.3.146;	# ns1
-	10.135.45.128;	# drax
+	10.135.3.146;	# old-ns1
+	10.135.69.54;	# ns1
 
 	// All networks we are listening on. With dynamically provisioned
 	// slaves we do not know their IPs beforehand so we trust all, this technically
@@ -24,7 +24,7 @@ options {
 
 	recursion yes;                 # enables resursive queries
 	allow-recursion { trusted; };  # allows recursive queries from "trusted" clients
-	listen-on { 10.135.3.146; };   # ns1 private IP address - listen on private network only
+	listen-on { 10.135.69.54; };   # ns1 private IP address - listen on private network only
 	allow-transfer { none; };      # disable zone transfers by default
 
 	forwarders {

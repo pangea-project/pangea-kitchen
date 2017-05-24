@@ -10,10 +10,10 @@ $TTL	604800
 			 604800 )	; Negative Cache TTL
 ;
 @	IN	NS	ns1.pangea.pub.
-3.146	IN	PTR	ns1
+69.54	IN	PTR	ns1
 
-3.146	IN	PTR	gem.cache
-3.146	IN	PTR	apt.cache
+69.54	IN	PTR	gem.cache
+69.54	IN	PTR	apt.cache
 
 56.13	IN	PTR	drax
 45.128	IN	PTR	drax-old

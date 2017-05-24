@@ -8,7 +8,6 @@
     "role[private-nameserver-client]"
   ],
   "automatic": {
-    "ipaddress": "46.101.188.72",
-    "hostname": "do-apt-cacher"
+    "ipaddress": "207.154.206.103"
   }
 }
