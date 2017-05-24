@@ -22,7 +22,9 @@
 # The package stupidly hardcodes 40G as cache size. Apparently math is rocket
 # science and determining what the maximum size of /var is cannot be done.
 # Or can it...
-_root_dev, root_values = node['filesystem'].find { |_dev, f| f['mount'] == '/' }
+# NOTE: this node attribute structure was introduced in Chef 13. This Cookbook
+#  requires chef >= 13 because of this line.
+root_values = node['filesystem']['by_mountpoint']['/']
 root_size_mb = root_values['kb_size'].to_i / 1024.0 # Squid uses MiB
 # We will use 75% of root for the cache, this should give us a good amount of
 # space whilest not having much of a chance to impair other functions of
