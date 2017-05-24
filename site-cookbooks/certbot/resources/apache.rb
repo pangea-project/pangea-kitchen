@@ -3,6 +3,7 @@ property :email, String
 property :redirect, kind_of: [TrueClass, FalseClass], default: true
 
 action :create do
+  include_recipe 'certbot::default'
   execute "certbot-apache-#{domains.join('_')}" do
     args = %w[--apache --non-interactive --agree-tos --no-eff-email]
     args << '--redirect' if redirect
