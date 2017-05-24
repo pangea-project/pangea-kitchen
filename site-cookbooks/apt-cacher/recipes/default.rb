@@ -53,12 +53,9 @@ end
 ruby_block 'twiddle squid-deb-proxy.conf' do
   block do
     file = Chef::Util::FileEdit.new('/etc/squid-deb-proxy/squid-deb-proxy.conf')
-    # Switch some weird crap around.
-    # The config uses a double invert which has weird side effects WRT access
-    # control to manage URI etc., change it to an allow (the config denies all,
-    # so explicit allow combined with that should give the same result)
-    file.search_file_replace_line(/http_access deny !to_archive_mirrors/,
-                                  'http_access allow to_archive_mirrors')
+    # Undo a stupid change previously done.
+    file.search_file_replace_line(/^\s*http_access allow to_archive_mirrors/,
+                                  'http_access deny !to_archive_mirrors')
     file.search_file_replace_line(%r{cache_dir aufs /var/cache/squid-deb-proxy},
                                   "cache_dir aufs /var/cache/squid-deb-proxy #{max_cache_size} 16 256")
     file.write_file
