@@ -26,3 +26,4 @@ $TTL	604800
 ; These have public counter-parts
 69.54	IN	PTR	gem.cache
 69.54	IN	PTR	apt.cache
+68.126	IN	PTR	monitoring
