@@ -12,9 +12,7 @@ $TTL	604800
 @	IN	NS	ns1.pangea.pub.
 69.54	IN	PTR	ns1
 
-69.54	IN	PTR	gem.cache
-69.54	IN	PTR	apt.cache
-
+; Internal names only
 56.13	IN	PTR	drax
 45.128	IN	PTR	drax-old
 
@@ -24,3 +22,7 @@ $TTL	604800
 18.190	IN	PTR	builder004.do
 19.91	IN	PTR	builder005.do
 21.173	IN	PTR	builder006.do
+
+; These have public counter-parts
+69.54	IN	PTR	gem.cache
+69.54	IN	PTR	apt.cache

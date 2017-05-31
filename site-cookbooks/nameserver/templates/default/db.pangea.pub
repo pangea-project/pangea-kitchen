@@ -12,9 +12,7 @@ $TTL	604800
 @	IN	NS	ns1.pangea.pub.
 ns1	IN	A	10.135.69.54
 
-gem.cache	IN	A	10.135.69.54
-apt.cache	IN	A	10.135.69.54
-
+; Internal names only
 drax		IN	A	10.135.56.13
 drax-old	IN	A	10.135.45.128
 
@@ -25,7 +23,10 @@ builder004.do	IN	A	10.135.18.190
 builder005.do	IN	A	10.135.19.91
 builder006.do	IN	A	10.135.21.173
 
-neon	IN	CNAME drax
+; These have public counter-parts
+gem.cache	IN	A	10.135.69.54
+apt.cache	IN	A	10.135.69.54
+neon		IN	CNAME drax
 
 ; Forward servers we have no private data for to Google.
 ns1.external	IN	A	8.8.8.8
