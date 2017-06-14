@@ -4,6 +4,17 @@
   ServerAlias <%= @params[:server_aliases].join(" ") %>
   <% end -%>
 
+  # Resume build can be called from anonymous scope as it has 0 permission
+  # checks (probably because it implements an upstream cause) which can result
+  # in anonymous users breaking builds by resuming at a non-resumable point
+  # in time.
+  # https://issues.jenkins-ci.org/browse/JENKINS-36333
+  <LocationMatch ^/(.+)/resume>
+    Order Allow,Deny
+    Deny from all
+  </LocationMatch>
+  ProxyPassMatch ^/(.+)/resume$ !
+
   ProxyPass         /  http://localhost:8080/ nocanon
   ProxyPassReverse  /  http://localhost:8080/
   #ProxyRequests     Off
