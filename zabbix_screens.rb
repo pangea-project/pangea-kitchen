@@ -98,6 +98,7 @@ zbx = ZabbixApi.connect(
   debug: false
 )
 
+screen_names = []
 zbx.hosts.all.each do |host, hostid|
   puts "#{host} #{hostid}"
   graphids = zbx.graphs.get_ids_by_host(host: host)
@@ -105,8 +106,10 @@ zbx.hosts.all.each do |host, hostid|
     graph = OpenStruct.new(zbx.graphs.dump_by_id(graphid: graphid)[0])
     NAME_FILTERS.any? { |f| graph.name.include?(f) }
   end
-  screen = zbx.screens.get_id(name: host)
+  name = "#{host}.autoscreen"
+  screen_names << name
 
+  screen = zbx.screens.get_id(name: name)
   if screen
     screenitems = zbx.client.api_request(
       method: 'screen.get',
@@ -138,11 +141,19 @@ zbx.hosts.all.each do |host, hostid|
   vsize = graphids.size / hsize
   vsize += 1 if graphids.size % hsize
 
-  id = zbx.screens.get_or_create_for_host(screen_name: host,
+  id = zbx.screens.get_or_create_for_host(screen_name: name,
                                           graphids: graphids,
                                           vsize: vsize,
                                           hsize: hsize,
                                           width: 500,
                                           height: 100)
   puts "Created screen for #{host} with id #{id}"
+end
+
+dangling_screens = zbx.screens.all.reject do |name, _id|
+  screen_names.include?(name) || !name.end_with?('.autoscreen')
+end
+dangling_screens.each do |name, id|
+  puts "Deleting #{name}(#{id}) as its host appears to have disappeared."
+  zbx.screens.delete(id)
 end
