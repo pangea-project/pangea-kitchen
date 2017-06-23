@@ -70,6 +70,15 @@ web_app 'mci_images' do
   cookbook 'apache2'
 end
 
+web_app 'mci_images_new' do
+  server_name 'images.plasma-mobile.org'
+  server_port 80
+  docroot '/home/mci/images-new'
+  directory_options %w(Indexes FollowSymLinks)
+  allow_override 'All'
+  cookbook 'apache2'
+end
+
 web_app 'halium_repo' do
   server_name 'repo.halium.org'
   server_port 80
