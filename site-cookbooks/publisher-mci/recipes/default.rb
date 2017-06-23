@@ -69,3 +69,12 @@ web_app 'mci_images' do
   allow_override 'All'
   cookbook 'apache2'
 end
+
+web_app 'halium_repo' do
+  server_name 'repo.halium.org'
+  server_port 80
+  docroot '/home/mci/aptly/public/halium'
+  directory_options %w(Indexes FollowSymLinks)
+  allow_override 'All'
+  cookbook 'apache2'
+end
