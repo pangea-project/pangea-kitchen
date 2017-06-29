@@ -15,6 +15,13 @@
   </LocationMatch>
   ProxyPassMatch ^/(.+)/resume$ !
 
+  <% if @params[:cerbot] -%>
+  # When cerbotting we'll need to make sure jenkins knows it is proxyed through
+  # https so its internal reverse-proxy checks do not trip up.
+  RequestHeader set X-Forwarded-Proto "https"
+  RequestHeader set X-Forwarded-Port "443"
+  <% end -%>
+
   ProxyPass         /  http://localhost:8080/ nocanon
   ProxyPassReverse  /  http://localhost:8080/
   #ProxyRequests     Off

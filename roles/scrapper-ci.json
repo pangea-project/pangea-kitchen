@@ -3,7 +3,8 @@
   "default_attributes": {
     "jenkins-master-apache" : {
       "server_port": "80",
-      "server_name": "build.neon.kde.org"
+      "server_name": "build.neon.kde.org",
+      "certbot": true
     }
   },
   "run_list": [

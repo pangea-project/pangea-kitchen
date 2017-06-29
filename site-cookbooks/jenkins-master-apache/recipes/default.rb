@@ -11,6 +11,7 @@ params = {
   template: 'jenkins.conf.erb',
   local: false,
   enable: true,
+  certbot: node['jenkins-master-apache']['certbot'],
 
   server_port: node['jenkins-master-apache']['server_port'],
   server_name: node['jenkins-master-apache']['server_name'],
@@ -26,6 +27,9 @@ include_recipe 'apache2::default'
 include_recipe 'apache2::mod_proxy'
 include_recipe 'apache2::mod_proxy_http'
 
+certbot_it = params[:certbot]
+service_reload_type = certbot_it ? :immediately : :delayed
+
 template "#{node['apache']['dir']}/sites-available/#{application_name}.conf" do
   source params[:template]
   local params[:local]
@@ -37,14 +41,21 @@ template "#{node['apache']['dir']}/sites-available/#{application_name}.conf" do
     application_name: application_name,
     params: params
   )
-  if ::File.exist?("#{node['apache']['dir']}/sites-enabled/#{application_name}.conf")
-    notifies :reload, 'service[apache2]', :delayed
-  end
+  notifies :reload, 'service[apache2]', service_reload_type
 end
 
 site_enabled = params[:enable]
 apache_site params[:name] do
   enable site_enabled
+  notifies :reload, 'service[apache2]', service_reload_type
+end
+
+if certbot_it
+  certbot_apache params[:server_name] do
+    domains [params[:server_name]]
+    redirect true
+    email 'sitter@kde.org'
+  end
 end
 
 # Say thanks to Riddell for this.
