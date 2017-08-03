@@ -15,6 +15,17 @@
   </LocationMatch>
   ProxyPassMatch ^/(.+)/resume$ !
 
+  # Neon specific workaround. Jenkins is super shit at transfering large files
+  # and aborts the session randomly. Software which can't deal with this will
+  # get corrupted artifacts. To prevent this happening with snapcraft using our
+  # kf5 snap dev tarball we'll handle GETs through apache.
+  <Directory "/var/lib/jenkins/jobs/kde-frameworks-5-release_amd64.snap/lastSuccessful/archive/">
+    Require all granted
+  </Directory>
+  Alias "/job/kde-frameworks-5-release_amd64.snap/lastSuccessfulBuild/artifact/" \
+        "/var/lib/jenkins/jobs/kde-frameworks-5-release_amd64.snap/lastSuccessful/archive/"
+  ProxyPassMatch ^/job/kde-frameworks-5-release_amd64.snap/lastSuccessfulBuild/artifact/(.+)$ !
+
   <% if @params[:cerbot] -%>
   # When cerbotting we'll need to make sure jenkins knows it is proxyed through
   # https so its internal reverse-proxy checks do not trip up.
