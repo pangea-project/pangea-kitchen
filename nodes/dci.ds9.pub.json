@@ -1,5 +1,14 @@
 {
+  "name": "dci.ds9.pub",
   "run_list": [
-    "publisher::default"
-  ]
+    "publisher"
+  ],
+
+  "override_attributes": {
+    "aptly": {
+      "address": "dci.ds9.pub",
+      "apiport": 8081,
+      "user": "dci"
+    }
+  }
 }

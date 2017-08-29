@@ -5,6 +5,6 @@
   "chef_type": "role",
   "run_list": [
     "role[server-common]",
-    "recipe['publisher']"
+    "recipe[publisher]"
   ]
 }

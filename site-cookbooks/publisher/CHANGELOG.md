@@ -1,11 +1,11 @@
-repos CHANGELOG
-===============
+publisher CHANGELOG
+=======================
 
-This file is used to list changes made in each version of the repos cookbook.
+This file is used to list changes made in each version of the publisher cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of repos
+- [your_name] - Initial release of publisher
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
