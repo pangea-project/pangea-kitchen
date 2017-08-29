@@ -1,0 +1,11 @@
+author "Rohan Garg <rohan@garg.io>"
+description "Expose aptly webserver on publisher"
+
+start on starting <%= @user %>_aptly
+
+console log
+setuid "<%= @user %>"
+setgid "<%= @group %>"
+chdir "<%= @dir %>"
+
+exec aptly serve -listen ":<%= @port %>"
