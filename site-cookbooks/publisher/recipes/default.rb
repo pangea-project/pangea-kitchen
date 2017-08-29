@@ -34,11 +34,11 @@ end
 # GPG
 include_recipe 'bsw_gpg::default'
 
-# user = node['aptly']['user']
-# bsw_gpg_load_key_from_string 'a string key' do
-#   key_contents KeyBag.load(user)
-#   for_user user
-# end
+user = node['aptly']['user']
+bsw_gpg_load_key_from_string 'a string key' do
+  key_contents KeyBag.load(user)
+  for_user user
+end
 
 # Apache
 address = node['aptly']['address']

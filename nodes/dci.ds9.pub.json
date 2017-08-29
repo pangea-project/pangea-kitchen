@@ -9,6 +9,10 @@
       "address": "dci.ds9.pub",
       "apiport": 8081,
       "user": "dci"
+    },
+
+    "apache": {
+      "redirects": []
     }
   }
 }
