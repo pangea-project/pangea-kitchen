@@ -16,11 +16,10 @@
 			"dependencyfollowrecommends": true,
 			"keyserver": "keyserver.ubuntu.com",
 			"architectures": ["amd64", "armhf", "i386", "all", "source", "arm64"]
-			}
-		},
+      },
 
-		"apache": {
-			"redirects": []
-		}
-	}
+    "apache": {
+      "redirects": []
+    }
+  }
 }
