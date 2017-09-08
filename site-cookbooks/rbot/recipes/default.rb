@@ -96,7 +96,7 @@ Group=#{group_name}
 RuntimeMaxSec=4hours
 EOF
   triggers_reload
-  action %i[create enable]
+  action %i[create]
 end
 
 systemd_unit "rbot-#{user_name}.timer" do
