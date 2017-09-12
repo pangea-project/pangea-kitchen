@@ -14,6 +14,7 @@
     "recipe[nci-disk]",
     "recipe[neon-sftp-bridge]",
     "recipe[pangea-ruby::install]",
-    "recipe[pangea-ruby::user_home_gems]"
+    "recipe[pangea-ruby::user_home_gems]",
+    "recipe[neon_websites]"
   ]
 }
