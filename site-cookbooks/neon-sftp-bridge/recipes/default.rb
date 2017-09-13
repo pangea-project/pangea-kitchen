@@ -103,6 +103,17 @@ execute 'daemon-reload' do
   command 'systemctl daemon-reload'
 end
 
+execute 'daemon-reload-user' do
+  command 'systemctl --user daemon-reload'
+  user username
+  group groupname
+  environment lazy {
+    { 'DBUS_SESSION_BUS_ADDRESS' =>
+      "unix:path=/run/user/#{node['etc']['passwd'][username]['uid']}/bus" }
+  }
+  action :nothing
+end
+
 #   The dbus-user-session installs a bus socket activation, but we need to make
 #   sure the user service is being started so systemd controls the socket.
 service 'neon-sftp-bridge@dbus' do
@@ -131,5 +142,6 @@ end
 
 systemd_unit 'neon-sftp-bridge.service' do
   user username
-  action [:reload, :enable, :start]
+  notifies :run, 'execute[daemon-reload-user]', :immediately
+  action [:enable, :start]
 end
