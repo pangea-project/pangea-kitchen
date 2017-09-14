@@ -1,0 +1,16 @@
+;
+; BIND data file for internal domain space within neon.kde.org
+; This is used to address hosts with a purely internal name through our
+; pangea.pub internal name server.
+;
+$TTL	604800
+@	IN	SOA	ns1.pangea.pub. sitter.kde.org. (
+			<%= @serial %>	; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@	IN	NS	ns1.pangea.pub.
+
+download.kde	IN	CNAME	drax.pangea.pub.

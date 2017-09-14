@@ -24,13 +24,15 @@ service 'bind9' do
   action %i[enable start]
 end
 
-%w[named.conf.options named.conf.local db.10.135 db.pangea.pub].each do |file|
+%w[named.conf.options named.conf.local
+   db.10.135
+   db.pangea.pub db.internal.neon.kde.org].each do |file|
   template "/etc/bind/#{file}" do
     source file
     owner 'root'
     group 'bind' # NB: bind9 is run as user bind, we'll want it to read
     variables serial: Time.now.utc.to_i
     mode 0o640
-    notifies :restart, 'service[bind9]'
+    notifies :reload, 'service[bind9]'
   end
 end
