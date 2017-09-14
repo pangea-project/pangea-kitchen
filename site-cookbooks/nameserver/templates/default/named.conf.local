@@ -4,6 +4,14 @@ zone "pangea.pub" {
 //    allow-transfer { 10.135.3.146; };           # ns2 private IP address - secondary
 };
 
+// See db.pangea.pub why we explicitly forward this zone.
+zone "monitoring.pangea.pub" IN {
+    type forward;
+    forwarders {
+        8.8.8.8;
+    };
+};
+
 // Internal mapping zone for neon. This zone is used as a fake address space
 // only relevant for neon. It's useful to give unique addresses to specific
 // services we run on a privately available server for internal purposes only.
