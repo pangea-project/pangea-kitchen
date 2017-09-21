@@ -1,0 +1,4 @@
+# This sets the ruby version we want for pangea infrastrucutre. It is used
+# by our cookbooks and docker provisioning to determine whether to
+# install a newer ruby in /usr/local/
+'2.4.1'

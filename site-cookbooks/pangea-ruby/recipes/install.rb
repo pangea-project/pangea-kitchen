@@ -19,7 +19,10 @@ apt_package 'ruby' do
   action :purge
 end
 
-ruby_build_ruby '2.4.0' do
+# The target ruby version. The actual version is loaded from our yaml config.
+# It's not an attribute because we want it visibly outside the tree and
+# we don't want this overridden.
+ruby_build_ruby YAML.load_file("#{__dir__}/ruby_version.yaml") do
   prefix_path '/usr/local'
   # Skip documentation, we don't need it.
   environment('CONFIGURE_OPTS' => '--disable-install-doc')
