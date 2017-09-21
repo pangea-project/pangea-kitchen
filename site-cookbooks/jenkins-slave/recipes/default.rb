@@ -8,9 +8,6 @@
 
 slave_home = '/var/lib/jenkins-slave'
 
-include_recipe 'jenkins-slave::ruby' if
-  Chef::VersionConstraint.new('< 16.04').include?(node['platform_version'])
-
 include_recipe 'user'
 include_recipe 'openssh'
 
