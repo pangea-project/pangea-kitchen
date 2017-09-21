@@ -1,4 +1,8 @@
 # This sets the ruby version we want for pangea infrastrucutre. It is used
 # by our cookbooks and docker provisioning to determine whether to
 # install a newer ruby in /usr/local/
+
+# WARNING: when changing this field ALL persistent nodes need to get
+#   cooked AND their tooling redeployed (so that gems don't become unavailable)
+
 '2.4.1'
