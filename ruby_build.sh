@@ -28,10 +28,18 @@ set -ex
 ./ruby_version_check.rb && exit 0
 echo 'No suitable ruby found, going to build a new one....'
 
+CHEF_VERSION="13"
 # Install chef (+ knife + chef-client)
-wget https://omnitruck.chef.io/install.sh
-chmod +x install.sh
-./install.sh -v 13
+if ./is_x86.rb; then
+  wget https://omnitruck.chef.io/install.sh
+  chmod +x install.sh
+  ./install.sh -v $CHEF_VERSION
+else
+  # On !intel architectures we need to do a gem based install as omnibus
+  # only has x86 builds and we need chef on arm as well.
+  echo 'System detected as non-x86, provisioning chef through gem!'
+  gem install --no-document --version "~> $CHEF_VERSION" chef
+fi
 
 export NO_CUPBOARD=1 # Disable cupboard use (requires manual unlocking)
 
