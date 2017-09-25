@@ -3,6 +3,10 @@
   "description": "",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "pangea_ruby": {
+      "home_user": "jenkins-slave",
+      "home_user_home": "/var/lib/jenkins-slave"
+    },
     "docker" : {
       "user": "docker",
       "group": "docker",
@@ -19,7 +23,9 @@
   "run_list": [
     "role[server-common]",
     "recipe[jenkins-java-trusty]",
-    "recipe[jenkins-slave]"
+    "recipe[jenkins-slave]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
   ],
   "env_run_lists": {
 
