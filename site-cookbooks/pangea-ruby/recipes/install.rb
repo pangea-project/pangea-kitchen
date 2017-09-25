@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Make sure we have the most recent ruby-build
+node.default['ruby_build']['upgrade'] = 'sync'
 include_recipe 'ruby_build::default'
 
 # additional build depends
@@ -22,10 +24,17 @@ end
 # The target ruby version. The actual version is loaded from our yaml config.
 # It's not an attribute because we want it visibly outside the tree and
 # we don't want this overridden.
-ruby_build_ruby YAML.load_file("#{__dir__}/ruby_version.yaml") do
+target_version = YAML.load_file("#{__dir__}/ruby_version.yaml")
+ruby_build_ruby target_version do
   prefix_path '/usr/local'
   # Skip documentation, we don't need it.
   environment('CONFIGURE_OPTS' => '--disable-install-doc')
+  action %i[install reinstall]
+  # The cookbook is very daft and does not even try to determine if the version
+  # add up. So, override it. The resource is going to do a reinstall but we'll
+  # only run it if the actively used ruby version is not the target version
+  # we want.
+  not_if { `ruby -v`.strip.include?("ruby #{target_version}") }
 end
 
 file '/usr/local/etc/gemrc' do
