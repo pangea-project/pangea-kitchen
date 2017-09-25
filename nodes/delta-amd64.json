@@ -1,8 +1,0 @@
-{
-  "run_list": [
-    "role[jenkins-slave-amd64]"
-  ],
-  "automatic": {
-    "ipaddress": "delta-amd64"
-  }
-}
