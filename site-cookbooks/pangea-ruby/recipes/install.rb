@@ -24,7 +24,13 @@ end
 # The target ruby version. The actual version is loaded from our yaml config.
 # It's not an attribute because we want it visibly outside the tree and
 # we don't want this overridden.
-target_version = YAML.load_file("#{__dir__}/ruby_version.yaml")
+# NB: this is in files because otherwise chef-client --local-mode will not
+#    provide it in the cache -.-
+version_file =
+  format('%s/cookbooks/pangea-ruby/files/default/ruby_version.yaml',
+         Chef::Config[:file_cache_path])
+target_version = YAML.load_file(version_file)
+
 ruby_build_ruby target_version do
   prefix_path '/usr/local'
   # Skip documentation, we don't need it.

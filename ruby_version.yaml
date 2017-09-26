@@ -1,1 +1,1 @@
-site-cookbooks/pangea-ruby/recipes/ruby_version.yaml
+site-cookbooks/pangea-ruby/files/default/ruby_version.yaml

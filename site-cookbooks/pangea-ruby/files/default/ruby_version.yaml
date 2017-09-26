@@ -5,4 +5,6 @@
 # WARNING: when changing this field ALL persistent nodes need to get
 #   cooked AND their tooling redeployed (so that gems don't become unavailable)
 
+# WARNING: this file is symlinked to!
+
 '2.4.1'
