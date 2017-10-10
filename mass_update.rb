@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 #
-# Copyright (C) 2016 Harald Sitter <sitter@kde.org>
+# Copyright (C) 2016-2017 Harald Sitter <sitter@kde.org>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
@@ -18,7 +18,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-(1..6).each do |i|
+(1..4).each do |i|
   host = format('do-builder-%03d', i)
   puts "---- #{host} -----"
   system('ssh', "root@#{host}", 'apt', 'update')
