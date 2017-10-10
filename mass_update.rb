@@ -21,6 +21,10 @@
 (1..4).each do |i|
   host = format('do-builder-%03d', i)
   puts "---- #{host} -----"
+  # Make sure old kernels get ripped out (first thing as to speed up grub's
+  # postinst) also we'll want to keep the running kernel in case a rollback is
+  # needed.
+  system('ssh', "root@#{host}", 'apt-get', 'autoremove', '--purge', '-y')
   system('ssh', "root@#{host}", 'apt', 'update')
   system('ssh', "root@#{host}", 'apt', 'dist-upgrade', '-y')
   # Workaround a bug in zabbix where it doesn't enable its systemd
