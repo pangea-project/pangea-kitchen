@@ -1,6 +1,11 @@
 {
   "name": "scrapper-ci",
   "default_attributes": {
+    "jenkins": {
+      "master": {
+        "listen_address": "127.0.0.1"
+      }
+    },
     "jenkins-master-apache" : {
       "server_port": "80",
       "server_name": "build.neon.kde.org",
