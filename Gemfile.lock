@@ -1,4 +1,8 @@
 GEM
+  remote: https://api.rubygems.org/
+  specs:
+
+GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.5.1)
@@ -167,7 +171,7 @@ GEM
     nio4r (2.1.0)
     nori (2.6.0)
     octokit (4.7.0)
-      sawyer (~> 0.8.0, >= 0.5.3)
+      sawyer (>= 0.5.3, ~> 0.8.0)
     ohai (8.24.0)
       chef-config (>= 12.5.0.alpha.1, < 14)
       ffi (~> 1.9)
@@ -222,7 +226,7 @@ GEM
     rspec-support (3.6.0)
     rspec_junit_formatter (0.2.3)
       builder (< 4)
-      rspec-core (>= 2, < 4, != 2.12.0)
+      rspec-core (>= 2, != 2.12.0, < 4)
     rubyntlm (0.6.2)
     rubyzip (1.2.1)
     sawyer (0.8.1)
@@ -281,6 +285,3 @@ DEPENDENCIES
   chef-dk
   knife-solo
   zabbixapi (~> 2.4.0)
-
-BUNDLED WITH
-   1.14.2
