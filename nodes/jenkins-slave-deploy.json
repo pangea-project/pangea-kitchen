@@ -1,4 +1,11 @@
 {
+  "fail2ban": {
+    "services": {
+      "ssh": {
+        "maxretry": 1
+      }
+    }
+  },
   "run_list": [
     "role[jenkins-cloud-slave-amd64]"
   ]
