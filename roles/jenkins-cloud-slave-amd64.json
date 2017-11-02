@@ -3,6 +3,14 @@
     "pangea_ruby": {
       "home_user": "jenkins-slave",
       "home_user_home": "/var/lib/jenkins-slave"
+    },
+    "fail2ban": {
+      "services": {
+        "ssh": {
+          "maxretry": 1,
+          "bantime": "3600"
+        }
+      }
     }
   },
   "run_list": [
