@@ -10,18 +10,6 @@
     ErrorLog ${APACHE_LOG_DIR}/<%= @server_name %>-error.log
     CustomLog ${APACHE_LOG_DIR}/<%= @server_name %>.log combined
 
-    # This is a full forward proxy, forwarding all requests.
-    # BUT we send them all to squid and let squid sort out unwanted clients.
-    # So ultimately this isn't a public forwarding proxy as everything goes
-    # through squid and squid throws out rubbish requests.
-    AllowEncodedSlashes NoDecode
-    ProxyRequests On
-    ProxyPreserveHost On
-    ProxyPass /.well-known/acme-challenge/ !
-    ProxyRemote * http://localhost:8000
-
-    # This is the ACL mechanism, disable it, we have ACLs in squid.
-    <Proxy *>
-      Require all granted
-    </Proxy>
+    # Redirect to squid
+    Redirect "/" "http://<%= @server_name %>:8000/"
 </VirtualHost>

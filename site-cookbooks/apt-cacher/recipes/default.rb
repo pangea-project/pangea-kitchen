@@ -147,9 +147,3 @@ end
 apache_site server_name do
   enable true
 end
-
-certbot_apache server_name do
-  domains [server_name]
-  redirect false
-  email 'sitter@kde.org'
-end
