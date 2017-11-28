@@ -44,12 +44,6 @@ apt_package %w[apt-cacher-ng avahi-daemon] do
   action :purge
 end
 
-file '/etc/squid-deb-proxy/mirror-dstdomain.acl.d/0-neon' do
-  # NB: the concatenation helper of init-common is shitty and needs a \n to
-  #    not break the concatenated file
-  content ".archive.neon.kde.org\n"
-end
-
 ruby_block 'twiddle squid-deb-proxy.conf' do
   block do
     file = Chef::Util::FileEdit.new('/etc/squid-deb-proxy/squid-deb-proxy.conf')
@@ -91,6 +85,13 @@ end
 systemd_unit 'squid.service' do
   # Disable regular squid, we don't need it
   action %i[disable stop]
+end
+
+file '/etc/squid-deb-proxy/mirror-dstdomain.acl.d/0-neon' do
+  # NB: the concatenation helper of init-common is shitty and needs a \n to
+  #    not break the concatenated file
+  content ".archive.neon.kde.org\n"
+  notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
 end
 
 # Wire into apache.
