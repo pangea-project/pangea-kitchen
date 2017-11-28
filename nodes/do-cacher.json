@@ -14,7 +14,7 @@
         "filter": "squid",
         "port": "http,https",
         "bantime": "3600",
-        "maxretry": "3",
+        "maxretry": "1",
         "logpath": "/var/log/squid-deb-proxy/access.log"
       },
       "apache-403": {
