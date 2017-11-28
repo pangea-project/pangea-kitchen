@@ -79,6 +79,7 @@ ExecStartPre=/bin/bash -c '. /usr/share/squid-deb-proxy/init-common.sh; pre_star
 ExecStart=/usr/sbin/squid -N -f /etc/squid-deb-proxy/squid-deb-proxy.conf
 ExecStartPost=/bin/bash -c '. /usr/share/squid-deb-proxy/init-common.sh; post_start'
 ExecStop=/usr/sbin/squid -k shutdown -f /etc/squid-deb-proxy/squid-deb-proxy.conf
+ExecReload=/bin/bash -c '. /usr/share/squid-deb-proxy/init-common.sh; pre_start'
 ExecReload=/usr/sbin/squid -k reconfigure -f /etc/squid-deb-proxy/squid-deb-proxy.conf
 
 [Install]
