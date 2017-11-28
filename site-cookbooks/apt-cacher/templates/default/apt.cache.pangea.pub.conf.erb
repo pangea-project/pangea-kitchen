@@ -16,6 +16,7 @@
     # through squid and squid throws out rubbish requests.
     AllowEncodedSlashes NoDecode
     ProxyRequests On
+    ProxyPreserveHost On
     ProxyPass /.well-known/acme-challenge/ !
     ProxyRemote * http://localhost:8000
 
