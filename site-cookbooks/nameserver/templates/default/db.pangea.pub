@@ -26,6 +26,7 @@ builder006.do	IN	A	10.135.21.173
 ; These have public counter-parts
 gem.cache	IN	A	10.135.69.54
 apt.cache	IN	A	10.135.69.54
+files.kde.mirror	IN	A	10.135.69.54
 neon		IN	CNAME drax
 
 ; Forward servers we have no private data for to Google.
