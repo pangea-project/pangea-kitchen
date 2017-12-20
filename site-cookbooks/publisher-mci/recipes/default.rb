@@ -58,7 +58,7 @@ web_app 'mci_web_repo' do
   docroot '/home/mci/aptly/public/mci'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
-  cookbook 'apache2'
+  apiport 9090
 end
 
 web_app 'mci_images' do
