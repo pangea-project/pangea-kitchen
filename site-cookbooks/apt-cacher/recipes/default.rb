@@ -112,6 +112,7 @@ fe80::/64
 46.101.118.115 # drax (public DO)
 147.75.32.190 # armhf builder (packet)
 147.75.105.102 # arm64 builder (packet)
+207.154.244.6 # mobile.neon.pangea.pub (mci)
   CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
 end
