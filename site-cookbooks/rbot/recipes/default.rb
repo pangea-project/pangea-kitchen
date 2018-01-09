@@ -89,6 +89,7 @@ systemd_unit "rbot-#{user_name}.service" do
 Description=rbot
 
 [Service]
+ExecStartPre=/usr/local/bin/bundle install
 ExecStart=/usr/local/bin/bundle exec #{user_home}/rbot/launch_here.rb
 WorkingDirectory=#{user_home}/rbot
 User=#{user_name}
