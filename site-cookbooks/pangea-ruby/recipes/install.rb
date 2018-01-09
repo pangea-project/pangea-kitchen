@@ -40,7 +40,13 @@ ruby_build_ruby target_version do
   # add up. So, override it. The resource is going to do a reinstall but we'll
   # only run it if the actively used ruby version is not the target version
   # we want.
-  not_if { `ruby -v`.strip.include?("ruby #{target_version}") }
+  not_if do
+    begin
+      `ruby -v`.strip.include?("ruby #{target_version}")
+    rescue Errno::ENOENT # ruby not installed yet
+      false
+    end
+  end
 end
 
 file '/usr/local/etc/gemrc' do
