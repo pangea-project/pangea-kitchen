@@ -102,8 +102,9 @@ docker_installation_package 'default' do
 end
 
 docker_service 'default' do
-  action :restart
-  userns_remap '100000:120'
+  action :start
+  # Only remap unless disabled
+  userns_remap node['jenkins-slave']['no-userns-remap'] ? nil : '100000:120'
 end
 
 group 'docker' do
