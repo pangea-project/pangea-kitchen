@@ -25,3 +25,7 @@ systemd_journald 'enable-peristence' do
     [node.fetch('platform'), node.fetch('platform_version')] != %w(ubuntu 14.04)
   end
 end
+
+# Make sure tzdata is installed for timezone cookbook.
+apt_update
+apt_package 'tzdata'
