@@ -1,0 +1,6 @@
+{
+  "run_list": [
+    "role[jenkins-slave-amd64]",
+    "role[private-nameserver-client]"
+  ]
+}
