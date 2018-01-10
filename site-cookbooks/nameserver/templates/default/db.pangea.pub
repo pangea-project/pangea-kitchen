@@ -33,12 +33,4 @@ neon		IN	CNAME drax
 ns1.external	IN	A	8.8.8.8
 dci		IN	NS	ns1.external
 mobile.neon	IN	NS	ns1.external
-
-; Something is shit with the setup of the monitoring. subdomain
-; It causes:
-;   Sep 14 12:08:39 do-cacher named[24856]: DNS format error from 8.8.8.8#53 resolving
-;   monitoring.pangea.pub/AAAA for client 10.135.56.13#42263:
-;   Name pangea.pub (SOA) not subdomain of zone monitoring.pangea.pub -- invalid response
-; We instead forward it to external DNS via named.conf.local by separating its
-; zone.
-; monitoring	IN	NS	ns1.external
+monitoring	IN	NS	ns1.external
