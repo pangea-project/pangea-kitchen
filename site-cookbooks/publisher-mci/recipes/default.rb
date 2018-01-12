@@ -87,3 +87,12 @@ web_app 'halium_repo' do
   allow_override 'All'
   cookbook 'apache2'
 end
+
+web_app 'pinebook_repo' do
+  server_name 'pinebook.kde.org.uk'
+  server_port 80
+  docroot '/home/mci/aptly/public/pinebook'
+  directory_options %w(Indexes FollowSymLinks)
+  allow_override 'All'
+  cookbook 'apache2'
+end
