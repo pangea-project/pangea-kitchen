@@ -27,5 +27,5 @@ systemd_journald 'enable-peristence' do
 end
 
 # Make sure tzdata is installed for timezone cookbook.
-apt_update
+apt_update 'update_for_tzdata'
 apt_package 'tzdata'
