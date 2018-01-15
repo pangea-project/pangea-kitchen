@@ -113,6 +113,7 @@ fe80::/64
 147.75.32.190 # armhf builder (packet)
 147.75.105.102 # arm64 builder (packet)
 207.154.244.6 # mobile.neon.pangea.pub (mci)
+147.75.82.195 # openqa node (packet)
   CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
 end
