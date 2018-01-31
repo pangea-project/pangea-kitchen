@@ -8,7 +8,6 @@ DEPENDENCIES
   chef-unattended-upgrades
     git: https://github.com/firstbanco/chef-unattended-upgrades
     revision: 13b0b86386d87ee4d19ae62451ca7f37b9c87d02
-  compat_resource
   docker
   fail2ban
   filesystem (~> 0.10.6)
@@ -41,7 +40,6 @@ GRAPH
   chef-unattended-upgrades (1.0.1)
     apt (>= 0.0.0)
   chef_gem (0.1.0)
-  compat_resource (12.19.1)
   cron (4.1.1)
     compat_resource (>= 0.0.0)
   dmg (4.0.0)

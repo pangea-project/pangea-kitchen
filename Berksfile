@@ -12,7 +12,6 @@ cookbook 'aptly'
 ## we need 3.1 compat
 cookbook 'apache2', '~> 3.1'
 cookbook 'bsw_gpg', '~> 0.2.3'
-cookbook 'compat_resource'
 cookbook 'docker'
 cookbook 'fail2ban'
 cookbook 'filesystem', '~> 0.10.6'
