@@ -41,7 +41,7 @@ GRAPH
   chef-unattended-upgrades (1.0.1)
     apt (>= 0.0.0)
   chef_gem (0.1.0)
-  compat_resource (12.19.0)
+  compat_resource (12.19.1)
   cron (4.1.1)
     compat_resource (>= 0.0.0)
   dmg (4.0.0)
