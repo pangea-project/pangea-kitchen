@@ -5,6 +5,8 @@ cookbook 'apt-cacher-ng',
          git: 'https://github.com/markolson/chef-apt-cacher-ng.git'
 cookbook 'chef-unattended-upgrades',
          git: 'https://github.com/firstbanco/chef-unattended-upgrades'
+cookbook 'compat_resource',
+         git: 'https://github.com/chef-boneyard/compat_resource'
 
 # From supermarket
 cookbook 'aptly'
