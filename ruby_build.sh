@@ -38,7 +38,10 @@ else
   # On !intel architectures we need to do a gem based install as omnibus
   # only has x86 builds and we need chef on arm as well.
   echo 'System detected as non-x86, provisioning chef through gem!'
-  gem install --no-document --version "~> $CHEF_VERSION" chef
+  BINPATH=$PWD/.ruby_build_bin
+  [ -d BINPATH ] || mkdir BINPATH
+  export PATH=$BINPATH:$PATH
+  gem install --bindir $BINPATH --no-document --version "~> $CHEF_VERSION" chef
 fi
 
 export NO_CUPBOARD=1 # Disable cupboard use (requires manual unlocking)
