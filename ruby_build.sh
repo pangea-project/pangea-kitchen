@@ -44,7 +44,14 @@ fi
 export NO_CUPBOARD=1 # Disable cupboard use (requires manual unlocking)
 
 # Instead of berksing this, use knife to download the single dependency. Faster.
-knife supermarket install ruby_build
+#knife supermarket install ruby_build
+# ^ broken because of a bug in chef which tries to show the cookbok
+#  compat_resource is deprecated for, but that is nil so
+#   /var/lib/gems/2.3.0/gems/chef-13.7.16/lib/chef/knife/cookbook_site_download.rb:108:in `basename': no implicit conversion of nil into String (TypeError)
+# ... so we berks instead
+gem install --no-document berkshelf
+berks install
+berks vendor
 
 chef-client --local-mode --enable-reporting  -o 'pangea-ruby::install'
 
