@@ -44,7 +44,12 @@ fi
 export NO_CUPBOARD=1 # Disable cupboard use (requires manual unlocking)
 
 # Instead of berksing this, use knife to download the single dependency. Faster.
-knife supermarket install ruby_build -VV
+# knife supermarket install ruby_build -VV
+# knife install is currently broken: https://github.com/blue-systems/pangea-kitchen/issues/3
+# berks however works, use that for now until above is resolved.
+bundle install
+berks install # lock cookbook dependencies
+berks vendor  # install cookbook dependencies in berks-cookbooks
 
 chef-client --local-mode --enable-reporting  -o 'pangea-ruby::install'
 
