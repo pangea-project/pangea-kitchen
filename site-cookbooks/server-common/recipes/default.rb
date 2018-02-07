@@ -29,3 +29,5 @@ end
 # Make sure tzdata is installed for timezone cookbook.
 apt_update 'update_for_tzdata'
 apt_package 'tzdata'
+# Make sure all servers have gpg2, we use this for most signing activity.
+apt_package 'gnupg2'
