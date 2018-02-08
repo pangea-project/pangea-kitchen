@@ -90,7 +90,7 @@ end
 file '/etc/squid-deb-proxy/mirror-dstdomain.acl.d/0-neon' do
   # NB: the concatenation helper of init-common is shitty and needs a \n to
   #    not break the concatenated file
-  content ".archive.neon.kde.org\n"
+  content ".archive.neon.kde.org\n.metadata.neon.kde.org\n"
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
 end
 
