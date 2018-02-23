@@ -8,4 +8,4 @@ setuid "<%= @user %>"
 setgid "<%= @group %>"
 chdir "<%= @dir %>"
 
-exec aptly api serve -listen "localhost:<%= @port %>"
+exec aptly api serve -no-lock -listen "localhost:<%= @port %>"
