@@ -45,25 +45,33 @@ bash 'gem-install-bundler' do
   code 'gem install bundler'
 end
 
-bash 'bundle-update' do
-  code "bundle update --jobs=#{`nproc`.chop}"
-  cwd rbot_dir
-  user user_name
-  group group_name
-end
-
 directory "#{user_home}/.rbot" do
   owner user_name
   group group_name
   mode 0o700
 end
 
-git "#{user_home}/.rbot/netbotter-plugins" do
+plugins_dir = "#{user_home}/.rbot/netbotter-plugins"
+git plugins_dir do
   repository 'https://github.com/blue-systems/netbotter-plugins.git'
   depth 1
   user user_name
   group group_name
   action :sync
+end
+
+file "#{user_home}/Gemfile" do
+  content <<-GEMFILE
+instance_eval(File.read('#{rbot_dir}/Gemfile'))
+instance_eval(File.read('#{plugins_dir}/Gemfile'))
+  GEMFILE
+end
+
+bash 'bundle-update' do
+  code "bundle update --jobs=#{`nproc`.chop}"
+  cwd user_home
+  user user_name
+  group group_name
 end
 
 warn 'We do not auto generate conf.yaml becuase of secret channel business -.-'
@@ -91,7 +99,7 @@ Description=rbot
 [Service]
 ExecStartPre=/usr/local/bin/bundle install
 ExecStart=/usr/local/bin/bundle exec #{user_home}/rbot/launch_here.rb
-WorkingDirectory=#{user_home}/rbot
+WorkingDirectory=#{user_home}
 User=#{user_name}
 Group=#{group_name}
 RuntimeMaxSec=4hours
