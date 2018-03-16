@@ -71,7 +71,6 @@ ruby #{srcdir}/client.rb http://localhost:8080/v1/sync
   CONTENT
 end
 
-
 execute 'daemon-reload' do
   command 'systemctl daemon-reload'
   action :nothing
