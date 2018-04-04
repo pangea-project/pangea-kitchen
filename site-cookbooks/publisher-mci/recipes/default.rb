@@ -79,6 +79,11 @@ web_app 'mci_images_new' do
   cookbook 'apache2'
 end
 
+certbot_apache 'mci_images_new' do
+  domains %w[images.plasma-mobile.org]
+  email 'bshah@kde.org'
+end
+
 web_app 'halium_repo' do
   server_name 'repo.halium.org'
   server_port 80
