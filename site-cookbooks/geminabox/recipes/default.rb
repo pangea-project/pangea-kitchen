@@ -23,7 +23,7 @@ groupname = username.clone
 userhome = "/home/#{username}/"
 systemd_dir = "#{userhome}/.config/systemd/user"
 
-repourl = 'https://github.com/blue-systems/pangea-geminabox'
+repourl = 'https://github.com/pangea-project/pangea-geminabox'
 clonedir = "#{userhome}/src"
 
 ohai 'reload_passwd' do
