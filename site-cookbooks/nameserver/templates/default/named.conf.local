@@ -16,3 +16,8 @@ zone "135.10.in-addr.arpa" {
 	type master;
 	file "/etc/bind/db.10.135";
 };
+
+zone "rpz" {
+  type master;
+  file "/etc/bind/db.rpz";
+};

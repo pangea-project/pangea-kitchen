@@ -26,7 +26,8 @@ end
 
 %w[named.conf.options named.conf.local
    db.10.135
-   db.pangea.pub db.internal.neon.kde.org].each do |file|
+   db.pangea.pub db.internal.neon.kde.org
+   db.rpz].each do |file|
   template "/etc/bind/#{file}" do
     source file
     owner 'root'
