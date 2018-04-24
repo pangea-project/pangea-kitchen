@@ -4,7 +4,7 @@
     "jenkins": {
       "master": {
         "listen_address": "127.0.0.1",
-        "jvm_options": "${JAVA_ARGS} -Xmx8192m -Dmail.smtp.localhost=drax.kde.org -Dmail.smtp.starttls.enable=true -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=60"
+        "jvm_options": "${JAVA_ARGS} -Xmx8192m -Dmail.smtp.localhost=drax.kde.org -Dmail.smtp.starttls.enable=true -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=60 -Djava.util.logging.loglevel=WARNING -Dhudson.model.DirectoryBrowserSupport.CSP=\"sandbox allow-scripts; default-src 'self' ajax.googleapis.com cdnjs.cloudflare.com 'unsafe-inline';\""
       }
     },
     "jenkins-master-apache" : {
