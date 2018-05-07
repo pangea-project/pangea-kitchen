@@ -97,7 +97,7 @@ end
 docker_installation_package 'default' do
   action :create
   package_name 'docker.io'
-  package_version '1.12.1-0ubuntu13~16.04.1'
+  package_version '1.13.1-0ubuntu1~16.04.2'
   not_if { node['kernel']['machine'].start_with?('x86_64') }
 end
 
