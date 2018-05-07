@@ -4,5 +4,8 @@
   ],
   "automatic": {
     "ipaddress": "reogus"
+  },
+  "jenkins-slave": {
+    "no-userns-remap": true
   }
 }
