@@ -27,12 +27,6 @@
   system('ssh', "root@#{host}", 'apt-get', 'autoremove', '--purge', '-y')
   system('ssh', "root@#{host}", 'apt', 'update')
   system('ssh', "root@#{host}", 'apt', 'dist-upgrade', '-y')
-  # Workaround a bug in zabbix where it doesn't enable its systemd
-  # service correctly.
-  # NB: this doesn't actually do anything on current hosts as they
-  #     are 14.04, but so we don't forget about this in the future!
-  system('ssh', "root@#{host}", 'systemctl', 'enable', 'zabbix-agent')
-  system('ssh', "root@#{host}", 'systemctl', 'start', 'zabbix-agent')
   # Sleep a bit to let the system settle down before we murder it.
   sleep(8)
   system('ssh', "root@#{host}", 'reboot')

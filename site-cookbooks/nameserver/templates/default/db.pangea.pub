@@ -33,4 +33,3 @@ neon		IN	CNAME drax
 ns1.external	IN	A	8.8.8.8
 dci		IN	NS	ns1.external
 mobile.neon	IN	NS	ns1.external
-monitoring	IN	NS	ns1.external
