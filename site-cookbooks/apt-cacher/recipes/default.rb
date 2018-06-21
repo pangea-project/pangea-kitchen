@@ -105,15 +105,8 @@ file '/etc/squid-deb-proxy/allowed-networks-src.acl.d/0-blue-systems' do
   # NB: the concatenation helper of init-common is shitty and needs a \n to
   #    not break the concatenated file
   content <<-CONTENT
-# private networks
-10.0.0.0/8
-172.16.0.0/12
-192.168.0.0/16
-127.0.0.1
-
-# IPv6 private addresses
-fe80::/64
-::1/128
+# IPv4/6 private networks are deafault-enabled via allowed-networks-src.acl
+# there is no need ot enable them in the blue systems rule!
 
 # BS farm
 46.101.118.115 # drax (public DO)
