@@ -2,7 +2,7 @@
 # Cookbook Name:: apt-cacher
 # Recipe:: default
 #
-# Copyright 2017, Harald Sitter
+# Copyright 2017-2018, Harald Sitter
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,12 +24,10 @@
 # Or can it...
 # NOTE: this node attribute structure was introduced in Chef 13. This Cookbook
 #  requires chef >= 13 because of this line.
-root_values = node['filesystem']['by_mountpoint']['/']
+root_values = node['filesystem']['by_mountpoint']['/mnt/volume-do-cacher-mirror']
 root_size_mb = root_values['kb_size'].to_i / 1024.0 # Squid uses MiB
-# We will use 75% of root for the cache, this should give us a good amount of
-# space whilest not having much of a chance to impair other functions of
-# the server.
-max_cache_size = (root_size_mb * 0.75).to_i
+# Leave very little space. It's not clear if squid requires wiggle room.
+max_cache_size = (root_size_mb * 0.99).to_i
 
 package 'squid-deb-proxy'
 
@@ -54,6 +52,15 @@ ruby_block 'twiddle squid-deb-proxy.conf' do
                                   "cache_dir aufs /var/cache/squid-deb-proxy #{max_cache_size} 16 256")
     file.write_file
   end
+end
+
+# Bind the mirror block storage into the cache location. The cache path is
+# hardcoded in various locations, so we can't simply change it.
+mount '/var/cache/squid-deb-proxy' do
+  device '/mnt/volume-do-cacher-mirror'
+  fstype 'none'
+  options 'bind'
+  action :enable # don't auto-mount the bugger, it'd keep mounting over the bind
 end
 
 # This is very specific custom workaround bullshit.
@@ -115,6 +122,7 @@ fe80::/64
 207.154.244.6 # mobile.neon.pangea.pub (mci)
 207.154.251.179 # torvald (neon storage)
 147.75.82.195 # openqa node (packet)
+
   CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
 end
