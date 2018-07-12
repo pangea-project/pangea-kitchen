@@ -15,7 +15,6 @@
   },
   "run_list": [
     "role[server-common-core]",
-    "role[private-nameserver-client]",
     "recipe[jenkins-java-trusty]",
     "recipe[jenkins-slave]",
     "recipe[pangea-ruby::install]",
