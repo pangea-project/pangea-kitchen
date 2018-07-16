@@ -26,6 +26,13 @@
 #  requires chef >= 13 because of this line.
 root_values = node['filesystem']['by_mountpoint']['/mnt/volume-do-cacher-mirror']
 root_size_mb = root_values['kb_size'].to_i / 1024.0 # Squid uses MiB
+if root_size_mb <= 0
+  # Since we bind the mount the filesystem list may contain the size data only
+  # on the bind. So, as a fallback try to get it out of the bind mount.
+  root_values = node['filesystem']['by_mountpoint']['/var/cache/squid-deb-proxy']
+  root_size_mb = root_values['kb_size'].to_i / 1024.0 # Squid uses MiB
+end
+raise 'Couldn\'t determine volume size' if root_size_mb <= 0
 # Leave very little space. It's not clear if squid requires wiggle room.
 max_cache_size = (root_size_mb * 0.99).to_i
 
