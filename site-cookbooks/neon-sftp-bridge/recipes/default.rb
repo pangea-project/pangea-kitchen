@@ -149,3 +149,40 @@ systemd_unit 'neon-sftp-bridge.service' do
   notifies :run, 'execute[daemon-reload-user]', :immediately
   action [:enable, :start]
 end
+
+# Wire into apache.
+
+include_recipe 'apache2::default'
+include_recipe 'apache2::mod_proxy'
+include_recipe 'apache2::mod_proxy_http'
+include_recipe 'apache2::mod_ssl'
+include_recipe 'apache2::mod_headers'
+
+server_name = 'download.kde.internal.neon.kde.org'
+document_root = "/var/www/#{server_name}"
+
+directory document_root do
+  owner 'www-data'
+  group 'www-data'
+end
+
+template "#{node['apache']['dir']}/sites-available/#{server_name}.conf" do
+  source "#{server_name}.conf.erb"
+  owner 'root'
+  group node['apache']['root_group']
+  mode 0o644
+  variables server_name: server_name, document_root: document_root,
+            proxy_port: 9191
+  # Reload apache immediately so the vhost is up and running by the time
+  # certbot does its thing.
+  notifies :reload, 'service[apache2]', :immediately
+end
+
+apache_site server_name do
+  enable true
+end
+
+certbot_apache 'neon-sftp-bridge' do
+  domains [server_name]
+  email 'sitter@kde.org'
+end
