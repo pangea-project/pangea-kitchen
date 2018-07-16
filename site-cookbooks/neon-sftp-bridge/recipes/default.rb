@@ -80,8 +80,12 @@ end
 
 # Go deployment
 package 'golang-go'
+package 'snapd'
+bash 'Installing go' do # Use snapped go to get latest go, our deps may need it.
+  code 'snap install --classic go'
+end
 bash 'Installing go(neon-sftp-bridge)' do
-  code "go get -v -u #{importpath}"
+  code "snap run go get -v -u #{importpath}"
   user username
   group groupname
   environment('GOPATH' => gopath)
