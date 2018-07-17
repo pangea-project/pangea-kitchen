@@ -14,7 +14,3 @@ $TTL	604800
 ;
 @	IN	NS	ns1.pangea.pub.
 ns1	IN	A	10.135.69.54
-
-; Darwini hosts neon services and lives in FRA1. Override it to its private
-; address.
-darwini.kde.org	A	10.135.88.75
