@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: jenkins-java-trusty
+# Cookbook Name:: jenkins-java
 # Recipe:: default
 #
 # Copyright 2015, YOUR_COMPANY_NAME
@@ -7,12 +7,7 @@
 # All rights reserved - Do Not Redistribute
 
 to_purge = %w(openjdk-6-jre-headless openjdk-6-jre-lib)
-to_install = %w(default-jre-headless openjdk-7-jre-headless)
-
-if Chef::VersionConstraint.new('= 16.04').include?(node['platform_version'])
-  to_purge = []
-  to_install = %w(default-jre-headless openjdk-8-jre-headless)
-end
+to_install = %w(default-jre-headless openjdk-8-jre-headless)
 
 package 'jenkins-java purge' do
   package_name to_purge

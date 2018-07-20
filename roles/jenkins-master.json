@@ -16,7 +16,7 @@
   "chef_type": "role",
   "run_list": [
     "role[server-common]",
-    "recipe[jenkins-java-trusty]",
+    "recipe[jenkins-java]",
     "recipe[jenkins-master]",
     "recipe[git]"
   ],
