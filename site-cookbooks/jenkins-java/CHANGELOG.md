@@ -1,11 +1,11 @@
-jenkins-java-trusty CHANGELOG
+jenkins-java CHANGELOG
 =============================
 
-This file is used to list changes made in each version of the jenkins-java-trusty cookbook.
+This file is used to list changes made in each version of the jenkins-java cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of jenkins-java-trusty
+- [your_name] - Initial release of jenkins-java
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
