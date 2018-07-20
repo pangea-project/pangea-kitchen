@@ -6,4 +6,4 @@ gem 'berkshelf', '~> 6.0'
 gem 'chef-dk', '~> 1.0'
 #gem 'knife-zero'
 # restrict to 0.6 which is known to install on ruby 2.3.1
-gem 'knife-solo', '~> 0.6.0'
+gem 'knife-solo' '~> 0.6.0'
