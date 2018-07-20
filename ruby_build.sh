@@ -47,7 +47,6 @@ export NO_CUPBOARD=1 # Disable cupboard use (requires manual unlocking)
 # knife supermarket install ruby_build -VV
 # knife install is currently broken: https://github.com/pangea-project/pangea-kitchen/issues/3
 # berks however works, use that for now until above is resolved.
-gem install bundler
 bundle install
 berks install # lock cookbook dependencies
 berks vendor  # install cookbook dependencies in berks-cookbooks
