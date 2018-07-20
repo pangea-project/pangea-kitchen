@@ -1,0 +1,11 @@
+{
+  "run_list": [
+    "role[jenkins-slave-arm]"
+  ],
+  "automatic": {
+    "ipaddress": "147.75.82.198"
+  },
+  "jenkins-slave": {
+    "no-userns-remap": true
+  }
+}
