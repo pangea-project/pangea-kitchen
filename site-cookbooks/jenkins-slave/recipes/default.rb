@@ -97,7 +97,11 @@ end
 docker_installation_package 'default' do
   action :create
   package_name 'docker.io'
-  package_version '1.13.1-0ubuntu1~16.04.2'
+  if Chef::VersionConstraint.new('= 18.04').include?(node['platform_version'])
+    package_version '17.12.1-0ubuntu1'
+  else
+    package_version '1.13.1-0ubuntu1~16.04.2'
+  end
   not_if { node['kernel']['machine'].start_with?('x86_64') }
 end
 
