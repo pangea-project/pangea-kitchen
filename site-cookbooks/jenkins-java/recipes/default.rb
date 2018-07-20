@@ -6,8 +6,13 @@
 #
 # All rights reserved - Do Not Redistribute
 
-to_purge = %w(openjdk-6-jre-headless openjdk-6-jre-lib)
+to_purge = []
 to_install = %w(default-jre-headless openjdk-8-jre-headless)
+
+if Chef::VersionConstraint.new('= 18.04').include?(node['platform_version'])
+  to_purge = %w(openjdk-8-jre-headless)
+  to_install = %w(default-jre-headless openjdk-11-jre-headless)
+end
 
 package 'jenkins-java purge' do
   package_name to_purge
