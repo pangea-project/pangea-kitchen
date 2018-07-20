@@ -1,6 +1,6 @@
 {
   "run_list": [
-    "role[jenkins-slave-arm]"
+    "role[jenkins-slave-arm-bionic]"
   ],
   "automatic": {
     "ipaddress": "147.75.82.198"
