@@ -2,7 +2,7 @@
 # Cookbook Name:: server-common
 # Recipe:: default
 #
-# Copyright 2016-2017, Harald Sitter <sitter@kde.org>
+# Copyright 2016-2018, Harald Sitter <sitter@kde.org>
 #
 # All rights reserved - Do Not Redistribute
 #
@@ -18,8 +18,12 @@ service 'systemd-journald-enable-peristence' do
   action :nothing
 end
 
-systemd_journald 'enable-peristence' do
+systemd_journald 'enable-peristence-without-syslog' do
   storage 'persistent'
+  # Disable syslog. We know how awesome journald is and syslog can sod off.
+  # Otherwise jenkins and stuff floods the syslog and syslog unlike journald
+  # has no storage limit really.
+  forward_to_syslog false
   notifies :restart, 'service[systemd-journald-enable-peristence]', :delayed
   only_if do
     [node.fetch('platform'), node.fetch('platform_version')] != %w(ubuntu 14.04)
