@@ -28,6 +28,9 @@ gem.cache	IN	A	10.135.69.54
 apt.cache	IN	A	10.135.69.54
 files.kde.mirror	IN	A	10.135.69.54
 neon		IN	CNAME drax
+xenon	IN	A	10.135.113.185
+archive.xenon	IN	CNAME xenon
+files.xenon	IN	CNAME xenon
 
 ; Forward servers we have no private data for to Google.
 ns1.external	IN	A	8.8.8.8
