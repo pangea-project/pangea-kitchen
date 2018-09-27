@@ -1,0 +1,11 @@
+[Unit]
+Description=Aptly API Socket
+
+[Socket]
+SocketMode=0660
+ListenStream=<%= @listen_stream %>
+SocketUser=<%= @user %>
+SocketGroup=<%= @group %>
+
+[Install]
+WantedBy=sockets.target

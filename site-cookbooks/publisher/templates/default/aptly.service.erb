@@ -1,0 +1,12 @@
+[Unit]
+Description=Aptly API
+
+[Service]
+ExecStart=/usr/bin/aptly api serve
+Restart=always
+WorkingDirectory=<%= @home %>
+User=<%= @user %>
+Group=<%= @group %>
+
+[Install]
+WantedBy=default.target
