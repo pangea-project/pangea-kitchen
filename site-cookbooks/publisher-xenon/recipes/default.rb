@@ -109,6 +109,6 @@ end
 
 certbot_apache 'files.xenon.pangea.pub' do
   domains ['files.xenon.pangea.pub']
-  redirect true
+  redirect false
   email 'sitter@kde.org'
 end
