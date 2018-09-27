@@ -108,7 +108,8 @@ action :setup do
 
   # Set up new systemd services
 
-  package %w[libpam-systemd dbus-user-session] # for session management via logind
+  # for session management via logind
+  package %w[libpam-systemd dbus-user-session systemd-container]
 
   # The dbus-user-session installs a bus socket activation, but we need to make
   # sure the user service is being started so systemd controls the socket.
