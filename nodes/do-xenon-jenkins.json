@@ -1,0 +1,75 @@
+{
+  "name": "do-xenon-jenkins",
+  "normal": {
+    "knife_zero": {
+      "host": "do-xenon-jenkins"
+    },
+    "tags": [
+
+    ],
+    "jenkins-master": {
+      "git": {
+        "name": "Xenon CI",
+        "email": "xenon@blue-systems.com"
+      }
+    },
+    "jenkins-master-apache": {
+      "server_port": "80",
+      "server_name": "xenon.pangea.pub",
+      "certbot": true
+    }
+  },
+  "automatic": {
+    "fqdn": "do-bs-jenkins",
+    "os": "linux",
+    "os_version": "4.15.0-34-generic",
+    "hostname": "do-bs-jenkins",
+    "ipaddress": "104.248.250.176",
+    "roles": [
+
+    ],
+    "platform": "ubuntu",
+    "platform_version": "18.04",
+    "cloud": {
+      "public_ipv4_addrs": [
+        "104.248.250.176"
+      ],
+      "local_ipv4_addrs": [
+        "10.135.113.185"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "104.248.250.176",
+      "local_ipv4": "10.135.113.185"
+    },
+    "cloud_v2": {
+      "public_ipv4_addrs": [
+        "104.248.250.176"
+      ],
+      "local_ipv4_addrs": [
+        "10.135.113.185"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "104.248.250.176",
+      "local_ipv4": "10.135.113.185"
+    },
+    "chef_packages": {
+      "ohai": {
+        "version": "13.10.0",
+        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.10.0/lib/ohai"
+      },
+      "chef": {
+        "version": "13.10.4",
+        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/chef-13.10.4/lib"
+      }
+    },
+    "current_user": "root"
+  },
+  "run_list": [
+    "role[jenkins-master]",
+    "role[private-nameserver-client]",
+    "recipe[jenkins-master-apache]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]",
+    "recipe[publisher-xenon]"
+  ]
+}
