@@ -123,3 +123,24 @@ group 'docker' do
   members %w[jenkins]
   notifies :restart, 'service[jenkins]', :delayed
 end
+
+# This is implicitly required by parts of the pangea tooling, make sure we have
+# sane values here. This is a required attribute.
+unless node['jenkins-master'] &&
+       node['jenkins-master'] &&
+       node['jenkins-master']['git'] &&
+       node['jenkins-master']['git']['name'] &&
+       node['jenkins-master']['git']['email']
+  Chef::Application.fatal!(<<-ERR)
+You need to set the attrbitues jenkins-master.git.name and jenkins-master.git.email!
+  ERR
+end
+
+template '/var/lib/jenkins/.gitconfig' do
+  source 'gitconfig.erb'
+  owner 'jenkins'
+  group 'jenkins'
+  variables name: node['jenkins-master']['git']['name'],
+            email: node['jenkins-master']['git']['email']
+  mode 0o640
+end
