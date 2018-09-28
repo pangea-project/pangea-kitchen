@@ -18,7 +18,7 @@ DEPENDENCIES
   htop
   java
   jenkins
-  kernel_module
+  kernel_module (~> 1.0.1)
   openssh
   resolvconf (~> 0.4.0)
   ruby_build (~> 1.1.0)
@@ -53,7 +53,7 @@ GRAPH
     lvm (~> 1.1)
   git (9.0.1)
     build-essential (>= 5.0.0)
-  homebrew (5.0.5)
+  homebrew (5.0.7)
   hostsfile (3.0.1)
   htop (2.0.0)
     yum-repoforge (>= 0.0.0)
@@ -64,7 +64,7 @@ GRAPH
   jenkins (6.2.0)
     dpkg_autostart (>= 0.0.0)
     runit (>= 1.7)
-  kernel_module (1.1.2)
+  kernel_module (1.0.1)
   lvm (1.6.1)
   mingw (2.1.0)
     seven_zip (>= 0.0.0)
