@@ -8,7 +8,7 @@
 #
 
 if node['platform'] == 'ubuntu' &&
-    Chef::VersionConstraint.new('= 18.04').include?(node['platform_version'])
+   Chef::VersionConstraint.new('>= 18.04').include?(node['platform_version'])
   # Nobody needs libgdbm3 as libgdbm-dev is in the list. On 18.04 it doesn't
   # even exist, so drop it from the install list.
   node.default['ruby_build']['install_pkgs_cruby'] =
