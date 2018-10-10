@@ -12,7 +12,6 @@ knife[:automatic_attribute_whitelist] = %w[
   hostname
   ipaddress
   roles
-  recipes
   ipaddress
   platform
   platform_version
@@ -21,6 +20,9 @@ knife[:automatic_attribute_whitelist] = %w[
   chef_packages
   current_user
 ]
+
+knife[:default_attribute_whitelist] = []
+
 cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
 cookbook_email ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
