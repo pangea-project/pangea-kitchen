@@ -5,6 +5,10 @@ environment_path "#{__dir__}/../environments"
 data_bag_path    "#{__dir__}/../data_bags"
 #encrypted_data_bag_secret "#{__dir__}/../data_bag_key"
 
+# NOTE: these values are injected into the server-side /etc/chef/client.rb
+#   on BOOTSTRAP !!!. convering will not pass these values. To apply them to
+#   future converges you need to bootstrap the server again (possibly with
+#   --no-converge if no converge should happen).
 knife[:automatic_attribute_whitelist] = %w[
   fqdn
   os
@@ -20,7 +24,6 @@ knife[:automatic_attribute_whitelist] = %w[
   chef_packages
   current_user
 ]
-
 knife[:default_attribute_whitelist] = []
 
 cookbook_license 'gplv3'
