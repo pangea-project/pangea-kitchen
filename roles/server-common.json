@@ -13,7 +13,6 @@
   "chef_type": "role",
   "run_list": [
     "role[server-common-core]",
-    "recipe[zabbix]",
     "recipe[chef-unattended-upgrades]",
     "recipe[swap_tuning]"
   ],

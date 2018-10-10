@@ -1,7 +1,6 @@
 {
   "run_list": [
     "role[jenkins-master]",
-    "recipe[zabbix]",
     "recipe[pangea-ruby::install]",
     "recipe[pangea-ruby::user_home_gems]"
   ]
