@@ -5,6 +5,22 @@ environment_path "#{__dir__}/../environments"
 data_bag_path    "#{__dir__}/../data_bags"
 #encrypted_data_bag_secret "#{__dir__}/../data_bag_key"
 
+knife[:automatic_attribute_whitelist] = %w[
+  fqdn
+  os
+  os_version
+  hostname
+  ipaddress
+  roles
+  recipes
+  ipaddress
+  platform
+  platform_version
+  cloud
+  cloud_v2
+  chef_packages
+  current_user
+]
 cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
 cookbook_email ENV['DEBEMAIL'] if ENV.include?('DEBEMAIL')
