@@ -1,0 +1,85 @@
+{
+  "name": "do-mobile-jenkins",
+  "normal": {
+    "knife_zero": {
+      "host": "do-mobile-jenkins"
+    },
+    "tags": [
+
+    ],
+    "jenkins-master": {
+      "git": {
+        "name": "Mobile CI",
+        "email": "admin@plasma-mobile.org"
+      }
+    },
+    "jenkins-master-apache": {
+      "server_port": "80",
+      "server_name": "build.plasma-mobile.org",
+      "certbot": true
+    }
+  },
+  "automatic": {
+    "fqdn": "do-mobile-jenkins",
+    "os": "linux",
+    "os_version": "4.15.0-36-generic",
+    "hostname": "do-mobile-jenkins",
+    "ipaddress": "138.197.189.251",
+    "roles": [
+      "jenkins-master",
+      "server-common",
+      "server-common-core",
+      "private-nameserver-client"
+    ],
+    "platform": "ubuntu",
+    "platform_version": "18.04",
+    "cloud": {
+      "public_ipv4_addrs": [
+        "138.197.189.251"
+      ],
+      "local_ipv4_addrs": [
+        "10.135.116.150"
+      ],
+      "public_ipv6_addrs": [
+        "2a03:b0c0:3:d0::d5c:3001"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "138.197.189.251",
+      "local_ipv4": "10.135.116.150",
+      "public_ipv6": "2a03:b0c0:3:d0::d5c:3001"
+    },
+    "cloud_v2": {
+      "public_ipv4_addrs": [
+        "138.197.189.251"
+      ],
+      "local_ipv4_addrs": [
+        "10.135.116.150"
+      ],
+      "public_ipv6_addrs": [
+        "2a03:b0c0:3:d0::d5c:3001"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "138.197.189.251",
+      "local_ipv4": "10.135.116.150",
+      "public_ipv6": "2a03:b0c0:3:d0::d5c:3001"
+    },
+    "chef_packages": {
+      "chef": {
+        "version": "13.11.3",
+        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/chef-13.11.3/lib"
+      },
+      "ohai": {
+        "version": "13.10.0",
+        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.10.0/lib/ohai"
+      }
+    },
+    "current_user": "root"
+  },
+  "run_list": [
+    "role[jenkins-master]",
+    "role[private-nameserver-client]",
+    "recipe[jenkins-master-apache]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
+  ]
+}
