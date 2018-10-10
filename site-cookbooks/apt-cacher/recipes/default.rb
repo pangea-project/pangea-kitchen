@@ -129,6 +129,7 @@ file '/etc/squid-deb-proxy/allowed-networks-src.acl.d/0-blue-systems' do
 207.154.244.6 # mobile.neon.pangea.pub (mci)
 207.154.251.179 # torvald (neon storage)
 147.75.82.195 # openqa node (packet)
+138.197.189.251 # plasma mobile CI (new)
 
   CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
