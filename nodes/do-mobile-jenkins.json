@@ -80,6 +80,7 @@
     "role[private-nameserver-client]",
     "recipe[jenkins-master-apache]",
     "recipe[pangea-ruby::install]",
-    "recipe[pangea-ruby::user_home_gems]"
+    "recipe[pangea-ruby::user_home_gems]",
+    "recipe[mci-redirect]"
   ]
 }
