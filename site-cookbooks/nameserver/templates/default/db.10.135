@@ -13,9 +13,6 @@ $TTL	604800
 69.54	IN	PTR	ns1
 
 ; Internal names only
-56.13	IN	PTR	drax
-45.128	IN	PTR	drax-old
-
 17.249	IN	PTR	builder001.do
 18.82	IN	PTR	builder002.do
 18.186	IN	PTR	builder003.do

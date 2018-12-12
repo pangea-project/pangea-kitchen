@@ -13,9 +13,6 @@ $TTL	604800
 ns1	IN	A	10.135.69.54
 
 ; Internal names only
-drax		IN	A	10.135.56.13
-drax-old	IN	A	10.135.45.128
-
 builder001.do	IN	A	10.135.17.249
 builder002.do	IN	A	10.135.18.82
 builder003.do	IN	A	10.135.18.186
@@ -27,7 +24,6 @@ builder006.do	IN	A	10.135.21.173
 gem.cache	IN	A	10.135.69.54
 apt.cache	IN	A	10.135.69.54
 files.kde.mirror	IN	A	10.135.69.54
-neon		IN	CNAME drax
 xenon	IN	A	10.135.113.185
 archive.xenon	IN	CNAME xenon
 files.xenon	IN	CNAME xenon
