@@ -10,7 +10,7 @@ action :create do
     args = %w[--apache --non-interactive --agree-tos --no-eff-email]
     args << '--email' << new_resource.email
     args << '--redirect' if new_resource.redirect
-    args << '--dyr-run' if node.name.include?('vagrant')
+    args << '--dry-run' if node.name.include?('vagrant')
     args << new_resource.domains.map { |k| "-d #{k}" }.join(' ')
     command "certbot #{args.join(' ')}"
   end
