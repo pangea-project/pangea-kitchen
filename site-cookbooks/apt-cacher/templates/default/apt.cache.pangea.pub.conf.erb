@@ -1,8 +1,4 @@
 <VirtualHost *:80>
-    # WARNING: as a result of leaning on certbot updates to the template in chef
-    # are not reflected in the SSL clone of it!
-    # Needs updating in both places manually unfortunately.
-
     ServerAdmin  sitter@kde.org
     ServerName   <%= @server_name %>
     DocumentRoot <%= @document_root %>
