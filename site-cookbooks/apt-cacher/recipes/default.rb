@@ -158,9 +158,7 @@ template "#{node['apache']['dir']}/sites-available/#{server_name}.conf" do
   mode 0o644
   variables server_name: server_name, document_root: document_root,
             proxy_port: 8000
-  # Reload apache immediately so the vhost is up and running by the time
-  # certbot does its thing.
-  notifies :reload, 'service[apache2]', :immediately
+  notifies :reload, 'service[apache2]'
 end
 
 apache_site server_name do
