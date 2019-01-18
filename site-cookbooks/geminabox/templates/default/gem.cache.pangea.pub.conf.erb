@@ -28,4 +28,9 @@
     <Proxy http://localhost/*>
       Require all granted
     </Proxy>
+
+    <Directory "<%= @document_root %>/.well-known/acme-challenge/">
+        AllowOverride None
+        Require method GET
+    </Directory>
 </VirtualHost>

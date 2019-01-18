@@ -111,4 +111,5 @@ certbot_apache 'files.xenon.pangea.pub' do
   domains ['files.xenon.pangea.pub']
   redirect false
   email 'sitter@kde.org'
+  webroot_path '/var/www/files'
 end

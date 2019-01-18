@@ -155,16 +155,17 @@ template "#{node['apache']['dir']}/sites-available/gem.cache.pangea.pub.conf" do
   mode 0o644
   variables server_name: 'gem.cache.pangea.pub', userhome: userhome,
             document_root: document_root
+end
+
+apache_site 'gem.cache.pangea.pub' do
+  enable true
   # Reload apache immediately so the vhost is up and running by the time
   # certbot does its thing.
   notifies :reload, 'service[apache2]', :immediately
 end
 
-apache_site 'gem.cache.pangea.pub' do
-  enable true
-end
-
 certbot_apache 'geminabox' do
   domains %w[gem.cache.pangea.pub]
   email 'sitter@kde.org'
+  webroot_path document_root
 end

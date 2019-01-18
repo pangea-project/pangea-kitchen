@@ -82,6 +82,7 @@ end
 certbot_apache 'mci_images_new' do
   domains %w[images.plasma-mobile.org]
   email 'bshah@kde.org'
+  webroot_path '/home/mci/images-new'
 end
 
 web_app 'halium_repo' do
