@@ -110,6 +110,7 @@ file '/etc/squid-deb-proxy/mirror-dstdomain.acl.d/0-neon' do
 .neon.plasma-mobile.org
 .repo.halium.org
 .archive.xenon.pangea.pub
+.releases.neon.kde.org
 
 CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
