@@ -3,6 +3,9 @@
     "user": {
       "home_dir_mode": "0755"
     },
+    "openssh": {
+      "set in server-common cookbook for comments": ""
+    },
     "fail2ban": {
       "services": {
         "ssh": {
@@ -15,6 +18,7 @@
     "recipe[server-common]",
     "recipe[system::timezone]",
     "recipe[fail2ban]",
-    "recipe[htop]"
+    "recipe[htop]",
+    "recipe[openssh]"
   ]
 }
