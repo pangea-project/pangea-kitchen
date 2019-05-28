@@ -43,16 +43,12 @@ file '/etc/update-motd.d/50-landscape-sysinfo' do
   action :delete
 end
 
-file '/etc/update-motd.d/51-cloudguest' do
+file '/etc/update-motd.d/50-motd-news' do
   action :delete
 end
 
-ruby_block 'disable-canonical-news' do
-  block do
-    file = Chef::Util::FileEdit.new('/etc/default/motd-news')
-    file.search_file_replace_line('ENABLED=0', 'ENABLED=1')
-    file.write_file
-  end
+file '/etc/update-motd.d/51-cloudguest' do
+  action :delete
 end
 
 # Make sure tzdata is installed for timezone cookbook.
