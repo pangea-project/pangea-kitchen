@@ -7,11 +7,7 @@
       "set in server-common cookbook for comments": ""
     },
     "fail2ban": {
-      "services": {
-        "ssh": {
-          "maxretry": 3
-        }
-      }
+      "set in server-common cookbook for comments": ""
     }
   },
   "run_list": [

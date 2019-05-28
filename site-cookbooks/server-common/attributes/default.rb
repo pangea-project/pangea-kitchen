@@ -24,3 +24,9 @@ default[:openssh][:server][:ignore_rhosts] = 'yes'
 # List of keys to prevent from getting used *at all*. This cannot be overridden
 # the keys are out right rejected. Used for former company admins.
 default[:openssh][:server][:revoked_keys] = '/etc/ssh/revoked_keys'
+
+# Fail2Ban
+default[:fail2ban][:services][:ssh][:maxretry] = '2'
+default[:fail2ban][:services][:ssh][:backend] = 'systemd'
+default[:fail2ban][:services][:ssh][:ignoreip] = '127.0.0.1/8'
+default[:fail2ban][:services][:ssh][:bantime] = '3600'
