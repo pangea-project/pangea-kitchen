@@ -1,0 +1,69 @@
+{
+  "name": "do-dci-jenkins",
+  "normal": {
+    "knife_zero": {
+      "host": "do-dci-jenkins"
+    },
+    "tags": [
+
+    ],
+    "jenkins-master": {
+      "git": {
+        "name": "Debian CI",
+        "email": "dci@blue-systems.com"
+      }
+    },
+    "jenkins-master-apache": {
+      "server_port": "80",
+      "server_name": "dci.netrunner.com",
+      "certbot": true
+    }
+  },
+  "automatic": {
+    "fqdn": "do-dci-jenkins",
+    "os": "linux",
+    "os_version": "4.15.0-50-generic",
+    "hostname": "do-dci-jenkins",
+    "ipaddress": "138.68.72.129",
+    "roles": [
+      "jenkins-master",
+      "server-common",
+      "server-common-core",
+      "private-nameserver-client"
+    ],
+    "platform": "ubuntu",
+    "platform_version": "18.04",
+    "cloud": {
+      "public_ipv4_addrs": [
+        "138.68.72.129"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "138.68.72.129"
+    },
+    "cloud_v2": {
+      "public_ipv4_addrs": [
+        "138.68.72.129"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "138.68.72.129"
+    },
+    "chef_packages": {
+      "ohai": {
+        "version": "13.12.6",
+        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.12.6/lib/ohai"
+      },
+      "chef": {
+        "version": "13.12.14",
+        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/chef-13.12.14/lib"
+      }
+    },
+    "current_user": "root"
+  },
+  "run_list": [
+    "role[jenkins-master]",
+    "role[private-nameserver-client]",
+    "recipe[jenkins-master-apache]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
+  ]
+}
