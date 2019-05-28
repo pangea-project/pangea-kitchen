@@ -55,4 +55,5 @@ end
 apt_update 'update_for_tzdata'
 # - Make sure all servers have gpg2, we use this for most signing activity.
 # - update-notifier-common contains handy motd extensions
-apt_package %w[tzdata gnupg2 update-notifier-common]
+# - systemd-container contains machinectl which is much better than sudo
+apt_package %w[tzdata gnupg2 update-notifier-common systemd-container]
