@@ -7,14 +7,6 @@
       "home_user": "jenkins-slave",
       "home_user_home": "/var/lib/jenkins-slave"
     },
-    "fail2ban": {
-      "services": {
-        "ssh": {
-          "maxretry": 2,
-          "bantime": "3600"
-        }
-      }
-    },
     "docker" : {
       "user": "docker",
       "group": "docker",
