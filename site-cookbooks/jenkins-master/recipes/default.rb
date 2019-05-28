@@ -52,6 +52,19 @@ ruby_block 'chown jenkins dirs' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
+# TODO: make this opt-in
+# ruby_block 'jenkins-config-log-to-journald' do
+#   block do
+#     file = Chef::Util::FileEdit.new('/etc/default/jenkins')
+#     changes = file.search_file_replace(/JENKINS_LOG=.+/, 'JENKINS_LOG=daemon.info')
+#     file.write_file
+
+#     if changes
+#       notifies :restart, 'service[jenkins]', :delayed
+#     end
+#   end
+# end
+
 directory '/var/lib/jenkins/init.groovy.d' do
   owner 'jenkins'
   group 'jenkins'
