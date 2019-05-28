@@ -20,7 +20,12 @@
 # kvm
 # cpu-checker: kvm-ok tool
 # qemu package: makes sure kvm is accessible for qemu (adds kvm group etc.)
-apt_package %w[kvm cpu-checker qemu-system-common]
+apt_package %w[cpu-checker qemu-system-common]
+if Chef::VersionConstraint.new('= 18.04').include?(node['platform_version'])
+  apt_package %w[qemu-kvm]
+else
+  apt_package %w[kvm]
+end
 
 ruby_block 'kvm-ok' do
   block do
