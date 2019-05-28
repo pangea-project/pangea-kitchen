@@ -6,6 +6,8 @@ ExecStart=<%= @clonedir %>/start.sh
 WorkingDirectory=<%= @clonedir %>
 KillSignal=SIGQUIT
 Sockets=geminabox.socket
+# weekly restart to force updates getting applied
+RuntimeMaxSec=604800
 
 [Install]
 WantedBy=default.target
