@@ -1,2 +1,0 @@
-#deb      "http://pkg.jenkins-ci.org/debian" binary/ 
-deb https://pkg.jenkins.io/debian-stable binary/

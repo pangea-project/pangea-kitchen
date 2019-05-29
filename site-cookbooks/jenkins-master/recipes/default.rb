@@ -81,14 +81,6 @@ cookbook_file '/var/lib/jenkins/init.groovy.d/cli-shutdown.groovy' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
-cookbook_file '/etc/apt/sources.list.d/jenkins.list' do
-  source 'jenkins.list'
-  owner 'root'
-  group 'root'
-  mode '0644'
-  action :create
-end
-
 package 'install-native-gem-dependencies' do
   package_name [
     # various
