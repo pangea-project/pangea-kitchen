@@ -4,6 +4,8 @@
   ServerAlias <%= @params[:server_aliases].join(" ") %>
   <% end -%>
 
+  DocumentRoot <%= @params[:document_root] %>
+
   # Resume build can be called from anonymous scope as it has 0 permission
   # checks (probably because it implements an upstream cause) which can result
   # in anonymous users breaking builds by resuming at a non-resumable point
@@ -33,6 +35,7 @@
   RequestHeader set X-Forwarded-Port "443"
   <% end -%>
 
+  ProxyPass /.well-known/acme-challenge/ !
   ProxyPass         /  http://localhost:8080/ nocanon
   ProxyPassReverse  /  http://localhost:8080/
   #ProxyRequests     Off
@@ -43,6 +46,12 @@
   <Proxy http://localhost:8080/*>
     Require all granted
   </Proxy>
+
+  # Allow certbot challenges
+  <Directory "<%= @params[:document_root] %>/.well-known/acme-challenge/">
+    AllowOverride None
+    Require method GET
+  </Directory>
 
   ErrorLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-error.log
   CustomLog <%= node['apache']['log_dir'] %>/<%= @params[:name] %>-access.log combined
