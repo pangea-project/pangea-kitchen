@@ -12,7 +12,6 @@
 include_recipe 'jenkins::master'
 
 service 'jenkins' do
-  action :stop
 end
 
 # Adjust the UID and GID to match what the containers use.
@@ -47,9 +46,9 @@ ruby_block 'chown jenkins dirs' do
       FileUtils.chown('jenkins', 'jenkins', paths)
       FileUtils.touch(stamp)
       FileUtils.chown(100_000, 120, stamp)
+      notifies :restart, 'service[jenkins]', :delayed
     end
   end
-  notifies :restart, 'service[jenkins]', :delayed
 end
 
 # TODO: make this opt-in
