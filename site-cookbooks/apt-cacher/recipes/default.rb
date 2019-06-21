@@ -127,10 +127,9 @@ file '/etc/squid-deb-proxy/allowed-networks-src.acl.d/0-blue-systems' do
 46.101.118.115 # drax (public DO)
 147.75.32.190 # armhf builder (packet)
 147.75.105.102 # arm64 builder (packet)
-207.154.244.6 # mobile.neon.pangea.pub (mci)
 207.154.251.179 # torvald (neon storage)
 147.75.82.195 # openqa node (packet)
-138.197.189.251 # plasma mobile CI (new)
+134.209.229.193 # plasma mobile CI (new)
 
   CONTENT
   notifies :reload, 'systemd_unit[squid-deb-proxy.service]', :immediately
