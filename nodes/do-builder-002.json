@@ -1,8 +1,52 @@
 {
+  "name": "do-builder-002",
+  "normal": {
+    "tags": [
+
+    ]
+  },
+  "automatic": {
+    "fqdn": "do-builder-bionic-02",
+    "os": "linux",
+    "os_version": "4.15.0-52-generic",
+    "hostname": "do-builder-bionic-02",
+    "ipaddress": "46.101.153.146",
+    "roles": [
+      "jenkins-slave-amd64-do",
+      "jenkins-slave-amd64",
+      "server-common",
+      "server-common-core",
+      "private-nameserver-client"
+    ],
+    "platform": "ubuntu",
+    "platform_version": "18.04",
+    "cloud": {
+      "public_ipv4_addrs": [
+        "46.101.153.146"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "46.101.153.146"
+    },
+    "cloud_v2": {
+      "public_ipv4_addrs": [
+        "46.101.153.146"
+      ],
+      "provider": "digital_ocean",
+      "public_ipv4": "46.101.153.146"
+    },
+    "chef_packages": {
+      "chef": {
+        "version": "13.11.3",
+        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/chef-13.11.3/lib"
+      },
+      "ohai": {
+        "version": "13.10.0",
+        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ohai-13.10.0/lib/ohai"
+      }
+    },
+    "current_user": "root"
+  },
   "run_list": [
     "role[jenkins-slave-amd64-do]"
-  ],
-  "automatic": {
-    "ipaddress": "46.101.153.146"
-  }
+  ]
 }

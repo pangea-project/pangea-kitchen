@@ -8,7 +8,7 @@
   "automatic": {
     "fqdn": "do-builder-bionic-01",
     "os": "linux",
-    "os_version": "4.15.0-50-generic",
+    "os_version": "4.15.0-52-generic",
     "hostname": "do-builder-bionic-01",
     "ipaddress": "46.101.189.70",
     "roles": [
