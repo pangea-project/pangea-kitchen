@@ -53,8 +53,8 @@ end
 
 # Apache
 web_app 'mci_web_repo' do
-  server_name 'neon.plasma-mobile.org'
-  server_port 8080
+  server_name 'repo.plasma-mobile.org'
+  server_port 80
   docroot '/home/mci/aptly/public/mci'
   directory_options %w(Indexes FollowSymLinks)
   allow_override 'All'
