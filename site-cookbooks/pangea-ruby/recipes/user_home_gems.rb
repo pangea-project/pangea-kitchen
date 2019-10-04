@@ -32,7 +32,7 @@ end
       file = Chef::Util::FileEdit.new(file)
       file.insert_line_if_no_match(/^export GEM_HOME/, <<-EOF)
 # GEM_CONFINE_STAMP
-export GEM_HOME=$(ruby -rubygems -e 'puts Gem.user_dir')
+export GEM_HOME=$(ruby -r rubygems -e 'puts Gem.user_dir')
 export GEM_PATH=$GEM_HOME:$HOME/.gems/bundler
 export PATH=$GEM_HOME/bin:$PATH
 EOF
