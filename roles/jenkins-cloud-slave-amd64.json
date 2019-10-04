@@ -17,6 +17,7 @@
     "role[server-common-core]",
     "recipe[jenkins-java]",
     "recipe[jenkins-slave]",
+    "recipe[pangea-ruby::install]",
     "recipe[pangea-ruby::user_home_gems]"
   ]
 }
