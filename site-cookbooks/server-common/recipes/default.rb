@@ -51,6 +51,11 @@ file '/etc/update-motd.d/51-cloudguest' do
   action :delete
 end
 
+# Disable man-db auto updates. They needlessly slow down apt.
+execute 'disable-man-db-auto-update' do
+  command 'echo "man-db man-db/auto-update boolean false" | debconf-set-selections'
+end
+
 # Make sure tzdata is installed for timezone cookbook.
 apt_update 'update_for_tzdata'
 # - Make sure all servers have gpg2, we use this for most signing activity.
