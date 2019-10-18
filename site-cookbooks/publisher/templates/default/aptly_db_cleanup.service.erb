@@ -1,0 +1,11 @@
+[Unit]
+Description=Aptly database cleanup
+Conflicts=aptly.service
+
+[Service]
+ExecStart=/usr/bin/aptly db cleanup
+WorkingDirectory=<%= @home %>
+Environment=XDG_RUNTIME_DIR=/run/user/`id -u`
+Type=oneshot
+StandardOutput=journal+console
+ExecStartPost=-/bin/systemctl --user enable --now aptly.socket

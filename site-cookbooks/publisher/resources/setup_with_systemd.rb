@@ -187,14 +187,22 @@ action :setup do
     notifies :restart, 'systemd_unit[aptly.socket]', :delayed
   end
 
+  template "#{systemd_dir}/aptly_db_cleanup.service" do
+    source 'aptly_db_cleanup.socket.erb'
+    cookbook 'publisher'
+    owner new_resource.user
+    group new_resource.user
+    mode 0o644
+    variables user: new_resource.user,
+              group: new_resource.user,
+              home: rootdir
+    notifies :run, 'execute[daemon-reload-user]', :immediately
+    # NB: Do not enable this, is it started on-demand after cleanups!
+  end
+
   # This resource prviously created more services. Only the main aptly service
   # remains for practical reasons:
 
   # aptly_serve is fully deprecated. It serves data from inside aptly and is a
   # security hazard. A proper webserver should be used instead.
-
-  # aptly_cleanup is not available in systemd because of how it interacts
-  # with running aptly.service, its functionality needs to be otherwise
-  # employed. There is also some upstream work being done on giving more cleanup
-  # access via the API.
 end
