@@ -47,8 +47,6 @@ subid_set 'jenkins-subids' do
   gid 120
 end
 
-kernel_module 'loop'
-
 ruby_block 'chown jenkins dirs' do
   block do
     %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
