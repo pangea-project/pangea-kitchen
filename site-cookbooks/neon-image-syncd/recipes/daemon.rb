@@ -52,7 +52,7 @@ bash "Installing go(#{File.basename(importpath)})" do
   code "go get -v -u #{importpath}"
   user username
   group groupname
-  environment('GOPATH' => gopath)
+  environment('GOPATH' => gopath, 'HOME' => userhome)
 end
 link "#{gopath}/bin/#{File.basename(importpath, '.git')}" do
   to "#{gopath}/bin/#{File.basename(importpath)}"
