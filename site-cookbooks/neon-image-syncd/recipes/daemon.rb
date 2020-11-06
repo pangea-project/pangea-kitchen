@@ -26,7 +26,7 @@ systemd_dir = '/etc/systemd/system'
 # We are not using socket activation for now.
 systemd_units = %w[neon-image-syncd.service]
 
-importpath = 'github.com/apachelogger/neon-image-syncd'
+importpath = 'invent.kde.org/sysadmin/neon-image-syncd.git'
 srcdir = "#{gopath}/src/#{importpath}"
 
 ohai 'reload_passwd' do
