@@ -37,4 +37,13 @@ default[:openssh][:revoked_keys] = [
 default[:fail2ban][:services][:ssh][:maxretry] = '2'
 default[:fail2ban][:services][:ssh][:backend] = 'systemd'
 default[:fail2ban][:services][:ssh][:ignoreip] = '127.0.0.1/8'
-default[:fail2ban][:services][:ssh][:bantime] = '3600'
+default[:fail2ban][:services][:ssh][:bantime] = '3600' # 1 hour
+
+# Fail2Ban - aggressive (also bans failed negotiation etc which can be a sign of vulnerability probing e.g.)
+default[:fail2ban][:services][:ssh_aggressive][:enabled] = 'true'
+default[:fail2ban][:services][:ssh_aggressive][:maxretry] = '5'
+default[:fail2ban][:services][:ssh_aggressive][:backend] = 'systemd'
+default[:fail2ban][:services][:ssh_aggressive][:ignoreip] = '127.0.0.1/8'
+default[:fail2ban][:services][:ssh_aggressive][:bantime] = '900' # 15 minutes
+default[:fail2ban][:services][:ssh_aggressive][:filter] = 'sshd[mode=aggressive]'
+default[:fail2ban][:services][:ssh_aggressive][:port] = 'ssh'
