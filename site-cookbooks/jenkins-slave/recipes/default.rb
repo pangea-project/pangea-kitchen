@@ -45,6 +45,8 @@ subid_set 'jenkins-subids' do
   uid 100_000
   groupname 'jenkins-slave'
   gid 120
+  # Even this is debatable... maybe we should stop this in general.
+  not_if { node['jenkins-slave']['no-userns-remap'] }
 end
 
 ruby_block 'chown jenkins dirs' do
