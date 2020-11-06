@@ -1,0 +1,63 @@
+{
+  "name": "packet-arm64-gamma",
+  "override": {
+    "ruby_build": {
+      "install_pkgs_cruby": [
+        "autoconf",
+        "bison",
+        "build-essential",
+        "libssl1.0-dev",
+        "libyaml-dev",
+        "libreadline6-dev",
+        "zlib1g-dev",
+        "libsqlite3-dev",
+        "libxml2-dev",
+        "libxslt1-dev",
+        "libc6-dev",
+        "libffi-dev",
+        "libgdbm5",
+        "libgdbm-dev"
+      ]
+    }
+  },
+  "normal": {
+    "knife_zero": {
+      "host": "147.75.81.102"
+    },
+    "jenkins-slave": {
+      "no-userns-remap": true
+    },
+    "tags": [
+
+    ]
+  },
+  "automatic": {
+    "fqdn": "localhost",
+    "os": "linux",
+    "os_version": "5.4.0-40-generic",
+    "hostname": "packet-arm64-gamma",
+    "ipaddress": "147.75.81.102",
+    "roles": [
+      "jenkins-slave-arm-bionic",
+      "server-common",
+      "server-common-core"
+    ],
+    "platform": "ubuntu",
+    "platform_version": "20.04",
+    "cloud": null,
+    "chef_packages": {
+      "ohai": {
+        "version": "14.15.0",
+        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.5.0/gems/ohai-14.15.0/lib/ohai"
+      },
+      "chef": {
+        "version": "14.15.6",
+        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.5.0/gems/chef-14.15.6/lib"
+      }
+    },
+    "current_user": "root"
+  },
+  "run_list": [
+    "role[jenkins-slave-arm-bionic]"
+  ]
+}
