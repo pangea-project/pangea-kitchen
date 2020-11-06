@@ -102,7 +102,15 @@ docker_installation_package 'default' do
   else
     package_version '1.13.1-0ubuntu1~16.04.2'
   end
-  not_if { node['kernel']['machine'].start_with?('x86_64') }
+  not_if { node['kernel']['machine'].start_with?('x86_64') ||
+    Chef::VersionConstraint.new('> 18.04').include?(node['platform_version']) }
+end
+
+docker_installation_package 'default' do
+  action :create
+  package_name 'docker-ce'
+  not_if { node['kernel']['machine'].start_with?('x86_64') ||
+    Chef::VersionConstraint.new('<= 18.04').include?(node['platform_version']) }
 end
 
 docker_service 'default' do
