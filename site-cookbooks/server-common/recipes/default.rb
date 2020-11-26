@@ -55,6 +55,10 @@ end
 execute 'disable-man-db-auto-update' do
   command 'echo "man-db man-db/auto-update boolean false" | debconf-set-selections'
 end
+# More modern variant
+file '/var/lib/man-db/auto-update' do
+  action :delete
+end
 
 # Make sure tzdata is installed for timezone cookbook.
 apt_update 'update_for_tzdata'
