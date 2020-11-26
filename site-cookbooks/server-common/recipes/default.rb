@@ -60,6 +60,12 @@ file '/var/lib/man-db/auto-update' do
   action :delete
 end
 
+# Clean up some crap we most definitely never need.
+package 'crap purge' do
+  package_name %w[plymouth packagekit accountsservice rsyslog policykit-1]
+  action :purge
+end
+
 # Make sure tzdata is installed for timezone cookbook.
 apt_update 'update_for_tzdata'
 # - Make sure all servers have gpg2, we use this for most signing activity.
