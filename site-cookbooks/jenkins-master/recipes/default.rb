@@ -37,7 +37,7 @@ end
 
 ruby_block 'chown jenkins dirs' do
   block do
-    %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
+    %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave /home/jenkins-slave).each do |dir|
       stamp = "#{dir}/chef_jenkins-master-chown.stamp"
       next unless File.exist?(dir)
       next if File.exist?(stamp)

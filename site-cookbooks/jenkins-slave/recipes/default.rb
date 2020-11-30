@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 
-slave_home = '/var/lib/jenkins-slave'
+slave_home = node['jenkins-slave']['user-home']
 
 include_recipe 'user'
 
@@ -17,7 +17,6 @@ apt_repository 'ubuntu-updates' do
   # Don't enable this for AMD64, required only for docker on ARM
   only_if { node['kernel']['machine'].start_with?('arm') }
 end
-
 
 user_account 'jenkins-slave' do
   ssh_keys [
@@ -49,9 +48,21 @@ subid_set 'jenkins-subids' do
   not_if { node['jenkins-slave']['no-userns-remap'] }
 end
 
+# Backwards compat: previously all nodes always had the same path. These days
+# that can be controlled through the user-home attribute. Pre-existing node
+# configuration might have the legacy hardcoded path as workspace path
+# configured though. To ensure they will work regardless we'll always make
+# the legacy path so it may be used for workspaces even when the actual
+# user home is elsewhere.
+directory '/var/lib/jenkins-slave' do
+  owner 'jenkins-slave'
+  mode '0700'
+  action :create
+end
+
 ruby_block 'chown jenkins dirs' do
   block do
-    %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave).each do |dir|
+    (%w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave) + [slave_home]).each do |dir|
       stamp = "#{dir}/chef_jenkins-master-chown.stamp"
       next unless File.exist?(dir)
       next if File.exist?(stamp)
