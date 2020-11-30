@@ -2,7 +2,10 @@
   "default_attributes": {
     "pangea_ruby": {
       "home_user": "jenkins-slave",
-      "home_user_home": "/var/lib/jenkins-slave"
+      "home_user_home": "/home/jenkins-slave"
+    },
+    "jenkins-slave": {
+      "user-home": "/home/jenkins-slave"
     },
     "fail2ban": {
       "services": {
