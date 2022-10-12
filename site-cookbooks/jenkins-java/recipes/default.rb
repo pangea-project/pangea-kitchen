@@ -9,8 +9,7 @@
 to_purge = []
 to_install = []
 
-if Chef::VersionConstraint.new('= 18.04').include?(node['platform_version']) ||
-   Chef::VersionConstraint.new('= 20.04').include?(node['platform_version'])
+if Chef::VersionConstraint.new('= 18.04').include?(node['platform_version'])
   # Default on 18.04 is openjdk11, but jenkins LTS is wants openjdk8 or it
   # won't even start.
   to_purge = %w[default-jre-headless openjdk-11-jre-headless]

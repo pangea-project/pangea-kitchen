@@ -81,7 +81,6 @@ GRAPH
     yum-epel (>= 0.0.0)
   rvm (0.9.4)
     chef_gem (>= 0.0.0)
-    java (>= 0.0.0)
   seven_zip (3.0.0)
     windows (>= 0.0.0)
   swap (2.1.0)
