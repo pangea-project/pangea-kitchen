@@ -1,0 +1,38 @@
+{
+  "name": "jenkins-slave-arm",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "pangea_ruby": {
+      "home_user": "jenkins-slave",
+      "home_user_home": "/var/lib/jenkins-slave"
+    },
+    "docker" : {
+      "user": "docker",
+      "group": "docker",
+      "storage_opt":  ["dm.basesize=20G"]
+    },
+    "swap_tuning" : {
+      "minimum_size" : 7168
+    }
+  },
+  "override_attributes": {
+    "ruby_build" : {
+      "install_pkgs_cruby": ["autoconf", "bison", "build-essential",
+        "libssl1.0-dev", "libyaml-dev", "libreadline6-dev",
+        "zlib1g-dev", "libsqlite3-dev", "libxml2-dev", "libxslt1-dev",
+        "libc6-dev", "libffi-dev", "libgdbm5", "libgdbm-dev"]
+    }
+  },
+  "chef_type": "role",
+  "run_list": [
+    "role[server-common]",
+    "recipe[jenkins-java]",
+    "recipe[jenkins-slave]",
+    "recipe[pangea-ruby::install]",
+    "recipe[pangea-ruby::user_home_gems]"
+  ],
+  "env_run_lists": {
+
+  }
+}
