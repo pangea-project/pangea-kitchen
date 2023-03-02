@@ -22,7 +22,7 @@
   },
   "normal": {
     "knife_zero": {
-      "host": "147.28.147.170"
+      "host": "147.75.51.50"
     },
     "jenkins-slave": {
       "no-userns-remap": true
@@ -36,7 +36,7 @@
     "os": "linux",
     "os_version": "5.15.0-53-generic",
     "hostname": "equinix-arm64-01",
-    "ipaddress": "147.28.147.170",
+    "ipaddress": "147.75.51.50",
     "roles": [
       "jenkins-slave-arm-jammy",
       "server-common",
