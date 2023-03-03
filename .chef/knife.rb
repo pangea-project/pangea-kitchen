@@ -37,7 +37,7 @@ if chefdk.generator # Chef 13 fully ditches knife for chef-dk.
 end
 
 # This is our default chef version. This only gets increased after testing!
-knife[:bootstrap_version] = '13'
+knife[:bootstrap_version] = '18'
 # Librarian compatibility.
 knife[:berkshelf_path] = 'cookbooks'
 
