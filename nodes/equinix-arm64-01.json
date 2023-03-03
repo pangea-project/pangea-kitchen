@@ -1,25 +1,5 @@
 {
   "name": "equinix-arm64-01",
-  "override": {
-    "ruby_build": {
-      "install_pkgs_cruby": [
-        "autoconf",
-        "bison",
-        "build-essential",
-        "libssl1.0-dev",
-        "libyaml-dev",
-        "libreadline6-dev",
-        "zlib1g-dev",
-        "libsqlite3-dev",
-        "libxml2-dev",
-        "libxslt1-dev",
-        "libc6-dev",
-        "libffi-dev",
-        "libgdbm5",
-        "libgdbm-dev"
-      ]
-    }
-  },
   "normal": {
     "knife_zero": {
       "host": "147.75.51.50"
@@ -32,32 +12,26 @@
     ]
   },
   "automatic": {
-    "fqdn": "localhost",
+    "fqdn": "147.75.51.50",
     "os": "linux",
-    "os_version": "5.15.0-53-generic",
-    "hostname": "equinix-arm64-01",
+    "os_version": "5.4.0-132-generic",
+    "hostname": "c3-large-arm64-01",
     "ipaddress": "147.75.51.50",
     "roles": [
-      "jenkins-slave-arm-jammy",
-      "server-common",
-      "server-common-core"
+
     ],
     "platform": "ubuntu",
     "platform_version": "22.04",
     "cloud": null,
     "chef_packages": {
       "ohai": {
-        "version": "14.15.0",
-        "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.5.0/gems/ohai-14.15.0/lib/ohai"
+        "version": "18.1.0",
+        "ohai_root": "/usr/share/rubygems-integration/all/gems/ohai-18.1.0/lib/ohai"
       },
       "chef": {
-        "version": "14.15.6",
-        "chef_root": "/opt/chef/embedded/lib/ruby/gems/2.5.0/gems/chef-14.15.6/lib"
+        "version": "18.1.0",
+        "chef_root": "/usr/share/rubygems-integration/all/gems/chef-18.1.0/lib"
       }
-    },
-    "current_user": "root"
-  },
-  "run_list": [
-    "role[jenkins-slave-arm-jammy]"
-  ]
+    }
+  }
 }
