@@ -91,8 +91,6 @@ package 'install-native-gem-dependencies' do
   ]
 end
 
-package 'aufs-tools'
-
 package 'lxc-docker purge' do
   package_name %w(lxc-docker lxc-docker-*)
   action :purge
