@@ -17,7 +17,3 @@ file '/etc/gemrc' do
   content 'gem: --no-document'
   action :create_if_missing
 end
-
-# With ruby 2.4 string freezing is more strict. Update rubygems to prevent
-# issues inside gem itself.
-execute 'gem update --system'
