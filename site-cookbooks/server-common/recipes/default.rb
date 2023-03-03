@@ -19,11 +19,11 @@ service 'systemd-journald-enable-peristence' do
 end
 
 systemd_journald 'enable-peristence-without-syslog' do
-  storage 'persistent'
+  journal_storage 'persistent'
   # Disable syslog. We know how awesome journald is and syslog can sod off.
   # Otherwise jenkins and stuff floods the syslog and syslog unlike journald
   # has no storage limit really.
-  forward_to_syslog false
+  journal_forward_to_syslog false
   notifies :restart, 'service[systemd-journald-enable-peristence]', :delayed
   only_if do
     [node.fetch('platform'), node.fetch('platform_version')] != %w(ubuntu 14.04)

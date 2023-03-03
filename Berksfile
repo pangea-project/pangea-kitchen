@@ -28,8 +28,8 @@ cookbook 'resolvconf', '~> 0.4.0'
 cookbook 'ruby_build', '~> 1.1.0'
 cookbook 'rvm', '~> 0.9.4' # v1 changes the entire node format around
 cookbook 'swap_tuning'
-cookbook 'system', '~> 0.10.1'
-cookbook 'systemd', '~> 2.1'
+cookbook 'system', '~> 0.11'
+cookbook 'systemd', '~> 3.2'
 cookbook 'swap', '~> 2.0'
 cookbook 'user'
 
