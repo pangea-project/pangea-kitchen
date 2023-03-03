@@ -17,14 +17,14 @@ end
 # Adjust the UID and GID to match what the containers use.
 group 'jenkins' do
   action :modify
-  gid 120
+  gid 140
   notifies :restart, 'service[jenkins]', :delayed
 end
 
 user 'jenkins' do
   action :modify
   uid 100_000
-  gid 120
+  gid 140
   notifies :restart, 'service[jenkins]', :delayed
 end
 
@@ -32,7 +32,7 @@ subid_set 'jenkins-subids' do
   username 'jenkins'
   uid 100_000
   groupname 'jenkins'
-  gid 120
+  gid 140
 end
 
 ruby_block 'chown jenkins dirs' do
@@ -45,7 +45,7 @@ ruby_block 'chown jenkins dirs' do
       paths.select! { |pt| !pt.include?('workspace') || pt.include?('cache') }
       FileUtils.chown('jenkins', 'jenkins', paths)
       FileUtils.touch(stamp)
-      FileUtils.chown(100_000, 120, stamp)
+      FileUtils.chown(100_000, 140, stamp)
       notifies :restart, 'service[jenkins]', :delayed
     end
   end

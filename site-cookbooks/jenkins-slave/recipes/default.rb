@@ -36,14 +36,14 @@ group 'jenkins-slave' do
   action :create
   append true
   members %w(jenkins-slave)
-  gid 120
+  gid 140
 end
 
 subid_set 'jenkins-subids' do
   username 'jenkins-slave'
   uid 100_000
   groupname 'jenkins-slave'
-  gid 120
+  gid 140
   # Even this is debatable... maybe we should stop this in general.
   not_if { node['jenkins-slave']['no-userns-remap'] }
 end
@@ -70,7 +70,7 @@ ruby_block 'chown jenkins dirs' do
       paths.select! { |pt| !pt.include?('workspace') || pt.include?('cache') }
       FileUtils.chown('jenkins-slave', 'jenkins-slave', paths)
       FileUtils.touch(stamp)
-      FileUtils.chown(100_000, 120, stamp)
+      FileUtils.chown(100_000, 140, stamp)
     end
   end
 end
@@ -127,7 +127,7 @@ end
 docker_service 'default' do
   action :start
   # Only remap unless disabled
-  userns_remap node['jenkins-slave']['no-userns-remap'] ? nil : '100000:120'
+  userns_remap node['jenkins-slave']['no-userns-remap'] ? nil : '100000:140'
 end
 
 group 'docker' do
