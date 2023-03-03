@@ -1,9 +1,0 @@
-<VirtualHost *:<%= @params[:server_port] || Apache2::Listen.listen_ports_by_address(node).values.map(&:to_a).flatten.first %>>
-  ServerName <%= @params[:server_name] %>
-  <% if @params[:server_aliases] -%>
-  ServerAlias <%= @params[:server_aliases].join " " %>
-  <% end -%>
-  DocumentRoot <%= @params[:docroot] %>
-
-  RedirectMatch (.*)$ "http://<%= @params[:new_server_name] %>$1"
-</VirtualHost>
