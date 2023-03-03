@@ -14,7 +14,8 @@ cookbook 'aptly'
 ## we need 3.1 compat
 cookbook 'apache2', '~> 3.1'
 cookbook 'bsw_gpg', '~> 0.2.3'
-cookbook 'docker'
+# NB: newer versions may be incompatible with chef 18. be careful when bumping this
+cookbook 'docker', '~> 10.3.0'
 cookbook 'fail2ban'
 cookbook 'filesystem', '~> 0.10.6'
 cookbook 'htop'
