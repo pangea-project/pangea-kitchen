@@ -113,12 +113,6 @@ docker_installation_package 'default' do
     Chef::VersionConstraint.new('<= 18.04').include?(node['platform_version']) }
 end
 
-docker_service 'default' do
-  action :start
-  # Only remap unless disabled
-  userns_remap node['jenkins-slave']['no-userns-remap'] ? nil : '100000:140'
-end
-
 group 'docker' do
   action :modify
   append true
