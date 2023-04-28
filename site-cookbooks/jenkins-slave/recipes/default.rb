@@ -39,15 +39,6 @@ group 'jenkins-slave' do
   gid 140
 end
 
-subid_set 'jenkins-subids' do
-  username 'jenkins-slave'
-  uid 100_000
-  groupname 'jenkins-slave'
-  gid 140
-  # Even this is debatable... maybe we should stop this in general.
-  not_if { node['jenkins-slave']['no-userns-remap'] }
-end
-
 # Backwards compat: previously all nodes always had the same path. These days
 # that can be controlled through the user-home attribute. Pre-existing node
 # configuration might have the legacy hardcoded path as workspace path

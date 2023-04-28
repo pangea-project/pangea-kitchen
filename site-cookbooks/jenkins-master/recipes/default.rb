@@ -28,13 +28,6 @@ user 'jenkins' do
   notifies :restart, 'service[jenkins]', :delayed
 end
 
-subid_set 'jenkins-subids' do
-  username 'jenkins'
-  uid 100_000
-  groupname 'jenkins'
-  gid 140
-end
-
 ruby_block 'chown jenkins dirs' do
   block do
     %w(/var/lib/jenkins /var/cache/jenkins /var/lib/jenkins-slave /home/jenkins-slave).each do |dir|
