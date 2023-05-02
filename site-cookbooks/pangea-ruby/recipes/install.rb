@@ -11,7 +11,7 @@
 package %w[libssl-dev libreadline-dev zlib1g-dev build-essential
            libgirepository1.0-dev libglib2.0-dev]
 
-package %w[ruby ruby-dev]
+package %w[ruby ruby-dev ruby-shadow]
 
 file '/etc/gemrc' do
   content 'gem: --no-document'
