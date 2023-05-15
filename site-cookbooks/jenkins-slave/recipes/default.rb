@@ -18,8 +18,6 @@ apt_repository 'ubuntu-updates' do
   only_if { node['kernel']['machine'].start_with?('arm') }
 end
 
-chef_gem 'shadow'
-
 user_account 'jenkins-slave' do
   ssh_keys [
     'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCiLBt3u8Ldo3/bwIYI3t4QZ8yW7lMdWLy92gOxk0er5Rb1baKvubFIfTRL18I4FCvYJyzchCGZhxFfCkO5FiKNhOlKWbPJRKgitj1y6t02Jlyw0Z+zQXKe1srpwwQa2iN1LuTINcRoun/+Ouq52uQeRaye9zV3ikT+53/GcsfJTgxkJN2IOpIaLdEA3epuqnStpXdGYvAjycUngbVJASHWXsZUCPtZK6acxoxHvFPdroEVs+rB3HdWFUoaFECRJ8LQo21p7qlFIeC03scUmYs2cDaBne8h0NhA9q/0o+HQqaf2zam8fJiMqKo3eTYUt6jRStzxT+tpg3zyDlKsipL/ jenkins@drax',
