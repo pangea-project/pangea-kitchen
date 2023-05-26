@@ -45,13 +45,13 @@ end
 
 systemd_unit 'gemstash.service' do
   user username
-  # action %i(reload disable)
+  action %i(reload disable)
 end
 
 systemd_unit 'gemstash.socket' do
   user username
-  # action %i(enable restart)
-  # notifies :restart, 'systemd_unit[gemstash.service]'
+  action %i(enable restart)
+  notifies :restart, 'systemd_unit[gemstash.service]'
 end
 
 git clonedir do
