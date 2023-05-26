@@ -22,7 +22,7 @@
     AllowEncodedSlashes NoDecode
     ProxyRequests Off
     ProxyPass /.well-known/acme-challenge/ !
-    ProxyPass / "unix:<%= @userhome %>/.gemstash.puma.pid|http://localhost/" nocanon retry=0
+    ProxyPass / "unix:<%= @userhome %>/.gemstash/puma.pid|http://localhost:9292/" nocanon retry=0
     ProxyPassReverse / "http://localhost/"
 
     <Proxy http://localhost/*>
