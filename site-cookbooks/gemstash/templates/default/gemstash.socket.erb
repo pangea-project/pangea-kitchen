@@ -1,0 +1,10 @@
+[Unit]
+Description=Gemstash sockets
+
+[Socket]
+ListenStream=<%= @userhome %>/.gemstash/puma.pid
+SocketGroup=www-data
+Service=gemstash.service
+
+[Install]
+WantedBy=sockets.target
