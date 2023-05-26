@@ -3,8 +3,7 @@
     "role[server-common]",
     "recipe[apt-cacher]",
     "recipe[pangea-ruby::install]",
-    "recipe[geminabox]",
-    "COMMENTED_OUT_recipe[gemstash]",
+    "recipe[gemstash]",
     "recipe[nameserver]",
     "role[private-nameserver-client]"
   ],
