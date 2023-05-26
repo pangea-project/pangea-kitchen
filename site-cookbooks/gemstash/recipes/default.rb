@@ -23,7 +23,7 @@ groupname = username.clone
 userhome = "/home/#{username}/"
 systemd_dir = "#{userhome}/.config/systemd/user"
 
-repourl = 'https://github.com/pangea-project/pangea-gemstash'
+repourl = 'https://invent.kde.org/neon/infrastructure/pangea-gemstash.git'
 clonedir = "#{userhome}/src"
 
 ohai 'reload_passwd' do
