@@ -52,6 +52,7 @@ def submod
   system('git submodule update --remote --recursive') || raise
   cupboard_dir = "#{__dir__}/../data_bags/cupboard"
   puts 'Calling git secret reveal!'
-  system('./bin/git-secret reveal -f', chdir: cupboard_dir) || raise
+  puts "#{cupboard_dir}"
+  system('git-secret reveal -f', chdir: cupboard_dir) || raise
 end
 submod unless ENV.include?('NO_CUPBOARD')
