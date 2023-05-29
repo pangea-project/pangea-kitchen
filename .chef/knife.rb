@@ -15,6 +15,7 @@ knife[:automatic_attribute_whitelist] = %w[
   os_version
   hostname
   ipaddress
+  listen
   roles
   ipaddress
   platform
@@ -40,6 +41,10 @@ end
 knife[:bootstrap_version] = '18'
 # Librarian compatibility.
 knife[:berkshelf_path] = 'cookbooks'
+# for deprecated socket mode
+knife[:listen] = true
+# because node names aren't resolving properly
+knife[:ssh_attribute] = 'knife_zero.host'
 
 def submod
   `git config --local --get include.path`
