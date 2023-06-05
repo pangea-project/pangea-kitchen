@@ -72,11 +72,3 @@ apt_update 'update_for_tzdata'
 # - update-notifier-common contains handy motd extensions
 # - systemd-container contains machinectl which is much better than sudo
 apt_package %w[tzdata gnupg2 update-notifier-common systemd-container]
-
-# For some unknown reason chef 15.17.4 ships with ruby 2.6.7 that includes ruby-shadow
-# but chef-workstation 23.4.1032 ships ruby 3.1.2 but does not include ruby-shadow which
-# make it a complete shit show.  So chef_gem it in early.
-# See: https://github.com/chef/chef-workstation/issues/2141
-chef_gem 'ruby-shadow' do
-  action :install
-end
