@@ -2,7 +2,7 @@
 Description=Gemstash sockets
 
 [Socket]
-ListenStream=<%= @userhome %>/.gemstash/puma.pid
+ListenStream=<%= @userhome %>/.gemstash/puma.sock
 SocketGroup=www-data
 Service=gemstash.service
 
