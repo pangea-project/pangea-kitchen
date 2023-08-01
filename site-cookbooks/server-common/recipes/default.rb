@@ -79,4 +79,5 @@ apt_package %w[tzdata gnupg2 update-notifier-common systemd-container]
 # See: https://github.com/chef/chef-workstation/issues/2141
 chef_gem 'ruby-shadow' do
   action :install
+  ignore_failure true
 end
