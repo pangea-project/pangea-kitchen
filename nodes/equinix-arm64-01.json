@@ -43,7 +43,7 @@
       "server-common-core"
     ],
     "platform": "ubuntu",
-    "platform_version": "22.04",
+    "platform_version": "24.04",
     "cloud": null,
     "chef_packages": {
       "chef": {
