@@ -15,15 +15,12 @@ knife[:allowed_automatic_attributes] = %w[
   os_version
   hostname
   ipaddress
-  listen
   roles
   ipaddress
   platform
   platform_version
   cloud
-  cloud_v2
   chef_packages
-  current_user
 ]
 knife[:allowed_default_attributes] = []
 
