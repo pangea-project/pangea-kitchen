@@ -9,7 +9,7 @@ data_bag_path    "#{__dir__}/../data_bags"
 #   on BOOTSTRAP !!!. convering will not pass these values. To apply them to
 #   future converges you need to bootstrap the server again (possibly with
 #   --no-converge if no converge should happen).
-knife[:automatic_attribute_whitelist] = %w[
+knife[:allowed_automatic_attributes] = %w[
   fqdn
   os
   os_version
@@ -25,7 +25,7 @@ knife[:automatic_attribute_whitelist] = %w[
   chef_packages
   current_user
 ]
-knife[:default_attribute_whitelist] = []
+knife[:allowed_default_attributes] = []
 
 cookbook_license 'gplv3'
 cookbook_copyright ENV['DEBFULLNAME'] if ENV.include?('DEBFULLNAME')
