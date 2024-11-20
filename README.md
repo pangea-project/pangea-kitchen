@@ -1,6 +1,6 @@
 # Requirements
 
-- Ruby 3.1.3 install with rbenv e.g. https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04
+- Ruby 3.3.0 install with rbenv e.g. https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-22-04
 - SSH access to relevant hosts
 - For convenience a .ssh/config entry to make the hosts name accessible (e.g. map IP to hostname such as 'drax' or 'taspar')
 
