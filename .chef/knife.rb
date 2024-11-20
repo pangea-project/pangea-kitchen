@@ -61,3 +61,4 @@ def submod
   system('git-secret reveal -f', chdir: cupboard_dir) || raise
 end
 submod unless ENV.include?('NO_CUPBOARD')
+silence_deprecation_warnings %w(chef-18 chef-19)
