@@ -77,7 +77,9 @@ package 'install-native-gem-dependencies' do
     # required for nokogiri
     'zlib1g-dev',
     # required for ffi
-    'libffi-dev'
+    'libffi-dev',
+    # rugged-1.7.2
+    'cmake'
   ]
 end
 
